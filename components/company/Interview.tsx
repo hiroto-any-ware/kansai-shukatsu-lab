@@ -3,6 +3,7 @@ import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
 import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
+import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 
 export function Interview({ company }: { company: CompanyInterview }) {
   const person = company.representative;
@@ -19,6 +20,7 @@ export function Interview({ company }: { company: CompanyInterview }) {
               fill
               className="object-cover"
             />
+            <PhotoPlaceholderMark iconSize={32} />
           </div>
           <div>
             <p className="font-display text-xl font-bold text-navy-900">

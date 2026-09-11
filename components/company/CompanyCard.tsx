@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CompanyInterview } from "@/lib/types";
 import { Reveal } from "@/components/ui/Reveal";
+import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 
 export function CompanyCard({
   company,
@@ -27,6 +28,7 @@ export function CompanyCard({
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
+            <PhotoPlaceholderMark iconSize={40} />
           </div>
           <div className="flex flex-col justify-center p-1 sm:p-8">
             <div className="flex items-center gap-2">
@@ -58,6 +60,7 @@ export function CompanyCard({
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
+          <PhotoPlaceholderMark iconSize={48} />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/5 to-transparent" />
           <div className="absolute left-4 top-4 flex items-center gap-2">
             <div className="relative h-8 w-8 overflow-hidden rounded-full bg-white ring-1 ring-white/60">

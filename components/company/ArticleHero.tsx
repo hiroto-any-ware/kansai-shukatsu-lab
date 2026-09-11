@@ -3,6 +3,7 @@ import { MapPin, Calendar } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SampleBadge } from "@/components/ui/SampleBadge";
+import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -73,6 +74,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
                   priority
                   className="object-cover"
                 />
+                <PhotoPlaceholderMark iconSize={72} />
                 <SampleBadge className="bottom-3 right-3" />
               </div>
             </div>

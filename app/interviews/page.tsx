@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 
 export const metadata: Metadata = {
   title: "企業インタビュー",
@@ -48,6 +49,7 @@ export default function InterviewsPage() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <PhotoPlaceholderMark iconSize={44} />
                 </div>
                 <div className="flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3 text-xs text-navy-400">

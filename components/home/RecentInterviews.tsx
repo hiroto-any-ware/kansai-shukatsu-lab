@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
+import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 import { STOCK_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/cn";
 
@@ -63,6 +64,7 @@ export function RecentInterviews() {
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
+                        <PhotoPlaceholderMark iconSize={56} />
                       </div>
                     </Link>
                   </Reveal>
