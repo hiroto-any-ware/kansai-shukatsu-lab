@@ -32,6 +32,8 @@ export function LineSection() {
         <Reveal delay={0.15}>
           <Link
             href={siteConfig.lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[#06C755] px-8 py-4 text-sm font-bold text-white transition-transform hover:scale-[1.04]"
           >
             関西就活ラボ公式LINEを追加

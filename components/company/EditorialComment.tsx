@@ -1,6 +1,7 @@
 import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Logo } from "@/components/ui/Logo";
 
 export function EditorialComment({ company }: { company: CompanyInterview }) {
   const { editorialComment: e } = company;
@@ -8,9 +9,7 @@ export function EditorialComment({ company }: { company: CompanyInterview }) {
     <section className="bg-white py-16 md:py-24">
       <Container narrow>
         <Reveal className="rounded-2xl border border-navy-900/8 bg-sky-50/60 p-8 md:p-12">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-900 font-display text-base text-white">
-            関
-          </span>
+          <Logo size={40} className="h-10 w-10" />
           <p className="font-label mt-5 text-xs font-semibold tracking-[0.25em] text-accent-600">
             EDITOR&apos;S NOTE
           </p>

@@ -4,9 +4,9 @@ export const siteConfig = {
   description:
     "大手だけが、正解じゃない。関西の就活生と優良企業を「想い」で繋ぐ就活メディア「関西就活ラボ」。企業インタビューや就活イベント、就活ノウハウを発信しています。",
   url: "https://example.com", // TODO: 独自ドメイン取得後に本番URLへ差し替え
-  // TODO: 実際のLINE公式アカウント・Instagramアカウントが決まり次第、URLを差し替えてください
-  lineUrl: "#",
-  instagramUrl: "#",
+  lineUrl: "https://line.me/R/ti/p/@381flauo",
+  instagramUrl:
+    "https://www.instagram.com/kansai_shukatsu_lab?stkn=MXZ5ZjNzcGZwNjA2bg==",
 };
 
 export const mainNav = [

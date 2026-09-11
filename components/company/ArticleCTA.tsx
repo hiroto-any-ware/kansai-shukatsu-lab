@@ -23,7 +23,7 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
       icon: MessageCircle,
       title: "インターン情報を受け取る",
       href: siteConfig.lineUrl,
-      external: false,
+      external: true,
     },
   ];
 
@@ -55,6 +55,8 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
         <Reveal delay={0.15} className="mt-6">
           <Link
             href={siteConfig.lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-between rounded-2xl bg-[#06C755] px-6 py-6 text-white transition-transform hover:scale-[1.01] sm:px-8"
           >
             <span className="font-display text-base font-bold sm:text-lg">

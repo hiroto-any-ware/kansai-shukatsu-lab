@@ -26,7 +26,7 @@ export function PickUp() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-navy-500">
-            知名度だけでは見えてこない、確かな技術と想いを持つ企業を編集部が取材しました。
+            知名度だけでは見えてこない企業の魅力を、取材を通してご紹介します。
           </p>
         </Reveal>
 
@@ -38,8 +38,8 @@ export function PickUp() {
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-[16/11]">
                 <Image
-                  src={feature.heroImage}
-                  alt={feature.heroImageAlt}
+                  src={feature.representativePhoto}
+                  alt={feature.representativePhotoAlt}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
@@ -68,8 +68,8 @@ export function PickUp() {
                 >
                   <div className="relative aspect-square w-24 shrink-0 overflow-hidden rounded-xl md:w-28">
                     <Image
-                      src={c.thumbnail}
-                      alt={c.heroImageAlt}
+                      src={c.representativePhoto}
+                      alt={c.representativePhotoAlt}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
@@ -99,8 +99,8 @@ export function PickUp() {
                   >
                     <div className="relative aspect-[16/9] w-full">
                       <Image
-                        src={c.heroImage}
-                        alt={c.heroImageAlt}
+                        src={c.representativePhoto}
+                        alt={c.representativePhotoAlt}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />

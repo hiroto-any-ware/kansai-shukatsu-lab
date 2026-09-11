@@ -22,8 +22,8 @@ export function CompanyCard({
         >
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:aspect-auto sm:rounded-l-2xl sm:rounded-r-none">
             <Image
-              src={company.heroImage}
-              alt={company.heroImageAlt}
+              src={company.representativePhoto}
+              alt={company.representativePhotoAlt}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -53,8 +53,8 @@ export function CompanyCard({
       <Link href={`/companies/${company.slug}`} className="group block h-full">
         <div className={`relative w-full overflow-hidden rounded-2xl ${aspect}`}>
           <Image
-            src={company.heroImage}
-            alt={company.heroImageAlt}
+            src={company.representativePhoto}
+            alt={company.representativePhotoAlt}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />

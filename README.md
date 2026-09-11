@@ -57,18 +57,18 @@ lib/
 
 このサイトは**第1フェーズ（デザイン・フロントエンド実装）**の成果物です。公開前に以下を必ず本番用の情報に差し替えてください。
 
-1. **LINE公式アカウントのURL**
-   [lib/site.ts](lib/site.ts) の `lineUrl` を実際のURLに変更してください。
-2. **InstagramアカウントのURL**
-   [lib/site.ts](lib/site.ts) の `instagramUrl` を実際のURLに変更してください。
-3. **本番ドメイン**
+1. **本番ドメイン**
    [lib/site.ts](lib/site.ts) の `url`（`https://example.com`）を、取得した独自ドメインに変更してください。OGP画像やsitemap.xmlの生成に使われます。
-4. **企業データ・写真**
-   [data/companies.ts](data/companies.ts) に掲載されている企業名・写真・インタビュー内容は、すべて制作用のダミーデータ（架空の企業）です。実際に取材した企業の情報・写真に差し替えてください。写真は `placehold.co` で自動生成した単色のダミー画像を使用しています。
-5. **イベント・記事データ**
+   ※ 公式LINE（`https://line.me/R/ti/p/@381flauo`）とInstagram（`@kansai_shukatsu_lab`）は実アカウントのURLを設定済みです。
+2. **企業データ・写真**
+   [data/companies.ts](data/companies.ts) に掲載されている企業名・写真・インタビュー内容は、すべて制作用のダミーデータ（架空の企業）です。実際に取材した企業の情報・写真に差し替えてください。
+   各企業には「社長・代表者の写真1枚（`representativePhoto`）」のみを持たせる構造にしています。実際の取材写真に差し替える際も、この1枚をヒーロー画像・インタビュー内の顔写真として使い回す設計です。オフィス写真や社員写真などが増えた場合は `lib/types.ts` の `CompanyInterview` 型を拡張してください。
+3. **イベント・記事データ**
    [data/events.ts](data/events.ts) ／ [data/articles.ts](data/articles.ts) も同様にダミーデータです。
-6. **お問い合わせフォーム**
-   「企業の方へ」ページの相談ボタンは、現状リンク先が未設定（`#`）です。フォームサービス（Googleフォーム、HubSpot等）を用意し、リンクを差し替えてください。
+4. **企業の方へ ページのご相談導線**
+   現状、「取材について相談する」等のボタンは公式LINEにリンクしています。専用の問い合わせフォームを用意した場合は、[app/for-companies/page.tsx](app/for-companies/page.tsx) のリンク先を差し替えてください。
+5. **ロゴ画像**
+   [public/brand/logo-mark.png](public/brand/logo-mark.png)（Instagramの公式アイコンから書き出し）をヘッダー・フッター・ファビコン（`app/icon.png` / `app/apple-icon.png`）で共通利用しています。ロゴを変更する場合はこの1ファイルを差し替えてください。
 
 ## 将来のCMS接続について
 

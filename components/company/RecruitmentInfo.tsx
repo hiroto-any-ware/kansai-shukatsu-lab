@@ -1,6 +1,6 @@
 import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
 import { Briefcase, MapPin, ListChecks, Globe } from "lucide-react";
 
@@ -17,11 +17,11 @@ export function RecruitmentInfo({ company }: { company: CompanyInterview }) {
   ];
 
   return (
-    <section className="bg-navy-900 py-16 text-white md:py-24">
+    <section className="bg-white py-16 md:py-24">
       <Container narrow>
         <Reveal>
-          <Eyebrow light>RECRUITMENT</Eyebrow>
-          <h2 className="font-display mt-4 text-2xl font-bold md:text-[32px]">
+          <SectionNumber no="05" label="RECRUIT" />
+          <h2 className="font-display mt-6 text-2xl font-bold text-navy-900 md:text-[32px]">
             採用情報
           </h2>
         </Reveal>
@@ -30,15 +30,15 @@ export function RecruitmentInfo({ company }: { company: CompanyInterview }) {
           {items.map((item) => (
             <Reveal
               key={item.label}
-              className="rounded-xl border border-white/10 p-5"
+              className="rounded-xl border border-navy-900/10 p-5"
             >
-              <div className="flex items-center gap-2 text-sky-200">
+              <div className="flex items-center gap-2 text-accent-600">
                 <item.icon size={15} />
                 <span className="font-label text-[11px] font-semibold tracking-widest">
                   {item.label.toUpperCase()}
                 </span>
               </div>
-              <p className="mt-2.5 text-sm leading-6 text-white/80">
+              <p className="mt-2.5 text-sm leading-6 text-navy-700">
                 {item.value}
               </p>
             </Reveal>
@@ -50,7 +50,7 @@ export function RecruitmentInfo({ company }: { company: CompanyInterview }) {
             href={r.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-navy-900 transition-transform hover:scale-[1.03]"
+            className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
           >
             <Globe size={15} />
             会社HP・採用ページを見る

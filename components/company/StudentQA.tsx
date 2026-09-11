@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
@@ -15,8 +15,8 @@ export function StudentQA({ company }: { company: CompanyInterview }) {
     <section className="bg-navy-900 py-16 text-white md:py-24">
       <Container narrow>
         <Reveal>
-          <Eyebrow light>STUDENT&apos;S VOICE</Eyebrow>
-          <h2 className="font-display mt-4 text-2xl font-bold md:text-[32px]">
+          <SectionNumber no="04" label="VOICE" light />
+          <h2 className="font-display mt-6 text-2xl font-bold md:text-[32px]">
             学生が気になること、
             <br className="sm:hidden" />
             聞いてみました。

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { InstagramIcon } from "@/components/ui/icons";
+import { Logo } from "@/components/ui/Logo";
 import { mainNav, siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 
@@ -9,9 +10,7 @@ export function Footer() {
       <Container className="grid grid-cols-1 gap-12 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:py-20">
         <div>
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white font-display text-base text-navy-900">
-              関
-            </span>
+            <Logo className="bg-white" />
             <span className="font-display text-lg">関西就活ラボ</span>
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-white/60">
@@ -20,6 +19,8 @@ export function Footer() {
           <div className="mt-6 flex items-center gap-3">
             <Link
               href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-white hover:text-white"
             >
@@ -27,6 +28,8 @@ export function Footer() {
             </Link>
             <Link
               href={siteConfig.lineUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#06C755] px-4 py-2.5 text-[13px] font-semibold text-white"
             >
               公式LINEを追加
@@ -76,6 +79,8 @@ export function Footer() {
             <li>
               <Link
                 href={siteConfig.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-white/70 transition-colors hover:text-white"
               >
                 Instagram

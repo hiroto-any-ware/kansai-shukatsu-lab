@@ -4,43 +4,84 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { sampleImage } from "@/lib/placeholder";
 import { siteConfig } from "@/lib/site";
+import { InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SampleBadge } from "@/components/ui/SampleBadge";
+import { PullQuote } from "@/components/ui/PullQuote";
 
 export const metadata: Metadata = {
   title: "関西就活ラボについて",
   description:
-    "関西就活ラボは、関西の就活生に本当に役立つリアルな情報を届けたいという想いから立ち上げたプロジェクトです。大手だけが正解ではない、新しい選択肢を届けます。",
+    "関西就活ラボは、大手企業での選考・人事経験を持つメンバーが「関西の就活生に、本当に役立つリアルな情報を届けたい」という想いから立ち上げたプロジェクトです。",
 };
 
 const values = [
   {
     no: "01",
-    title: "知名度ではなく、想いで届ける",
-    text: "求人票や知名度だけでは伝わらない企業の考え方や熱量を、取材を通じて言葉にします。",
+    en: "PROFESSIONAL EYE",
+    title: "プロの目線",
+    lead: "人事の本音を伝える",
+    text: "現場の視点から、「企業はどんな学生と出会いたいのか」「選考ではどんな部分を見ているのか」「面接やESでは何を大切にしているのか」など、学生が本当に知りたい企業側の視点をできる限りリアルに届けます。",
   },
   {
     no: "02",
-    title: "学生目線の取材にこだわる",
-    text: "就活生が本当に知りたいことを、経営者・人事・若手社員にストレートに聞いています。",
+    en: "ROOTED IN KANSAI",
+    title: "地域密着",
+    lead: "関西ならではのリアルな情報",
+    text: "関西エリアに根ざし、この街で働くこと、この街で暮らすこと、そして関西だからこそ出会える企業や仕事の魅力を大切にしながら情報を発信します。",
   },
   {
     no: "03",
-    title: "企業に優劣をつけない",
-    text: "ランキングや格付けではなく、それぞれの企業が持つ個性や価値観を紹介します。",
+    en: "UNCOVER THE APPEAL",
+    title: "魅力を紐解く",
+    lead: "取材による“本当の姿”の可視化",
+    text: "給与や福利厚生、会社概要だけでは分からない、企業理念・経営者の想い・事業へのこだわり・社風・仕事の面白さ・そこで働く人の熱量を、丁寧な取材を通して紐解きます。学生が、「この会社、なんかいいな。」と思える理由まで届けます。",
   },
+  {
+    no: "04",
+    en: "CONNECTING FUTURES",
+    title: "未来をつなぐ",
+    lead: "温度感のある出会いの場をつくる",
+    text: "画面越しの情報だけで終わらせません。企業と学生が本音で話し、お互いの考え方や想いを知ることのできるイベントや交流の機会もつくっていきます。「情報を知る場所」から、「実際に出会える場所」へ。",
+  },
+];
+
+const forCompanyList = [
+  "企業取材へのご協力",
+  "イベントへのご参加",
+  "イベント協賛",
+  "学生との交流機会づくり",
+  "インターンシップ機会の提供",
+];
+
+const forStudentList = [
+  "イベントへの参加",
+  "企業インタビューの閲覧",
+  "情報発信への協力",
+  "SNSでの情報共有",
 ];
 
 export default function AboutPage() {
   return (
     <div className="bg-white pt-16 md:pt-20">
+      {/* FIRST VIEW */}
       <section className="relative overflow-hidden bg-navy-950 py-24 text-white md:py-32">
+        <span
+          aria-hidden
+          className="font-display pointer-events-none absolute -right-10 -top-10 select-none text-[11rem] leading-none text-white/[0.05] md:text-[18rem]"
+        >
+          ABOUT
+        </span>
         <div
           aria-hidden
           className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-accent-600/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-sky-200/10 blur-3xl"
         />
         <Container className="relative">
           <div className="mb-8 [&_a]:text-white/50 [&_span]:text-white/80">
@@ -58,17 +99,56 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 md:py-24">
+      {/* なぜ始めたのか */}
+      <section className="py-20 md:py-28">
         <Container narrow>
-          <Reveal className="space-y-6 text-[15px] leading-8 text-navy-700">
+          <Reveal>
+            <Eyebrow>WHY WE STARTED</Eyebrow>
+            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
+              なぜ、始めたのか。
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1} className="mt-8 space-y-6 text-[15px] leading-8 text-navy-700">
             <p>
-              関西就活ラボは、「関西の就活生に、本当に役立つリアルな情報を届けたい」という想いから立ち上げたプロジェクトです。
+              関西就活ラボは、大手企業での選考・人事経験を持つメンバーが、「関西の就活生に、本当に役立つリアルな情報を届けたい」という想いから立ち上げたプロジェクトです。
             </p>
             <p>
-              就職活動では、知名度の高い企業に情報が集中する一方で、魅力的な仕事や人、理念を持っていても、学生に十分知られていない企業が数多くあります。
+              私たち自身が就職活動を経験する中で感じたのは、世の中にある就活情報の偏りと、「本当に魅力的な企業の姿が、学生に十分届いていない」という現実でした。
+            </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 何を目指しているのか */}
+      <section className="bg-sky-50 py-20 md:py-28">
+        <Container narrow>
+          <Reveal>
+            <Eyebrow>WHAT WE AIM FOR</Eyebrow>
+            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
+              何を、目指しているのか。
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1} className="mt-8 space-y-6 text-[15px] leading-8 text-navy-700">
+            <p>
+              学生の仕事や企業に対する価値観は、大きく変化しています。一方で、企業と学生がお互いを十分に理解できないまま入社に至り、ミスマッチが生まれてしまうケースも少なくありません。
             </p>
             <p>
-              私たちは、「大手だけが正解ではない」という新しい選択肢を学生へ届けたいと考えています。知名度や条件だけでは分からない企業の「本当の魅力」を取材し、学生が、「この会社で働いてみたい」「この人たちと働いてみたい」と思える企業との出会いをつくります。
+              その背景の一つに、「学生が、世の中にどのような仕事や企業があるのかを知る機会そのものが少ないこと」があると私たちは考えています。
+            </p>
+            <p>
+              企業名や知名度だけではなく、「どんな人が働いているのか」「なぜこの事業をしているのか」「どんな未来を目指しているのか」「どんな想いで仕事をしているのか」まで知ることができれば、学生の企業選びは、もっと豊かになるはずです。
+            </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      <PullQuote quote="大手だけが、正解じゃない。" dark />
+
+      <section className="py-16 md:py-20">
+        <Container narrow>
+          <Reveal className="text-[15px] leading-8 text-navy-700">
+            <p>
+              知名度や表面的な条件だけでは分からない企業の「本当の魅力」を伝え、関西の学生が、「この会社で働いてみたい」「この人たちと働いてみたい」と思える企業と出会える世界を目指しています。
             </p>
           </Reveal>
         </Container>
@@ -86,47 +166,176 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-sky-50 py-20 md:py-28">
+      {/* 何を大切にしているのか */}
+      <section className="bg-white py-20 md:py-28">
         <Container>
           <Reveal className="max-w-xl">
             <Eyebrow>OUR VALUES</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold text-navy-900 md:text-4xl">
-              大切にしていること
+              私たちが大切にしていること
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-            {values.map((v) => (
-              <Reveal key={v.no} delay={Number(v.no) * 0.05}>
-                <span className="font-display text-5xl font-light text-navy-900/15">
-                  {v.no}
-                </span>
-                <h3 className="font-display mt-4 text-xl font-bold text-navy-900">
-                  {v.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-navy-500">
-                  {v.text}
-                </p>
-              </Reveal>
-            ))}
+          <div className="mt-16 flex flex-col">
+            {values.map((v, i) => {
+              const reverse = i % 2 === 1;
+              return (
+                <div key={v.no} className="border-t border-navy-900/8 py-10 md:py-14">
+                  <div
+                    className={`grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10 ${
+                      reverse ? "lg:[direction:rtl]" : ""
+                    }`}
+                  >
+                    <Reveal
+                      className={`lg:col-span-4 ${reverse ? "lg:[direction:ltr] lg:text-right" : ""}`}
+                    >
+                      <span className="font-display text-6xl font-light text-navy-900/10 md:text-7xl">
+                        {v.no}
+                      </span>
+                      <p className="font-label mt-2 text-[11px] font-semibold tracking-[0.25em] text-accent-600">
+                        {v.en}
+                      </p>
+                    </Reveal>
+                    <Reveal
+                      delay={0.1}
+                      className={`lg:col-span-8 ${reverse ? "lg:[direction:ltr]" : ""}`}
+                    >
+                      <h3 className="font-display text-2xl font-bold text-navy-900 md:text-[28px]">
+                        {v.title}
+                      </h3>
+                      <p className="mt-2 text-sm font-semibold text-navy-600">
+                        {v.lead}
+                      </p>
+                      <p className="mt-4 max-w-2xl text-sm leading-7 text-navy-500">
+                        {v.text}
+                      </p>
+                    </Reveal>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      <section className="py-20 md:py-28">
-        <Container narrow>
-          <Reveal>
-            <Eyebrow>MEDIA × INSTAGRAM</Eyebrow>
-            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
-              Instagramとウェブサイトの役割
+      {/* これからの関西就活ラボ */}
+      <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+        <Container className="relative">
+          <Reveal className="max-w-2xl">
+            <Eyebrow light>WHAT&apos;S NEXT</Eyebrow>
+            <h2 className="font-display mt-4 text-2xl font-bold md:text-3xl">
+              これからの関西就活ラボ
             </h2>
-            <p className="mt-5 text-sm leading-7 text-navy-500">
-              Instagramでは、ES対策・面接対策・企業研究・インターン情報など、就活のノウハウや選考情報を発信しています。Webサイトでは、Instagramで出会った企業をより深く知っていただけるよう、経営者・社員への取材を通じた企業インタビューや就活イベント、ノウハウ記事を蓄積しています。
+            <p className="mt-6 text-[15px] leading-8 text-white/70">
+              Instagramでの情報発信を軸に、関西で働くという選択肢や、まだ学生に十分知られていない企業の魅力を、企業への取材記事を通して継続的に届けていきます。
+            </p>
+            <p className="mt-4 text-[15px] leading-8 text-white/70">
+              さらに、企業と学生が直接話せる就活イベント、企業との交流企画、インターンシップの機会づくり、学生と企業の新しい接点づくりなどにも活動を広げていきます。
+            </p>
+            <p className="font-display mt-8 text-xl leading-relaxed text-sky-100 md:text-2xl">
+              目指しているのは、「関西の就活生と企業にとって、最も信頼される架け橋」であり続けることです。
             </p>
           </Reveal>
         </Container>
       </section>
 
+      {/* 企業の皆様へ（要点＋誘導） */}
+      <section className="py-20 md:py-28">
+        <Container narrow>
+          <Reveal className="rounded-2xl border border-navy-900/8 bg-sky-50/60 p-8 md:p-12">
+            <Eyebrow>FOR COMPANIES</Eyebrow>
+            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
+              自社の本当の魅力を、
+              <br className="sm:hidden" />
+              次の世代へ。
+            </h2>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-navy-600">
+              関西就活ラボでは、経営者・人事・社員への取材を通して、仕事内容だけでは伝わらない企業の考え方、事業への想い、働く人、職場の雰囲気を学生へ届けます。ご希望に応じて、学生との交流イベントやインターン企画についてもご相談いただけます。
+            </p>
+            <Link
+              href="/for-companies"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-900 underline decoration-navy-300 underline-offset-4 hover:text-accent-600"
+            >
+              企業の方へ 詳しく見る
+              <ArrowUpRight size={14} />
+            </Link>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 一緒に活動しませんか？ */}
+      <section className="bg-navy-50 py-20 md:py-28">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <Eyebrow>JOIN US</Eyebrow>
+            <h2 className="font-display mt-4 text-3xl font-bold text-navy-900 md:text-4xl">
+              一緒に、関西の就活を
+              <br />
+              もっと面白く。
+            </h2>
+            <p className="mt-5 text-sm leading-7 text-navy-500">
+              関西就活ラボでは、関西の就活文化をより良くし、学生と企業の未来を一緒につくっていただける企業・学生の皆様を募集しています。
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+            <Reveal className="rounded-2xl bg-white p-8 shadow-[0_1px_2px_rgba(10,23,48,0.06)] md:p-10">
+              <p className="font-label text-xs font-semibold tracking-[0.25em] text-accent-600">
+                FOR COMPANIES
+              </p>
+              <p className="font-display mt-3 text-xl font-bold text-navy-900">
+                企業の皆様へ
+              </p>
+              <ul className="mt-6 space-y-3">
+                {forCompanyList.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-navy-700">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={0.1} className="rounded-2xl bg-white p-8 shadow-[0_1px_2px_rgba(10,23,48,0.06)] md:p-10">
+              <p className="font-label text-xs font-semibold tracking-[0.25em] text-accent-600">
+                FOR STUDENTS
+              </p>
+              <p className="font-display mt-3 text-xl font-bold text-navy-900">
+                学生の皆様へ
+              </p>
+              <ul className="mt-6 space-y-3">
+                {forStudentList.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-navy-700">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.15} className="mt-14 text-center">
+            <p className="font-display text-xl leading-relaxed text-navy-900 md:text-2xl">
+              「この企業に出会えてよかった。」
+              <br />
+              「この学生に出会えてよかった。」
+            </p>
+            <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-navy-500">
+              そんな出会いを、関西から少しずつ増やしていきたいと考えています。企業と学生が、お互いのことをきちんと知った上で出会える場所を、私たちと一緒につくりませんか？
+            </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 最終CTA */}
       <section className="bg-navy-900 py-20 text-center text-white md:py-24">
         <Container narrow>
           <Reveal>
@@ -143,9 +352,20 @@ export default function AboutPage() {
               </Link>
               <Link
                 href={siteConfig.lineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 LINEで就活情報を受け取る
+              </Link>
+              <Link
+                href={siteConfig.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                <InstagramIcon size={15} />
+                Instagramをフォローする
               </Link>
             </div>
           </Reveal>

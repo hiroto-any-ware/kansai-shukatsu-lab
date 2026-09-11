@@ -114,6 +114,8 @@ export function Hero() {
             </Link>
             <Link
               href={siteConfig.lineUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               LINEで就活情報を受け取る

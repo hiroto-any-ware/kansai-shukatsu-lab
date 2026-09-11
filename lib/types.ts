@@ -1,6 +1,10 @@
 // 関西就活ラボ ― 共通データ型定義
 // 将来的に microCMS / Sanity / Supabase 等の Headless CMS へ接続することを想定し、
 // フロントエンドのデータ構造とCMSのフィールド構造が揃うように設計しています。
+//
+// 企業インタビューで実際に用意できる写真は「社長・代表者の写真1枚」のみという
+// 制作方針のため、CompanyInterview は写真フィールドを representativePhoto の
+// 1枚のみに絞っています（オフィス写真・社員写真・ギャラリー等は持たない）。
 
 export const PREFECTURES = [
   "大阪府",
@@ -30,38 +34,20 @@ export const CATEGORIES = [
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
 
-export interface GalleryImage {
-  url: string;
-  alt: string;
-  caption?: string;
-  category:
-    | "オフィス"
-    | "会議室"
-    | "社員"
-    | "ミーティング"
-    | "仕事風景"
-    | "商品・サービス"
-    | "集合写真";
-  order: number;
-  /** レイアウト上の見せ方のヒント */
-  layout?: "large" | "normal" | "tall";
-}
-
 export interface QA {
   q: string;
   a: string;
 }
 
-export interface ExecutivePerson {
-  photo: string;
+export interface Representative {
   name: string;
   role: string;
   profile: string;
   qa: QA[];
 }
 
-export interface YoungEmployee {
-  photo: string;
+/** 若手社員の声（写真は用意できないためテキストのみ） */
+export interface EmployeeVoice {
   name: string;
   joinedYear: string;
   jobType: string;
@@ -85,9 +71,9 @@ export interface CompanyInterview {
   oneLiner: string;
   title: string;
   description: string;
-  thumbnail: string;
-  heroImage: string;
-  heroImageAlt: string;
+  /** 用意できる企業写真は代表者写真1枚のみ。一覧・記事内で異なるトリミングで使い回す。 */
+  representativePhoto: string;
+  representativePhotoAlt: string;
   category: Category;
   prefecture: Prefecture;
   location: string;
@@ -104,13 +90,12 @@ export interface CompanyInterview {
   businessSummary: {
     lead: string;
     body: string[];
-    image: string;
-    imageAlt: string;
   };
-  executiveInterview: ExecutivePerson[];
+  representative: Representative;
+  /** インタビュー中でも特に印象的な発言（引用セクションに大きく表示） */
+  featuredQuote: string;
   studentQuestions: QA[];
-  gallery: GalleryImage[];
-  youngEmployees: YoungEmployee[];
+  employeeVoices: EmployeeVoice[];
   editorialComment: {
     heading: string;
     body: string[];

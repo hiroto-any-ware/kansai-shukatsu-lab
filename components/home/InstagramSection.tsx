@@ -33,6 +33,8 @@ export function InstagramSection() {
           </div>
           <Link
             href={siteConfig.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 self-start rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03] md:self-auto"
           >
             <InstagramIcon size={16} />
@@ -45,6 +47,8 @@ export function InstagramSection() {
             <Reveal key={p.label} delay={i * 0.05}>
               <Link
                 href={siteConfig.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative block aspect-square overflow-hidden rounded-xl"
               >
                 <Image
@@ -66,6 +70,8 @@ export function InstagramSection() {
         <div className="mt-6 text-right">
           <Link
             href={siteConfig.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-700 hover:text-accent-600"
           >
             もっと見る

@@ -39,10 +39,10 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
           {related.map((c, i) => (
             <Reveal key={c.slug} delay={i * 0.08}>
               <Link href={`/companies/${c.slug}`} className="group block">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                   <Image
-                    src={c.heroImage}
-                    alt={c.heroImageAlt}
+                    src={c.representativePhoto}
+                    alt={c.representativePhotoAlt}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />

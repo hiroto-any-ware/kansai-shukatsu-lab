@@ -41,10 +41,10 @@ export default function InterviewsPage() {
                 href={`/companies/${c.slug}`}
                 className="group grid grid-cols-1 gap-5 py-8 sm:grid-cols-[220px_1fr] sm:gap-8 md:py-10"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl sm:aspect-square">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl">
                   <Image
-                    src={c.thumbnail}
-                    alt={c.heroImageAlt}
+                    src={c.representativePhoto}
+                    alt={c.representativePhotoAlt}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />

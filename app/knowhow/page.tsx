@@ -69,6 +69,8 @@ export default function KnowhowPage() {
           </p>
           <Link
             href={siteConfig.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-2 inline-flex items-center gap-2 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] px-6 py-3 text-sm font-semibold text-white"
           >
             <InstagramIcon size={15} />

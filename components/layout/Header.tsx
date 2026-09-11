@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { mainNav, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/cn";
+import { Logo } from "@/components/ui/Logo";
 
 export function Header() {
   const pathname = usePathname();
@@ -41,9 +42,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 max-w-8xl items-center justify-between px-6 md:h-20 md:px-10 lg:px-16">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy-900 font-display text-base text-white md:h-10 md:w-10">
-            関
-          </span>
+          <Logo size={40} className="h-9 w-9 md:h-10 md:w-10" />
           <span className="flex flex-col leading-tight">
             <span className="font-display text-[15px] font-medium tracking-wide text-navy-900 md:text-base">
               関西就活ラボ
@@ -75,6 +74,8 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             href={siteConfig.lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-full bg-[#06C755] px-4 py-2.5 text-[13px] font-semibold text-white transition-transform hover:scale-[1.03] md:inline-flex"
           >
             公式LINEで就活情報を受け取る
@@ -116,6 +117,8 @@ export function Header() {
               ))}
               <Link
                 href={siteConfig.lineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-5 py-3.5 text-sm font-semibold text-white"
               >
                 公式LINEで就活情報を受け取る
