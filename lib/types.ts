@@ -115,24 +115,6 @@ export interface CompanyInterview {
   blocks: ArticleBlock[];
 }
 
-export interface JobEvent {
-  slug: string;
-  title: string;
-  concept: string;
-  image: string;
-  imageAlt: string;
-  dateLabel: string;
-  place: string;
-  participatingCompanies: string[];
-  targetGrade: string;
-  capacity: string;
-  deadline: string;
-  fee: string;
-  dressCode: string;
-  timetable: { time: string; content: string }[];
-  applyUrl: string;
-}
-
 export interface KnowhowArticle {
   slug: string;
   category:
