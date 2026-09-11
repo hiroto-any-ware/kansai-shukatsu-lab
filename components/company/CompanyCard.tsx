@@ -25,7 +25,8 @@ export function CompanyCard({
               src={company.photo}
               alt={company.photoAlt}
               fill
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
             />
           </div>
           <div className="flex flex-col justify-center p-1 sm:p-8">
@@ -55,7 +56,8 @@ export function CompanyCard({
             src={company.photo}
             alt={company.photoAlt}
             fill
-            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/5 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5">

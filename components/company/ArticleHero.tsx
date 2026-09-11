@@ -70,7 +70,8 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
                   alt={company.photoAlt}
                   fill
                   priority
-                  className="object-cover object-top"
+                  className="object-cover"
+                  style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
                 />
               </div>
             </div>

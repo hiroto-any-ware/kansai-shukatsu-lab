@@ -5,10 +5,12 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
+// 一番大きな枠（feature）には、解像度が高く引き伸ばしても粗くならない
+// 写真の企業を優先的に選ぶ。
 const picks = [
+  companies.find((c) => c.slug === "hatta-keiami")!,
   companies.find((c) => c.slug === "osaka-meiban")!,
-  companies.find((c) => c.slug === "maru-taka")!,
-  companies.find((c) => c.slug === "s-pack")!,
+  companies.find((c) => c.slug === "shoei-seiki")!,
   companies.find((c) => c.slug === "nagata-reiki")!,
 ];
 
@@ -41,7 +43,8 @@ export function PickUp() {
                   src={feature.photo}
                   alt={feature.photoAlt}
                   fill
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{ objectPosition: `50% ${feature.photoFocusY ?? 30}%` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-9">
@@ -71,7 +74,8 @@ export function PickUp() {
                       src={c.photo}
                       alt={c.photoAlt}
                       fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
                     />
                   </div>
                   <div className="min-w-0">
@@ -102,7 +106,8 @@ export function PickUp() {
                         src={c.photo}
                         alt={c.photoAlt}
                         fill
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent" />
                     </div>

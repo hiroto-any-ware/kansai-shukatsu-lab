@@ -46,7 +46,8 @@ export default function InterviewsPage() {
                     src={c.photo}
                     alt={c.photoAlt}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
                   />
                 </div>
                 <div className="flex flex-col justify-center">

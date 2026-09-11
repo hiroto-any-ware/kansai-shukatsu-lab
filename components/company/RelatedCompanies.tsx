@@ -44,7 +44,8 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
                     src={c.photo}
                     alt={c.photoAlt}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
                   />
                 </div>
                 <span className="font-label mt-3 block text-[10px] font-semibold tracking-widest text-accent-600">

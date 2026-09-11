@@ -91,6 +91,13 @@ export interface CompanyInterview {
   /** 企業ごとに用意できる写真は代表者・取材対象者の写真1枚のみ */
   photo: string;
   photoAlt: string;
+  /**
+   * 写真内で顔がある位置（縦方向、上端からの%）。
+   * 元写真の縦横比や背景の余白が企業ごとに大きく異なるため、
+   * どんな比率の枠に切り抜いても顔が見切れないよう指定する。
+   * 未指定の場合は30%を目安として扱う。
+   */
+  photoFocusY?: number;
   category: Category;
   prefecture: Prefecture;
   /** 記事または公式サイトで確認できた住所。不明な場合は設定しない */
