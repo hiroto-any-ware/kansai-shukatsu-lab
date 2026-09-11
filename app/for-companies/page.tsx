@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
-import { sampleImage } from "@/lib/placeholder";
+import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
 import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SampleBadge } from "@/components/ui/SampleBadge";
+import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 
 export const metadata: Metadata = {
   title: "企業の方へ",
@@ -35,9 +36,13 @@ export default function ForCompaniesPage() {
   return (
     <div className="bg-white pt-16 md:pt-20">
       <section className="relative overflow-hidden bg-navy-50 py-20 md:py-28">
-        <Container>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-accent-200/30 blur-3xl"
+        />
+        <Container className="relative">
           <Breadcrumb items={[{ label: "企業の方へ" }]} />
-          <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
+          <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
             <div className="lg:col-span-7">
               <Eyebrow>FOR COMPANIES</Eyebrow>
               <h1 className="font-display mt-5 text-3xl font-bold leading-snug text-navy-900 md:text-5xl">
@@ -55,13 +60,14 @@ export default function ForCompaniesPage() {
               </p>
             </div>
             <Reveal className="lg:col-span-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src={sampleImage(1000, 750, "経営者インタビューの様子", 2)}
+                  src={stockPhoto(STOCK_PHOTO_IDS.personPhoneLaptop, 900, 1125)}
                   alt="企業への取材風景（掲載イメージ）"
                   fill
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-transparent to-navy-950/10" />
                 <SampleBadge className="bottom-3 right-3" />
               </div>
             </Reveal>
@@ -69,8 +75,15 @@ export default function ForCompaniesPage() {
         </Container>
       </section>
 
-      <section className="py-20 md:py-28">
-        <Container>
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.deskFlatlay, 1600, 900, {
+            grayscale: true,
+            blur: 3,
+          })}
+          className="opacity-[0.06]"
+        />
+        <Container className="relative">
           <Reveal className="max-w-xl">
             <Eyebrow>WHY KANSAI SHUKATSU LAB</Eyebrow>
             <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
@@ -79,7 +92,7 @@ export default function ForCompaniesPage() {
           </Reveal>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {values.map((v) => (
-              <Reveal key={v} className="flex items-start gap-3 rounded-xl border border-navy-900/8 p-5">
+              <Reveal key={v} className="flex items-start gap-3 rounded-xl border border-navy-900/8 bg-white/70 p-5 backdrop-blur-sm">
                 <Check size={16} className="mt-0.5 shrink-0 text-accent-600" />
                 <p className="text-sm leading-6 text-navy-700">{v}</p>
               </Reveal>
@@ -88,8 +101,16 @@ export default function ForCompaniesPage() {
         </Container>
       </section>
 
-      <section className="bg-navy-900 py-20 text-white md:py-28">
-        <Container>
+      <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.deskLaptopNotes, 1600, 1000, {
+            grayscale: true,
+            blur: 3,
+          })}
+          className="opacity-[0.1]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/85 to-navy-900" />
+        <Container className="relative">
           <Reveal className="max-w-xl">
             <Eyebrow light>FLOW</Eyebrow>
             <h2 className="font-display mt-4 text-2xl font-bold md:text-3xl">

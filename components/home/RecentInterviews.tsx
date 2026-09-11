@@ -4,6 +4,8 @@ import { companies } from "@/data/companies";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
+import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
 import { cn } from "@/lib/cn";
 
 // ランキングやおすすめではなく、公開日の新しい順に公平に紹介するセクション。
@@ -13,8 +15,15 @@ const recent = [...companies]
 
 export function RecentInterviews() {
   return (
-    <section className="bg-white py-24 md:py-32">
-      <Container>
+    <section className="relative overflow-hidden bg-white py-24 md:py-32">
+      <AmbientPhoto
+        src={stockPhoto(STOCK_PHOTO_IDS.buildingLookUp, 1200, 2400, {
+          grayscale: true,
+          blur: 3,
+        })}
+        className="opacity-[0.22]"
+      />
+      <Container className="relative">
         <Reveal className="max-w-2xl">
           <Eyebrow>LATEST INTERVIEWS</Eyebrow>
           <h2 className="font-display mt-4 text-3xl font-bold text-navy-900 md:text-4xl">
@@ -29,9 +38,9 @@ export function RecentInterviews() {
       <div className="mt-16 flex flex-col">
         {recent.map((c, i) => {
           const reverse = i % 2 === 1;
-          const tint = i % 3 === 2 ? "bg-sky-50" : "bg-white";
+          const tint = i % 3 === 2 ? "bg-sky-50/80" : "bg-white/85";
           return (
-            <div key={c.slug} className={cn("border-t border-navy-900/8", tint)}>
+            <div key={c.slug} className={cn("relative border-t border-navy-900/8", tint)}>
               <Container className="py-10 md:py-14">
                 <div
                   className={cn(

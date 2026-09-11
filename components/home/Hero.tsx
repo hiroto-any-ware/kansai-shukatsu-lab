@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { sampleImage } from "@/lib/placeholder";
+import { sampleImage, stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
 import { siteConfig } from "@/lib/site";
 import { SampleBadge } from "@/components/ui/SampleBadge";
+import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 
 const headline = ["大手だけが、", "正解じゃない。"];
 
@@ -23,12 +24,19 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-navy-950 pt-16 md:pt-20">
       <div className="absolute inset-0">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.buildingLookUp, 1600, 1200, {
+            grayscale: true,
+            blur: 4,
+          })}
+          imgClassName="opacity-[0.22]"
+        />
         <div
           aria-hidden
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 15% 15%, rgba(55,99,234,0.35), transparent 60%), radial-gradient(ellipse 70% 60% at 85% 25%, rgba(157,187,245,0.18), transparent 55%), radial-gradient(ellipse 90% 70% at 50% 100%, rgba(36,72,204,0.25), transparent 60%), #060f21",
+              "radial-gradient(ellipse 80% 60% at 15% 15%, rgba(55,99,234,0.45), transparent 60%), radial-gradient(ellipse 70% 60% at 85% 25%, rgba(157,187,245,0.22), transparent 55%), radial-gradient(ellipse 90% 70% at 50% 100%, rgba(36,72,204,0.35), transparent 60%), rgba(6,15,33,0.88)",
           }}
         />
         <div

@@ -3,11 +3,20 @@ import { PREFECTURES, CATEGORIES } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
+import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
 import { ArrowUpRight } from "lucide-react";
 
 export function CompanyFinder() {
   return (
     <section className="relative overflow-hidden bg-navy-900 py-24 text-white md:py-32">
+      <AmbientPhoto
+        src={stockPhoto(STOCK_PHOTO_IDS.productFlatlay, 1600, 1200, {
+          grayscale: true,
+          blur: 3,
+        })}
+        imgClassName="opacity-[0.12]"
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent-600/20 blur-3xl"

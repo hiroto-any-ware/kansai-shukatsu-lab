@@ -9,6 +9,10 @@ import { mainNav, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Logo } from "@/components/ui/Logo";
 
+// これらのページは冒頭セクションがネイビーの暗い背景のため、
+// スクロール前のヘッダーは白文字にして視認性を確保する。
+const DARK_HERO_ROUTES = new Set(["/", "/about"]);
+
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -19,6 +23,8 @@ export function Header() {
     setPrevPathname(pathname);
     setOpen(false);
   }
+
+  const onDarkHero = DARK_HERO_ROUTES.has(pathname) && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -42,12 +48,22 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 max-w-8xl items-center justify-between px-6 md:h-20 md:px-10 lg:px-16">
         <Link href="/" className="flex items-center gap-2.5">
-          <Logo size={40} className="h-9 w-9 md:h-10 md:w-10" />
+          <Logo size={40} className="h-9 w-9 ring-1 ring-white/40 md:h-10 md:w-10" />
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-[15px] font-medium tracking-wide text-navy-900 md:text-base">
+            <span
+              className={cn(
+                "font-display text-[15px] font-medium tracking-wide transition-colors md:text-base",
+                onDarkHero ? "text-white" : "text-navy-900"
+              )}
+            >
               関西就活ラボ
             </span>
-            <span className="font-label hidden text-[10px] tracking-[0.2em] text-navy-500 md:block">
+            <span
+              className={cn(
+                "font-label hidden text-[10px] tracking-[0.2em] transition-colors md:block",
+                onDarkHero ? "text-white/70" : "text-navy-500"
+              )}
+            >
               KANSAI SHUKATSU LAB
             </span>
           </span>
@@ -59,8 +75,11 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                "relative text-[13.5px] font-medium text-navy-800/80 transition-colors hover:text-navy-900",
-                pathname === item.href && "text-navy-900"
+                "relative text-[13.5px] font-medium transition-colors",
+                onDarkHero
+                  ? "text-white/85 hover:text-white"
+                  : "text-navy-800/80 hover:text-navy-900",
+                pathname === item.href && (onDarkHero ? "text-white" : "text-navy-900")
               )}
             >
               {item.label}
@@ -83,7 +102,10 @@ export function Header() {
           <button
             aria-label={open ? "メニューを閉じる" : "メニューを開く"}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-navy-900 lg:hidden"
+            className={cn(
+              "flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
+              onDarkHero ? "text-white" : "text-navy-900"
+            )}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>

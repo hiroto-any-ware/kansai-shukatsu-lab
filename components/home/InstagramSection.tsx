@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons";
-import { sampleImage } from "@/lib/placeholder";
+import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
 import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
 const posts = [
-  { label: "ES対策", seed: 0 },
-  { label: "面接対策", seed: 2 },
-  { label: "選考情報", seed: 4 },
-  { label: "企業研究", seed: 1 },
-  { label: "OB訪問", seed: 3 },
-  { label: "インターン", seed: 5 },
+  { label: "ES対策", id: STOCK_PHOTO_IDS.deskNotebookGlasses },
+  { label: "面接対策", id: STOCK_PHOTO_IDS.cafeInterior },
+  { label: "選考情報", id: STOCK_PHOTO_IDS.deskFlatlay },
+  { label: "企業研究", id: STOCK_PHOTO_IDS.buildingLookUp },
+  { label: "OB訪問", id: STOCK_PHOTO_IDS.personPhoneLaptop },
+  { label: "インターン", id: STOCK_PHOTO_IDS.deskLaptopCoffee },
 ];
 
 export function InstagramSection() {
@@ -52,13 +52,14 @@ export function InstagramSection() {
                 className="group relative block aspect-square overflow-hidden rounded-xl"
               >
                 <Image
-                  src={sampleImage(500, 500, p.label, p.seed)}
+                  src={stockPhoto(p.id, 400, 400, { grayscale: true })}
                   alt={`Instagram投稿例：${p.label}（掲載イメージ）`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 flex items-end bg-navy-950/0 p-3 transition-colors group-hover:bg-navy-950/40">
-                  <span className="translate-y-2 text-xs font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-900/30 to-accent-600/20 mix-blend-multiply" />
+                <div className="absolute inset-0 flex items-end p-3">
+                  <span className="text-xs font-semibold text-white drop-shadow-sm">
                     {p.label}
                   </span>
                 </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { sampleImage } from "@/lib/placeholder";
+import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
 import { siteConfig } from "@/lib/site";
 import { InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/Container";
@@ -11,6 +11,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SampleBadge } from "@/components/ui/SampleBadge";
 import { PullQuote } from "@/components/ui/PullQuote";
+import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 
 export const metadata: Metadata = {
   title: "関西就活ラボについて",
@@ -69,6 +70,13 @@ export default function AboutPage() {
     <div className="bg-white pt-16 md:pt-20">
       {/* FIRST VIEW */}
       <section className="relative overflow-hidden bg-navy-950 py-24 text-white md:py-32">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.personCameraBW, 1600, 1200, {
+            blur: 3,
+          })}
+          imgClassName="opacity-[0.16]"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-navy-950/40" />
         <span
           aria-hidden
           className="font-display pointer-events-none absolute -right-10 -top-10 select-none text-[11rem] leading-none text-white/[0.05] md:text-[18rem]"
@@ -157,18 +165,26 @@ export default function AboutPage() {
       <section className="relative">
         <div className="relative aspect-[16/9] w-full sm:aspect-[21/9]">
           <Image
-            src={sampleImage(2000, 900, "取材の様子", 3)}
+            src={stockPhoto(STOCK_PHOTO_IDS.cafeInterior, 2000, 900)}
             alt="関西就活ラボの取材風景（掲載イメージ）"
             fill
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/55 via-navy-950/0 to-navy-950/10" />
           <SampleBadge className="bottom-4 right-4" />
         </div>
       </section>
 
       {/* 何を大切にしているのか */}
-      <section className="bg-white py-20 md:py-28">
-        <Container>
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.buildingLookUp, 1600, 1600, {
+            grayscale: true,
+            blur: 2,
+          })}
+          className="opacity-[0.05]"
+        />
+        <Container className="relative">
           <Reveal className="max-w-xl">
             <Eyebrow>OUR VALUES</Eyebrow>
             <h2 className="font-display mt-4 text-3xl font-bold text-navy-900 md:text-4xl">
@@ -220,6 +236,13 @@ export default function AboutPage() {
 
       {/* これからの関西就活ラボ */}
       <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.hikerRidge, 1600, 1000, {
+            grayscale: true,
+            blur: 2,
+          })}
+          className="opacity-[0.1]"
+        />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.06]"
@@ -336,8 +359,15 @@ export default function AboutPage() {
       </section>
 
       {/* 最終CTA */}
-      <section className="bg-navy-900 py-20 text-center text-white md:py-24">
-        <Container narrow>
+      <section className="relative overflow-hidden bg-navy-900 py-20 text-center text-white md:py-24">
+        <AmbientPhoto
+          src={stockPhoto(STOCK_PHOTO_IDS.deskLaptopCoffee, 1600, 900, {
+            grayscale: true,
+            blur: 3,
+          })}
+          className="opacity-[0.08]"
+        />
+        <Container narrow className="relative">
           <Reveal>
             <h2 className="font-display text-2xl font-bold md:text-3xl">
               関西就活ラボを、はじめてみませんか。
