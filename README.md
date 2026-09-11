@@ -69,6 +69,8 @@ lib/
    現状、「取材について相談する」等のボタンは公式LINEにリンクしています。専用の問い合わせフォームを用意した場合は、[app/for-companies/page.tsx](app/for-companies/page.tsx) のリンク先を差し替えてください。
 5. **ロゴ画像**
    [public/brand/logo-mark.png](public/brand/logo-mark.png)（Instagramの公式アイコンから書き出し）をヘッダー・フッター・ファビコン（`app/icon.png` / `app/apple-icon.png`）で共通利用しています。ロゴを変更する場合はこの1ファイルを差し替えてください。
+6. **背景装飾用の写真**
+   TOPページ・Aboutページ・企業の方へページの背景には、余白が寂しく見えないよう [Lorem Picsum](https://picsum.photos)（Unsplashの実写真を配信するフリー素材サービス）の写真を、ぼかし・グレースケール・低不透明度で加工して敷いています（[lib/placeholder.ts](lib/placeholder.ts) の `stockPhoto` 関数、[components/ui/AmbientPhoto.tsx](components/ui/AmbientPhoto.tsx)）。本番公開時は、自社で利用ライセンスを持つ写真に差し替えることを推奨します。差し替える場合は `stockPhoto(...)` の呼び出しを実際の画像URL（またはローカル画像パス）に置き換えるだけで反映されます。
 
 ## 将来のCMS接続について
 
