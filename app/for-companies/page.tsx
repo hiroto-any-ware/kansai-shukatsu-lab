@@ -10,6 +10,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SampleBadge } from "@/components/ui/SampleBadge";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
+import { ConsultationForm } from "@/components/for-companies/ConsultationForm";
 
 export const metadata: Metadata = {
   title: "企業の方へ",
@@ -137,36 +138,34 @@ export default function ForCompaniesPage() {
       </section>
 
       <section className="py-20 md:py-28">
-        <Container narrow className="text-center">
-          <Reveal>
+        <Container narrow>
+          <Reveal className="text-center">
             <Eyebrow className="justify-center">CONTACT</Eyebrow>
             <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
               まずはお気軽にご相談ください。
             </h2>
-            <p className="mt-4 text-sm leading-7 text-navy-500">
-              営業目的のご案内ではなく、まずは企業様のお話をお伺いするところから始めます。取材・イベント・インターン企画について、公式LINEからお気軽にご相談ください。
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-navy-500">
+              営業目的のご案内ではなく、まずは企業様のお話をお伺いするところから始めます。取材について相談する、イベントについて相談するなど、以下のフォームからお気軽にご連絡ください。
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-10">
+            <ConsultationForm />
+          </Reveal>
+
+          <Reveal delay={0.15} className="mt-6 text-center">
+            <p className="text-xs text-navy-400">
+              お急ぎの場合は、
               <Link
                 href={siteConfig.lineUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+                className="font-semibold text-navy-600 underline underline-offset-2 hover:text-accent-600"
               >
-                取材について相談する
-                <ArrowUpRight size={16} />
+                公式LINE
+                <ArrowUpRight size={11} className="inline-block" />
               </Link>
-              <Link
-                href={siteConfig.lineUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-navy-900/25 px-6 py-3.5 text-sm font-semibold text-navy-900 transition-colors hover:bg-navy-900 hover:text-white"
-              >
-                イベントについて相談する
-              </Link>
-            </div>
-            <p className="mt-6 text-xs text-navy-400">
-              ※ 現在は公式LINEにて企業様からのご相談を承っております。専用フォームは準備中です。
+              からもご相談いただけます。
             </p>
           </Reveal>
         </Container>
