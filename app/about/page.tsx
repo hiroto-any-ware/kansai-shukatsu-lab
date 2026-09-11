@@ -9,7 +9,6 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { SampleBadge } from "@/components/ui/SampleBadge";
 import { PullQuote } from "@/components/ui/PullQuote";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 
@@ -172,7 +171,6 @@ export default function AboutPage() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950/55 via-navy-950/0 to-navy-950/10" />
-          <SampleBadge className="bottom-4 right-4" />
         </div>
       </section>
 

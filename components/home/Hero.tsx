@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
-import { SampleBadge } from "@/components/ui/SampleBadge";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 
 const headline = ["大手だけが、", "正解じゃない。"];
@@ -62,7 +61,6 @@ export function Hero() {
               priority
               className="object-cover"
             />
-            <SampleBadge className="bottom-3 left-3" />
           </div>
         </motion.div>
       </div>

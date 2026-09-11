@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { PREFECTURES, CATEGORIES } from "@/lib/types";
+import { PREFECTURES, CATEGORIES, OTHER_REGION_LABEL } from "@/lib/types";
+
+const REGION_OPTIONS = [...PREFECTURES, OTHER_REGION_LABEL];
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -51,11 +53,15 @@ export function CompanyFinder() {
               PREFECTURE — 都道府県から探す
             </p>
             <div className="flex flex-wrap gap-2.5">
-              {PREFECTURES.map((p) => (
+              {REGION_OPTIONS.map((p) => (
                 <Link
                   key={p}
                   href={`/companies?pref=${encodeURIComponent(p)}`}
-                  className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/85 transition-colors hover:border-white hover:bg-white hover:text-navy-900"
+                  className={`rounded-full border px-4 py-2 text-sm text-white/85 transition-colors hover:border-white hover:bg-white hover:text-navy-900 ${
+                    p === OTHER_REGION_LABEL
+                      ? "border-dashed border-white/30"
+                      : "border-white/20"
+                  }`}
                 >
                   {p}
                 </Link>

@@ -8,7 +8,6 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { SampleBadge } from "@/components/ui/SampleBadge";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 import { ConsultationForm } from "@/components/for-companies/ConsultationForm";
 
@@ -69,7 +68,6 @@ export default function ForCompaniesPage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-transparent to-navy-950/10" />
-                <SampleBadge className="bottom-3 right-3" />
               </div>
             </Reveal>
           </div>
