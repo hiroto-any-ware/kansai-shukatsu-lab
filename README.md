@@ -50,7 +50,9 @@ data/
 lib/
   types.ts             データ型定義（将来のCMS接続を想定した構造）
   site.ts              サイト共通設定（LINE/InstagramのURLなど）
-  placeholder.ts        ダミー画像生成ユーティリティ
+  placeholder.ts        ダミー画像生成ユーティリティ（企業写真・ロゴのプレースホルダー）
+  images.ts            背景・装飾用フリー素材写真のパス一覧
+public/images/          背景・装飾・記事サムネイル用のフリー素材写真（Pexels、商用利用可）
 ```
 
 ## 公開前に必ず差し替えてください
@@ -69,8 +71,16 @@ lib/
    現状、「取材について相談する」等のボタンは公式LINEにリンクしています。専用の問い合わせフォームを用意した場合は、[app/for-companies/page.tsx](app/for-companies/page.tsx) のリンク先を差し替えてください。
 5. **ロゴ画像**
    [public/brand/logo-mark.png](public/brand/logo-mark.png)（Instagramの公式アイコンから書き出し）をヘッダー・フッター・ファビコン（`app/icon.png` / `app/apple-icon.png`）で共通利用しています。ロゴを変更する場合はこの1ファイルを差し替えてください。
-6. **背景装飾用の写真**
-   TOPページ・Aboutページ・企業の方へページの背景には、余白が寂しく見えないよう [Lorem Picsum](https://picsum.photos)（Unsplashの実写真を配信するフリー素材サービス）の写真を、ぼかし・グレースケール・低不透明度で加工して敷いています（[lib/placeholder.ts](lib/placeholder.ts) の `stockPhoto` 関数、[components/ui/AmbientPhoto.tsx](components/ui/AmbientPhoto.tsx)）。本番公開時は、自社で利用ライセンスを持つ写真に差し替えることを推奨します。差し替える場合は `stockPhoto(...)` の呼び出しを実際の画像URL（またはローカル画像パス）に置き換えるだけで反映されます。
+6. **背景・装飾・記事サムネイル用の写真**
+   企業インタビュー記事以外（TOPページ、Aboutページ、企業の方へページ、就活イベント、就活ノウハウ、Instagram導線など）で使用している写真は、すべて [Pexels](https://www.pexels.com)（商用利用可・帰属表示不要のフリー素材サイト）からダウンロードし、`public/images/` 配下でプロジェクト管理しています。外部URLには依存していません。
+   - `public/images/kansai/` … 関西・日本の街並み
+   - `public/images/business/` … ビジネスシーン・対話
+   - `public/images/students/` … 学生・学び
+   - `public/images/knowhow/` … ノート・PC・勉強
+   - `public/images/events/` … イベント・座談会
+
+   一覧は [lib/images.ts](lib/images.ts) の `STOCK_IMAGES` にまとまっています。差し替える場合は該当ファイルを同じパスで上書きするか、`STOCK_IMAGES` の参照先を変更してください。背景装飾には `<AmbientPhoto />`（[components/ui/AmbientPhoto.tsx](components/ui/AmbientPhoto.tsx)）でぼかし・グレースケール・低不透明度を適用し、文字の可読性を優先しています。
+   ※ **企業インタビュー記事内の写真（社長・代表者写真）にはこれらのフリー素材を使用していません。** 実在企業の写真であるかのような誤解を避けるため、`data/companies.ts` の `representativePhoto` は必ず提供された本人写真のみを使用する運用としてください。
 
 ## 将来のCMS接続について
 

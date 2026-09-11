@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { sampleImage, stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
+import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
 import { SampleBadge } from "@/components/ui/SampleBadge";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
@@ -25,11 +25,8 @@ export function Hero() {
     <section className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-navy-950 pt-16 md:pt-20">
       <div className="absolute inset-0">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.buildingLookUp, 1600, 1200, {
-            grayscale: true,
-            blur: 4,
-          })}
-          imgClassName="opacity-[0.22]"
+          src={STOCK_IMAGES.osakaCastleFerris}
+          imgClassName="scale-105 opacity-[0.25] grayscale blur-[2px]"
         />
         <div
           aria-hidden
@@ -59,7 +56,7 @@ export function Hero() {
         >
           <div className="relative aspect-[3/4] w-full">
             <Image
-              src={sampleImage(900, 1200, "企業取材の様子", 4)}
+              src={STOCK_IMAGES.businessDiscussion}
               alt="関西の企業を取材する様子（掲載イメージ）"
               fill
               priority

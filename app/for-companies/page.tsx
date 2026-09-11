@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
-import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
+import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -62,7 +62,7 @@ export default function ForCompaniesPage() {
             <Reveal className="lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src={stockPhoto(STOCK_PHOTO_IDS.personPhoneLaptop, 900, 1125)}
+                  src={STOCK_IMAGES.businessCoffeeChat}
                   alt="企業への取材風景（掲載イメージ）"
                   fill
                   className="object-cover"
@@ -77,11 +77,9 @@ export default function ForCompaniesPage() {
 
       <section className="relative overflow-hidden py-20 md:py-28">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.deskFlatlay, 1600, 900, {
-            grayscale: true,
-            blur: 3,
-          })}
-          className="opacity-[0.06]"
+          src={STOCK_IMAGES.deskNotebookLaptop}
+          className="opacity-[0.07]"
+          imgClassName="grayscale"
         />
         <Container className="relative">
           <Reveal className="max-w-xl">
@@ -103,11 +101,9 @@ export default function ForCompaniesPage() {
 
       <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.deskLaptopNotes, 1600, 1000, {
-            grayscale: true,
-            blur: 3,
-          })}
-          className="opacity-[0.1]"
+          src={STOCK_IMAGES.kyotoRiverBusinessmen}
+          className="opacity-[0.14]"
+          imgClassName="grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/85 to-navy-900" />
         <Container className="relative">

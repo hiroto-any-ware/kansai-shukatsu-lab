@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
-import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
+import { STOCK_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/cn";
 
 // ランキングやおすすめではなく、公開日の新しい順に公平に紹介するセクション。
@@ -17,11 +17,9 @@ export function RecentInterviews() {
   return (
     <section className="relative overflow-hidden bg-white py-24 md:py-32">
       <AmbientPhoto
-        src={stockPhoto(STOCK_PHOTO_IDS.buildingLookUp, 1200, 2400, {
-          grayscale: true,
-          blur: 3,
-        })}
-        className="opacity-[0.22]"
+        src={STOCK_IMAGES.dotonboriStreet}
+        className="opacity-[0.3]"
+        imgClassName="grayscale blur-[1px]"
       />
       <Container className="relative">
         <Reveal className="max-w-2xl">

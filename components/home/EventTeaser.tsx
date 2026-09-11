@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { SampleBadge } from "@/components/ui/SampleBadge";
 
 export function EventTeaser() {
   return (
@@ -37,6 +38,7 @@ export function EventTeaser() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <SampleBadge className="bottom-3 right-3" />
                 </div>
                 <div className="p-6 md:p-7">
                   <h3 className="font-display text-lg font-bold text-navy-900 md:text-xl">

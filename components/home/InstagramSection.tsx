@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons";
-import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
+import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
 const posts = [
-  { label: "ES対策", id: STOCK_PHOTO_IDS.deskNotebookGlasses },
-  { label: "面接対策", id: STOCK_PHOTO_IDS.cafeInterior },
-  { label: "選考情報", id: STOCK_PHOTO_IDS.deskFlatlay },
-  { label: "企業研究", id: STOCK_PHOTO_IDS.buildingLookUp },
-  { label: "OB訪問", id: STOCK_PHOTO_IDS.personPhoneLaptop },
-  { label: "インターン", id: STOCK_PHOTO_IDS.deskLaptopCoffee },
+  { label: "ES対策", src: STOCK_IMAGES.womanWritingNotes },
+  { label: "面接対策", src: STOCK_IMAGES.businessLoungeTalk },
+  { label: "選考情報", src: STOCK_IMAGES.deskGlassesNotebook },
+  { label: "企業研究", src: STOCK_IMAGES.kyotoRiverBusinessmen },
+  { label: "OB訪問", src: STOCK_IMAGES.businessCoffeeChat },
+  { label: "インターン", src: STOCK_IMAGES.tokyoClassroomStudy },
 ];
 
 export function InstagramSection() {
@@ -52,10 +52,10 @@ export function InstagramSection() {
                 className="group relative block aspect-square overflow-hidden rounded-xl"
               >
                 <Image
-                  src={stockPhoto(p.id, 400, 400, { grayscale: true })}
+                  src={p.src}
                   alt={`Instagram投稿例：${p.label}（掲載イメージ）`}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover grayscale transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-900/30 to-accent-600/20 mix-blend-multiply" />
                 <div className="absolute inset-0 flex items-end p-3">

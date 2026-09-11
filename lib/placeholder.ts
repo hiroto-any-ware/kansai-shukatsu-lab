@@ -34,38 +34,3 @@ export function logoImage(slug: string, seed: number = 0): string {
   return `https://placehold.co/240x240/${bg}/${fg}.png?text=${text}&font=roboto`;
 }
 
-// ------------------------------------------------------------------
-// 背景装飾用のフリー素材写真（Lorem Picsum 経由でUnsplashの実写真を取得）。
-// 余白が寂しく見えるセクションの背景テクスチャとして、
-// ぼかし・グレースケール・低不透明度と組み合わせて使用する想定。
-// 本番公開時は、ブランドに合わせた自社ライセンス画像への差し替えを推奨。
-// ------------------------------------------------------------------
-
-/** 関西就活ラボの世界観（オフィス・デスクワーク・人物・建築）に合う厳選ID */
-export const STOCK_PHOTO_IDS = {
-  deskLaptopCoffee: 6, // 木製デスクにノートPCとコーヒー
-  deskNotebookGlasses: 180, // ノートPCと手帳、メモ
-  deskGlassesMouse: 201, // シンプルなデスク周り
-  deskFlatlay: 26, // 財布・時計・メガネのフラットレイ
-  deskKeyboardHand: 366, // キーボードに手を添える様子（モノトーン）
-  personPhoneLaptop: 3, // ノートPCとスマホを持つビジネスシーン
-  personCameraBW: 91, // カメラを構える人物（モノクロ）
-  cafeInterior: 42, // 木のテーブルがある落ち着いたカフェ
-  buildingLookUp: 1076, // 見上げた近代建築
-  hikerRidge: 177, // 尾根を歩く人物のシルエット（未来へ向かう比喩）
-  deskLaptopNotes: 8, // ノートとノートPC、コーヒー
-  productFlatlay: 60, // ガジェット類のデスクセットアップ
-} as const;
-
-export function stockPhoto(
-  id: number,
-  width: number,
-  height: number,
-  opts: { grayscale?: boolean; blur?: number } = {}
-): string {
-  const params = new URLSearchParams();
-  if (opts.grayscale) params.set("grayscale", "");
-  if (opts.blur) params.set("blur", String(opts.blur));
-  const qs = params.toString();
-  return `https://picsum.photos/id/${id}/${width}/${height}${qs ? `?${qs}` : ""}`;
-}

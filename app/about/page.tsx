@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { stockPhoto, STOCK_PHOTO_IDS } from "@/lib/placeholder";
+import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
 import { InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/Container";
@@ -71,12 +71,10 @@ export default function AboutPage() {
       {/* FIRST VIEW */}
       <section className="relative overflow-hidden bg-navy-950 py-24 text-white md:py-32">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.personCameraBW, 1600, 1200, {
-            blur: 3,
-          })}
-          imgClassName="opacity-[0.16]"
+          src={STOCK_IMAGES.kyotoRiverBusinessmen}
+          imgClassName="opacity-[0.28] grayscale"
         />
-        <div className="pointer-events-none absolute inset-0 bg-navy-950/40" />
+        <div className="pointer-events-none absolute inset-0 bg-navy-950/50" />
         <span
           aria-hidden
           className="font-display pointer-events-none absolute -right-10 -top-10 select-none text-[11rem] leading-none text-white/[0.05] md:text-[18rem]"
@@ -165,7 +163,7 @@ export default function AboutPage() {
       <section className="relative">
         <div className="relative aspect-[16/9] w-full sm:aspect-[21/9]">
           <Image
-            src={stockPhoto(STOCK_PHOTO_IDS.cafeInterior, 2000, 900)}
+            src={STOCK_IMAGES.businessLoungeTalk}
             alt="関西就活ラボの取材風景（掲載イメージ）"
             fill
             className="object-cover"
@@ -178,11 +176,9 @@ export default function AboutPage() {
       {/* 何を大切にしているのか */}
       <section className="relative overflow-hidden bg-white py-20 md:py-28">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.buildingLookUp, 1600, 1600, {
-            grayscale: true,
-            blur: 2,
-          })}
-          className="opacity-[0.05]"
+          src={STOCK_IMAGES.dotonboriStreet}
+          className="opacity-[0.07]"
+          imgClassName="grayscale"
         />
         <Container className="relative">
           <Reveal className="max-w-xl">
@@ -237,11 +233,9 @@ export default function AboutPage() {
       {/* これからの関西就活ラボ */}
       <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.hikerRidge, 1600, 1000, {
-            grayscale: true,
-            blur: 2,
-          })}
-          className="opacity-[0.1]"
+          src={STOCK_IMAGES.osakaCastleFerris}
+          className="opacity-[0.14]"
+          imgClassName="grayscale"
         />
         <div
           aria-hidden
@@ -361,11 +355,9 @@ export default function AboutPage() {
       {/* 最終CTA */}
       <section className="relative overflow-hidden bg-navy-900 py-20 text-center text-white md:py-24">
         <AmbientPhoto
-          src={stockPhoto(STOCK_PHOTO_IDS.deskLaptopCoffee, 1600, 900, {
-            grayscale: true,
-            blur: 3,
-          })}
-          className="opacity-[0.08]"
+          src={STOCK_IMAGES.osakaStreetDay}
+          className="opacity-[0.1]"
+          imgClassName="grayscale"
         />
         <Container narrow className="relative">
           <Reveal>

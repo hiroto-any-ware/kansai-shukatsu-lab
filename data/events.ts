@@ -1,5 +1,5 @@
 import { JobEvent } from "@/lib/types";
-import { sampleImage } from "@/lib/placeholder";
+import { STOCK_IMAGES } from "@/lib/images";
 
 // ダミーのイベントデータ（掲載イメージ）。実在のイベントではありません。
 
@@ -9,7 +9,7 @@ export const events: JobEvent[] = [
     title: "関西就活ラボ EVENT vol.1「本音トーク会」",
     concept:
       "説明会では聞けない、経営者・社員の本音を少人数で聞ける座談会形式のイベントです。",
-    image: sampleImage(1600, 1000, "本音トーク会", 0),
+    image: STOCK_IMAGES.roundtableTalk,
     imageAlt: "座談会形式のイベント風景（掲載イメージ）",
     dateLabel: "2026年10月18日（日）13:00〜16:00",
     place: "大阪市内 コワーキングスペース（申込者に詳細案内）",
@@ -37,7 +37,7 @@ export const events: JobEvent[] = [
     title: "関西就活ラボ EVENT「関西の仕事を知るFES」",
     concept:
       "業界の異なる企業が集まり、仕事内容や働き方をブースごとに紹介する体験型イベントです。",
-    image: sampleImage(1600, 1000, "仕事を知るFES", 1),
+    image: STOCK_IMAGES.groupSession,
     imageAlt: "複数企業が出展するイベント会場（掲載イメージ）",
     dateLabel: "2026年11月8日（日）11:00〜17:00",
     place: "京都市内 イベントホール（申込者に詳細案内）",
