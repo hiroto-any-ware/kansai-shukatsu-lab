@@ -62,8 +62,8 @@ export default function ForCompaniesPage() {
             <Reveal className="lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src={STOCK_IMAGES.businessCoffeeChat}
-                  alt="企業への取材風景（掲載イメージ）"
+                  src={STOCK_IMAGES.naraParkDeer}
+                  alt="奈良公園の鹿"
                   fill
                   className="object-cover"
                 />
@@ -100,7 +100,7 @@ export default function ForCompaniesPage() {
 
       <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
         <AmbientPhoto
-          src={STOCK_IMAGES.kyotoRiverBusinessmen}
+          src={STOCK_IMAGES.fushimiInariTorii}
           className="opacity-[0.14]"
           imgClassName="grayscale"
         />

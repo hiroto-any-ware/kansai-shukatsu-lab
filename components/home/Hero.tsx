@@ -55,8 +55,8 @@ export function Hero() {
         >
           <div className="relative aspect-[3/4] w-full">
             <Image
-              src={STOCK_IMAGES.businessDiscussion}
-              alt="関西の企業を取材する様子（掲載イメージ）"
+              src={STOCK_IMAGES.himejiCastle}
+              alt="姫路城"
               fill
               priority
               className="object-cover"

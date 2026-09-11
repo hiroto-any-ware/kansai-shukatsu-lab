@@ -9,12 +9,12 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
 const posts = [
-  { label: "ES対策", src: STOCK_IMAGES.womanWritingNotes },
-  { label: "面接対策", src: STOCK_IMAGES.businessLoungeTalk },
+  { label: "ES対策", src: STOCK_IMAGES.lakeBiwaTorii },
+  { label: "面接対策", src: STOCK_IMAGES.kobePortTower },
   { label: "選考情報", src: STOCK_IMAGES.deskGlassesNotebook },
-  { label: "企業研究", src: STOCK_IMAGES.kyotoRiverBusinessmen },
-  { label: "OB訪問", src: STOCK_IMAGES.businessCoffeeChat },
-  { label: "インターン", src: STOCK_IMAGES.tokyoClassroomStudy },
+  { label: "企業研究", src: STOCK_IMAGES.fushimiInariTorii },
+  { label: "OB訪問", src: STOCK_IMAGES.naraParkDeer },
+  { label: "インターン", src: STOCK_IMAGES.arashiyamaBamboo },
 ];
 
 export function InstagramSection() {

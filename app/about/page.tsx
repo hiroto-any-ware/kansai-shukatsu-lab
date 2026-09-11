@@ -70,7 +70,7 @@ export default function AboutPage() {
       {/* FIRST VIEW */}
       <section className="relative overflow-hidden bg-navy-950 py-24 text-white md:py-32">
         <AmbientPhoto
-          src={STOCK_IMAGES.kyotoRiverBusinessmen}
+          src={STOCK_IMAGES.fushimiInariTorii}
           imgClassName="opacity-[0.28] grayscale"
         />
         <div className="pointer-events-none absolute inset-0 bg-navy-950/50" />
@@ -165,8 +165,8 @@ export default function AboutPage() {
       <section className="relative">
         <div className="relative aspect-[16/9] w-full sm:aspect-[21/9]">
           <Image
-            src={STOCK_IMAGES.businessLoungeTalk}
-            alt="関西就活ラボの取材風景（掲載イメージ）"
+            src={STOCK_IMAGES.kobePortTower}
+            alt="神戸ポートタワー"
             fill
             className="object-cover"
           />

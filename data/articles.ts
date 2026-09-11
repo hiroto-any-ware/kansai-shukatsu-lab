@@ -11,7 +11,7 @@ export const articles: KnowhowArticle[] = [
     title: "「ガクチカがない」と思っている人へ。エピソードの見つけ方",
     description:
       "特別な実績がなくても大丈夫。日常の経験を「ガクチカ」に変える考え方を紹介します。",
-    thumbnail: STOCK_IMAGES.womanWritingNotes,
+    thumbnail: STOCK_IMAGES.lakeBiwaTorii,
     publishedAt: "2026-08-01",
   },
   {
@@ -29,7 +29,7 @@ export const articles: KnowhowArticle[] = [
     title: "逆質問で差がつく。面接官の印象に残る質問リスト",
     description:
       "「特にありません」はもったいない。関心の高さが伝わる逆質問の作り方を解説します。",
-    thumbnail: STOCK_IMAGES.businessDiscussion,
+    thumbnail: STOCK_IMAGES.himejiCastle,
     publishedAt: "2026-07-10",
   },
   {
@@ -38,7 +38,7 @@ export const articles: KnowhowArticle[] = [
     title: "OB・OG訪問、何を聞けばいい？失敗しない質問の準備",
     description:
       "限られた時間を有効に使うための、OB・OG訪問の事前準備と質問例を紹介します。",
-    thumbnail: STOCK_IMAGES.businessLoungeTalk,
+    thumbnail: STOCK_IMAGES.kobePortTower,
     publishedAt: "2026-06-25",
   },
 ];
