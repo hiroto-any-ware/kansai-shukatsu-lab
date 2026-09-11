@@ -3,6 +3,8 @@ import Link from "next/link";
 import { CompanyInterview } from "@/lib/types";
 import { Reveal } from "@/components/ui/Reveal";
 
+// すべての企業を同じ形・同じ大きさの枠で並べる（優劣の印象を与えないため、
+// 企業によって枠の大きさや比率を変えない）。
 export function CompanyCard({
   company,
   index,
@@ -10,48 +12,10 @@ export function CompanyCard({
   company: CompanyInterview;
   index: number;
 }) {
-  const isWide = index % 7 === 3;
-  const aspect = ["aspect-[4/3]", "aspect-square", "aspect-[3/4]"][index % 3];
-
-  if (isWide) {
-    return (
-      <Reveal delay={(index % 6) * 0.05} className="sm:col-span-2">
-        <Link
-          href={`/companies/${company.slug}`}
-          className="group grid grid-cols-1 gap-5 rounded-2xl border border-navy-900/8 p-4 transition-colors hover:border-navy-900/25 sm:grid-cols-[1.2fr_1fr] sm:gap-0 sm:p-0"
-        >
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:aspect-auto sm:rounded-l-2xl sm:rounded-r-none">
-            <Image
-              src={company.photo}
-              alt={company.photoAlt}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
-            />
-          </div>
-          <div className="flex flex-col justify-center p-1 sm:p-8">
-            <div className="flex items-center gap-2">
-              <span className="font-label rounded-full bg-navy-50 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-navy-700">
-                {company.category}
-              </span>
-              <span className="text-xs text-navy-400">{company.prefecture}</span>
-            </div>
-            <h3 className="font-display mt-3 text-xl font-bold text-navy-900">
-              {company.companyName}
-            </h3>
-            <p className="mt-2 line-clamp-2 text-sm leading-6 text-navy-500">
-              {company.title}
-            </p>
-          </div>
-        </Link>
-      </Reveal>
-    );
-  }
-
   return (
     <Reveal delay={(index % 6) * 0.05}>
       <Link href={`/companies/${company.slug}`} className="group block h-full">
-        <div className={`relative w-full overflow-hidden rounded-2xl ${aspect}`}>
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
           <Image
             src={company.photo}
             alt={company.photoAlt}
