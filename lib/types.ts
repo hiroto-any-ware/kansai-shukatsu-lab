@@ -6,6 +6,10 @@
 // 制作方針のため、CompanyInterview は写真フィールドを representativePhoto の
 // 1枚のみに絞っています（オフィス写真・社員写真・ギャラリー等は持たない）。
 
+// 関西就活ラボは「関西にある企業だけを紹介するメディア」ではなく、
+// 「関西の就活生を起点に、まだ知らない企業や仕事との出会いをつくるメディア」。
+// そのため掲載企業の所在地は関西の6府県に限定しない。
+// PREFECTURES は「関西の企業を探す」絞り込み機能で使う関西の府県一覧。
 export const PREFECTURES = [
   "大阪府",
   "京都府",
@@ -14,7 +18,24 @@ export const PREFECTURES = [
   "滋賀県",
   "和歌山県",
 ] as const;
-export type Prefecture = (typeof PREFECTURES)[number];
+export type KansaiPrefecture = (typeof PREFECTURES)[number];
+
+/** 関西以外の企業も掲載できるよう、実際の所在地は自由な文字列として保持する。 */
+export type Prefecture = string;
+
+/** 関西の企業を探す絞り込みで使う「その他の地域」バケットのラベル */
+export const OTHER_REGION_LABEL = "その他の地域" as const;
+
+export function isKansaiPrefecture(
+  prefecture: string
+): prefecture is KansaiPrefecture {
+  return (PREFECTURES as readonly string[]).includes(prefecture);
+}
+
+/** 一覧・絞り込み表示用に、関西の府県名かそれ以外かを判定してラベルを返す */
+export function regionLabel(prefecture: string): string {
+  return isKansaiPrefecture(prefecture) ? prefecture : OTHER_REGION_LABEL;
+}
 
 export const CATEGORIES = [
   "IT・SaaS",

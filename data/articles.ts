@@ -17,9 +17,9 @@ export const articles: KnowhowArticle[] = [
   {
     slug: "kansai-企業研究の始め方",
     category: "企業研究",
-    title: "大手だけを見ていませんか？関西の優良企業の探し方",
+    title: "大手だけを見ていませんか？まだ知らない企業の探し方",
     description:
-      "知名度だけで企業を選ぶ前に知っておきたい、関西の企業研究の視点をまとめました。",
+      "知名度だけで企業を選ぶ前に知っておきたい、関西を起点にした企業研究の視点をまとめました。",
     thumbnail: STOCK_IMAGES.deskOverheadTea,
     publishedAt: "2026-07-22",
   },

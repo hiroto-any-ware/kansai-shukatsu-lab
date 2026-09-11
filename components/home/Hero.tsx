@@ -99,7 +99,7 @@ export function Hero() {
         >
           <div className="max-w-xl">
             <p className="font-display text-lg text-sky-100 md:text-xl">
-              関西の就活生と優良企業を、&ldquo;想い&rdquo;で繋ぐ。
+              関西の就活生と企業を、&ldquo;想い&rdquo;で繋ぐ架け橋に。
             </p>
             <p className="mt-3 text-sm leading-7 text-white/70 md:text-[15px]">
               知名度や求人票だけでは分からない企業の本当の魅力を、学生目線の取材で届ける就活メディア。

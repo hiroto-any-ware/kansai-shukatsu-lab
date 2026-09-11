@@ -8,7 +8,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 export const metadata: Metadata = {
   title: "企業を探す",
   description:
-    "関西の優良企業を都道府県・業種から探せます。企業規模やランキングでは絞り込まず、興味のある地域・仕事から気になる企業に出会えます。",
+    "関西就活ラボがこれまで取材した企業インタビューの一覧です。関西の企業を中心に、地域を問わず学生に知ってほしい企業を掲載しています。企業規模やランキングでは絞り込まず、地域・業種から気になる企業に出会えます。",
 };
 
 export default async function CompaniesPage({
@@ -28,7 +28,7 @@ export default async function CompaniesPage({
             企業を探す
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-7 text-navy-500">
-            企業規模やランキングでは絞り込みません。都道府県・業種から、あなたがまだ知らない関西の企業を探してみてください。
+            関西就活ラボがこれまで取材した企業インタビューを、すべてご覧いただけます。関西の企業を中心に、地域を問わず学生に知ってほしい企業も掲載しています。企業規模やランキングでは絞り込まず、地域・業種からまだ知らない企業を探してみてください。
           </p>
         </Container>
       </div>

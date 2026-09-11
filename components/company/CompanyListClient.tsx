@@ -1,9 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CompanyInterview, PREFECTURES, CATEGORIES } from "@/lib/types";
+import {
+  CompanyInterview,
+  PREFECTURES,
+  CATEGORIES,
+  OTHER_REGION_LABEL,
+  regionLabel,
+} from "@/lib/types";
 import { CompanyCard } from "@/components/company/CompanyCard";
 import { X } from "lucide-react";
+
+const REGION_OPTIONS = [...PREFECTURES, OTHER_REGION_LABEL];
 
 export function CompanyListClient({
   companies,
@@ -30,7 +38,7 @@ export function CompanyListClient({
 
   const filtered = useMemo(() => {
     return companies.filter((c) => {
-      const prefOk = prefs.size === 0 || prefs.has(c.prefecture);
+      const prefOk = prefs.size === 0 || prefs.has(regionLabel(c.prefecture));
       const catOk = cats.size === 0 || cats.has(c.category);
       return prefOk && catOk;
     });
@@ -42,11 +50,14 @@ export function CompanyListClient({
     <div>
       <div className="flex flex-col gap-8 border-b border-navy-900/8 pb-10">
         <div>
-          <p className="font-label mb-3 text-xs font-semibold tracking-[0.25em] text-navy-400">
-            PREFECTURE
+          <p className="font-label mb-1 text-xs font-semibold tracking-[0.25em] text-navy-400">
+            KANSAI AREA
+          </p>
+          <p className="mb-3 text-sm text-navy-500">
+            関西の企業を探す。指定しない場合は、すべての地域の企業インタビューを表示します。
           </p>
           <div className="flex flex-wrap gap-2.5">
-            {PREFECTURES.map((p) => (
+            {REGION_OPTIONS.map((p) => (
               <button
                 key={p}
                 onClick={() => toggle(prefs, setPrefs, p)}
@@ -54,7 +65,7 @@ export function CompanyListClient({
                   prefs.has(p)
                     ? "border-navy-900 bg-navy-900 text-white"
                     : "border-navy-900/15 text-navy-700 hover:border-navy-900/40"
-                }`}
+                } ${p === OTHER_REGION_LABEL ? "border-dashed" : ""}`}
               >
                 {p}
               </button>
@@ -88,7 +99,7 @@ export function CompanyListClient({
           <span className="font-display text-lg font-bold text-navy-900">
             {filtered.length}
           </span>{" "}
-          件の企業
+          件の企業インタビュー
         </p>
         {hasFilter && (
           <button

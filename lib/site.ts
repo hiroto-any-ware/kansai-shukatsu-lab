@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "関西就活ラボ",
   nameEn: "KANSAI SHUKATSU LAB",
   description:
-    "大手だけが、正解じゃない。関西の就活生と優良企業を「想い」で繋ぐ就活メディア「関西就活ラボ」。企業インタビューや就活イベント、就活ノウハウを発信しています。",
+    "大手だけが、正解じゃない。関西の就活生を中心に、まだ知らない企業や仕事との出会いをつくる就活メディア「関西就活ラボ」。企業インタビューや就活イベント、就活ノウハウを発信しています。",
   url: "https://example.com", // TODO: 独自ドメイン取得後に本番URLへ差し替え
   lineUrl: "https://line.me/R/ti/p/@381flauo",
   instagramUrl:
