@@ -91,11 +91,8 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-3 py-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
+        <Container className="py-6 text-xs text-white/40">
           <p>&copy; {new Date().getFullYear()} 関西就活ラボ</p>
-          <p className="max-w-2xl leading-relaxed">
-            本サイトに掲載されている企業名・写真・インタビュー内容の一部は制作段階のダミーデータ（掲載イメージ）です。実在の企業・人物とは関係ありません。
-          </p>
         </Container>
       </div>
     </footer>
