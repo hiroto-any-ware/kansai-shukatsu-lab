@@ -4,7 +4,6 @@ import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function BusinessSummary({ company }: { company: CompanyInterview }) {
-  const { businessSummary: b } = company;
   return (
     <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
       <span
@@ -36,11 +35,13 @@ export function BusinessSummary({ company }: { company: CompanyInterview }) {
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-7 lg:col-start-6">
-            <p className="font-display text-xl leading-relaxed text-sky-100 sm:text-2xl">
-              {b.lead}
-            </p>
+            {company.businessType && (
+              <p className="font-display text-xl leading-relaxed text-sky-100 sm:text-2xl">
+                {company.businessType}
+              </p>
+            )}
             <div className="mt-8 space-y-5 border-t border-white/10 pt-8">
-              {b.body.map((p, i) => (
+              {company.lead.map((p, i) => (
                 <p key={i} className="max-w-xl text-[15px] leading-8 text-white/70">
                   {p}
                 </p>

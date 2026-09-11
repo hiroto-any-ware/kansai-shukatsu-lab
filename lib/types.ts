@@ -58,70 +58,54 @@ export type Category = (typeof CATEGORIES)[number];
 export interface QA {
   q: string;
   a: string;
+  /** 複数の話者が登場する記事で、回答者を明示する場合に使用（例: 総務担当） */
+  speaker?: string;
 }
 
-export interface Representative {
+/** インタビュー記事の取材対象者。実際の役職を正確に記載する（社長とは限らない） */
+export interface Interviewee {
   name: string;
   role: string;
-  profile: string;
-  qa: QA[];
 }
 
-/** 若手社員の声（写真は用意できないためテキストのみ） */
-export interface EmployeeVoice {
-  name: string;
-  joinedYear: string;
-  jobType: string;
-  qa: QA[];
-}
-
-export interface RecruitmentInfo {
-  positions: string[];
-  locations: string[];
-  selectionProcess: string;
-  internshipInfo?: string;
-  newGraduateInfo: string;
-  website: string;
-}
+/**
+ * 記事本文を構成するブロック。取材記事によって構成（Q&A形式／地の文形式／
+ * 箇条書きレポート形式）が異なるため、元記事の構造をそのまま表現できるよう
+ * ブロック単位の柔軟な構造にしている。
+ */
+export type ArticleBlock =
+  | { type: "heading"; text: string }
+  | { type: "paragraphs"; speaker?: string; paragraphs: string[] }
+  | { type: "qa"; items: QA[] }
+  | { type: "quote"; text: string }
+  | { type: "bullets"; items: string[] };
 
 export interface CompanyInterview {
   companyName: string;
   slug: string;
-  companyLogo: string;
-  /** 企業を表す一言（一覧カード用のキャッチコピー） */
-  oneLiner: string;
+  /** 取材対象者（社長とは限らないため、実際の役職をそのまま保持する） */
+  interviewee: Interviewee;
   title: string;
-  description: string;
-  /** 用意できる企業写真は代表者写真1枚のみ。一覧・記事内で異なるトリミングで使い回す。 */
-  representativePhoto: string;
-  representativePhotoAlt: string;
+  /** 記事冒頭のリード文（要約しすぎず、元記事の導入部をそのまま使用） */
+  lead: string[];
+  /** 企業ごとに用意できる写真は代表者・取材対象者の写真1枚のみ */
+  photo: string;
+  photoAlt: string;
   category: Category;
   prefecture: Prefecture;
-  location: string;
-  employeeCount: string;
-  foundedYear: string;
-  businessType: string;
-  jobTypes: string;
-  website: string;
+  /** 記事または公式サイトで確認できた住所。不明な場合は設定しない */
+  address?: string;
+  /** 企業公式サイトURL */
+  website?: string;
+  /** 記事内で確認できた場合のみ設定。不明な場合は表示しない */
+  foundedYear?: string;
+  employeeCount?: string;
+  businessType?: string;
+  /** インタビュー中でも特に印象的な、記事本文からそのまま引用した発言 */
+  featuredQuote?: string;
   publishedAt: string;
-  tags: string[];
-  internshipAvailable: boolean;
-
-  // --- 記事本文構成 ---
-  businessSummary: {
-    lead: string;
-    body: string[];
-  };
-  representative: Representative;
-  /** インタビュー中でも特に印象的な発言（引用セクションに大きく表示） */
-  featuredQuote: string;
-  studentQuestions: QA[];
-  employeeVoices: EmployeeVoice[];
-  editorialComment: {
-    heading: string;
-    body: string[];
-  };
-  recruitmentInfo: RecruitmentInfo;
+  /** 記事本文（見出し・Q&A・地の文・引用・箇条書きを元の構成のまま格納） */
+  blocks: ArticleBlock[];
 }
 
 export interface JobEvent {

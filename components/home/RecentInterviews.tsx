@@ -5,7 +5,6 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
-import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 import { STOCK_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/cn";
 
@@ -59,12 +58,11 @@ export function RecentInterviews() {
                     >
                       <div className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl sm:max-w-sm">
                         <Image
-                          src={c.representativePhoto}
-                          alt={c.representativePhotoAlt}
+                          src={c.photo}
+                          alt={c.photoAlt}
                           fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                         />
-                        <PhotoPlaceholderMark iconSize={56} />
                       </div>
                     </Link>
                   </Reveal>
@@ -83,7 +81,7 @@ export function RecentInterviews() {
                       <span className="font-label rounded-full bg-navy-900/5 px-2.5 py-1 font-semibold tracking-wide text-navy-700">
                         {c.category}
                       </span>
-                      <span>{c.location}</span>
+                      <span>{c.prefecture}</span>
                       <span>{c.publishedAt}</span>
                     </div>
                     <Link href={`/companies/${c.slug}`} className="group">
@@ -92,20 +90,12 @@ export function RecentInterviews() {
                       </h3>
                     </Link>
                     <p className="mt-4 text-sm leading-7 text-navy-500">
-                      {c.description}
+                      {c.lead[0]}
                     </p>
                     <Link
                       href={`/companies/${c.slug}`}
                       className="mt-6 inline-flex items-center gap-3 rounded-xl border border-navy-900/10 p-3 pr-5 transition-colors hover:border-navy-900/30"
                     >
-                      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-navy-50">
-                        <Image
-                          src={c.companyLogo}
-                          alt=""
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
                       <span>
                         <span className="block text-sm font-semibold text-navy-900">
                           {c.companyName}

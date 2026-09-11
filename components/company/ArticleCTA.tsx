@@ -5,14 +5,23 @@ import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
+interface CTACard {
+  icon: typeof FileText;
+  title: string;
+  href: string;
+  external: boolean;
+}
+
 export function ArticleCTA({ company }: { company: CompanyInterview }) {
-  const cards = [
-    {
-      icon: FileText,
-      title: "この企業について詳しく知りたい",
-      href: company.website,
-      external: true,
-    },
+  const cards: CTACard[] = [
+    company.website
+      ? {
+          icon: FileText,
+          title: "この企業について詳しく知りたい",
+          href: company.website,
+          external: true,
+        }
+      : null,
     {
       icon: Users,
       title: "この企業とイベントで話してみたい",
@@ -25,7 +34,7 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
       href: siteConfig.lineUrl,
       external: true,
     },
-  ];
+  ].filter((c): c is CTACard => c !== null);
 
   return (
     <section className="bg-sky-50 py-16 md:py-20">

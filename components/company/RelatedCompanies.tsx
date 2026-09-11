@@ -5,7 +5,6 @@ import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 
 export function RelatedCompanies({ current }: { current: CompanyInterview }) {
   const related = companies
@@ -42,12 +41,11 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
               <Link href={`/companies/${c.slug}`} className="group block">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
                   <Image
-                    src={c.representativePhoto}
-                    alt={c.representativePhotoAlt}
+                    src={c.photo}
+                    alt={c.photoAlt}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  <PhotoPlaceholderMark iconSize={40} />
                 </div>
                 <span className="font-label mt-3 block text-[10px] font-semibold tracking-widest text-accent-600">
                   {c.category} / {c.prefecture}

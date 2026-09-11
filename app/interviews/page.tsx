@@ -6,7 +6,6 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 
 export const metadata: Metadata = {
   title: "企業インタビュー",
@@ -44,19 +43,18 @@ export default function InterviewsPage() {
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl">
                   <Image
-                    src={c.representativePhoto}
-                    alt={c.representativePhotoAlt}
+                    src={c.photo}
+                    alt={c.photoAlt}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  <PhotoPlaceholderMark iconSize={44} />
                 </div>
                 <div className="flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3 text-xs text-navy-400">
                     <span className="font-label rounded-full bg-navy-50 px-2.5 py-1 font-semibold tracking-wide text-navy-700">
                       {c.category}
                     </span>
-                    <span>{c.location}</span>
+                    <span>{c.prefecture}</span>
                     <span>{c.publishedAt}</span>
                   </div>
                   <h2 className="font-display mt-3 text-lg font-bold leading-snug text-navy-900 transition-colors group-hover:text-accent-600 md:text-xl">
@@ -66,7 +64,7 @@ export default function InterviewsPage() {
                     {c.companyName}
                   </p>
                   <p className="mt-2 line-clamp-2 text-sm leading-6 text-navy-400">
-                    {c.description}
+                    {c.lead[0]}
                   </p>
                 </div>
               </Link>

@@ -2,8 +2,6 @@ import Image from "next/image";
 import { MapPin, Calendar } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { SampleBadge } from "@/components/ui/SampleBadge";
-import { PhotoPlaceholderMark } from "@/components/ui/PhotoPlaceholderMark";
 import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -48,7 +46,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
               </span>
               <span className="flex items-center gap-1.5 text-xs text-navy-500">
                 <MapPin size={13} className="text-accent-600" />
-                {company.location}
+                {company.prefecture}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-navy-500">
                 <Calendar size={13} className="text-accent-600" />
@@ -59,7 +57,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
               {company.companyName}
             </p>
             <p className="mt-3 max-w-md text-sm leading-7 text-navy-500">
-              {company.description}
+              {company.lead[0]}
             </p>
           </Reveal>
 
@@ -68,14 +66,12 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
               <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent-100 to-sky-100 lg:-inset-6" />
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src={company.representativePhoto}
-                  alt={company.representativePhotoAlt}
+                  src={company.photo}
+                  alt={company.photoAlt}
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
-                <PhotoPlaceholderMark iconSize={72} />
-                <SampleBadge className="bottom-3 right-3" />
               </div>
             </div>
           </Reveal>
