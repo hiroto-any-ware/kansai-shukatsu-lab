@@ -19,17 +19,19 @@ export default function EventsPage() {
     <div className="bg-white pt-16 md:pt-20">
       <div className="bg-navy-50">
         <Container className="py-14 md:py-20">
-          <Breadcrumb items={[{ label: "就活イベント" }]} />
-          <Eyebrow className="mt-6">EVENT</Eyebrow>
-          <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold text-navy-900 md:text-5xl">
-            関西就活ラボ EVENT
-          </h1>
-          <p className="font-display mt-5 max-w-lg text-lg text-navy-700">
-            学生と企業が、本音で話せる場所。
-          </p>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-navy-500">
-            大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。
-          </p>
+          <Reveal>
+            <Breadcrumb items={[{ label: "就活イベント" }]} />
+            <Eyebrow className="mt-6">EVENT</Eyebrow>
+            <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold text-navy-900 md:text-5xl">
+              関西就活ラボ EVENT
+            </h1>
+            <p className="font-display mt-5 max-w-lg text-lg text-navy-700">
+              学生と企業が、本音で話せる場所。
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-navy-500">
+              大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。
+            </p>
+          </Reveal>
         </Container>
       </div>
 

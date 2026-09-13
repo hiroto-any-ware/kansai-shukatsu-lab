@@ -804,7 +804,7 @@
     padding: clamp(64px, 9vw, 120px) 5vw;
     text-align: center;
   }
-  .lab-about-statement p {
+  .lab-about-statement-text {
     letter-spacing: -0.03em;
     margin: 0 auto;
     max-width: 16em;

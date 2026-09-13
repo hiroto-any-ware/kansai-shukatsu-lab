@@ -5,6 +5,9 @@ import { ArrowUpRight } from "lucide-react";
 import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
 import { Reveal } from "@/components/ui/Reveal";
+import { LineReveal } from "@/components/ui/LineReveal";
+import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { GrowLine } from "@/components/ui/GrowLine";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 
@@ -142,9 +145,11 @@ export default function AboutPage() {
 
       {/* 中間ステートメント */}
       <div className="lab-about-statement">
-        <Reveal>
-          <p>大手だけが、正解じゃない。</p>
-        </Reveal>
+        <LineReveal
+          lines={["大手だけが、正解じゃない。"]}
+          triggerOn="scroll"
+          className="lab-about-statement-text"
+        />
       </div>
 
       <section className="lab-section">
@@ -183,17 +188,18 @@ export default function AboutPage() {
           <h2 className="mt-4 text-3xl font-bold md:text-4xl">私たちが大切にしていること</h2>
         </Reveal>
         <div className="lab-values relative">
-          {values.map((v, i) => (
-            <Reveal key={v.no} delay={(i % 2) * 0.08}>
+          {values.map((v) => (
+            <StaggerReveal key={v.no} gap={0.14}>
+              <p className="lab-label">{v.en}</p>
+              <h3>
+                {v.no} {v.title}
+              </h3>
+              <p className="!mt-1 text-sm font-semibold text-[#515966]">{v.lead}</p>
               <div>
-                <p className="lab-label">{v.en}</p>
-                <h3>
-                  {v.no} {v.title}
-                </h3>
-                <p className="!mt-1 text-sm font-semibold text-[#515966]">{v.lead}</p>
                 <p>{v.text}</p>
+                <GrowLine className="mt-5 max-w-[64px] text-navy-900/15" />
               </div>
-            </Reveal>
+            </StaggerReveal>
           ))}
         </div>
       </section>

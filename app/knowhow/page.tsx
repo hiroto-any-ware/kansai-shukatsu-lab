@@ -41,14 +41,14 @@ export default function KnowhowPage() {
                     src={a.thumbnail}
                     alt={a.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="font-label absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-navy-900">
                     {a.category}
                   </span>
                 </div>
                 <p className="mt-3 text-xs text-navy-400">{a.publishedAt}</p>
-                <h2 className="font-display mt-1.5 text-base font-bold leading-snug text-navy-900">
+                <h2 className="font-display mt-1.5 inline text-base font-bold leading-snug text-navy-900 decoration-accent-600 underline-offset-4 transition-colors group-hover:text-accent-600 group-hover:underline">
                   {a.title}
                 </h2>
                 <p className="mt-2 line-clamp-2 text-xs leading-6 text-navy-500">
