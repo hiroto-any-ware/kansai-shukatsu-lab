@@ -10,26 +10,15 @@ import { PhotoReveal } from "@/components/ui/PhotoReveal";
 
 export function ArticleHero({ company }: { company: CompanyInterview }) {
   return (
-    <header className="relative overflow-hidden bg-white pt-16 md:pt-20">
-      <span
-        aria-hidden
-        className="font-display pointer-events-none absolute -right-6 top-10 select-none text-[9rem] leading-none text-ink/[0.035] sm:text-[13rem] md:top-16 md:text-[18rem]"
-      >
-        01
+    <header className="lab-page-hero">
+      <div className="lab-page-hero-grid" aria-hidden="true" />
+      <span className="lab-page-hero-word" aria-hidden="true">
+        STORY
       </span>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.4]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(16,24,44,0.08) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
-          maskImage: "linear-gradient(to bottom, black, transparent 70%)",
-        }}
-      />
 
-      <Container className="relative py-10 md:py-16">
+      <Container className="relative">
         <Breadcrumb
+          light
           items={[
             { label: "企業を探す", href: "/companies" },
             { label: company.companyName },
@@ -42,47 +31,45 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
             gap={0.13}
             x={-36}
           >
-            <SectionNumber no="01" label="COMPANY" />
-            <h1 className="font-display mt-6 text-balance text-[28px] font-bold leading-[1.3] text-ink sm:text-4xl md:text-[44px]">
+            <SectionNumber no="01" label="COMPANY" light />
+            <h1 className="font-display mt-6 text-balance text-[28px] font-bold leading-[1.3] text-white sm:text-4xl md:text-[44px]">
               <LineReveal lines={[company.title]} />
             </h1>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="font-label rounded-full bg-void px-3 py-1.5 text-[11px] font-semibold tracking-widest text-white">
+              <span className="font-label rounded-full bg-lime px-3 py-1.5 text-[11px] font-semibold tracking-widest text-void">
                 {company.category}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-[#515966]">
-                <MapPin size={13} className="text-electric" />
+              <span className="flex items-center gap-1.5 text-xs text-[#ced5e1]">
+                <MapPin size={13} className="text-lime" />
                 {company.prefecture}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-[#515966]">
-                <Calendar size={13} className="text-electric" />
+              <span className="flex items-center gap-1.5 text-xs text-[#ced5e1]">
+                <Calendar size={13} className="text-lime" />
                 {company.publishedAt}
               </span>
             </div>
             <div>
-              <p className="mt-6 max-w-md text-sm font-semibold text-ink">
+              <p className="mt-6 max-w-md text-sm font-semibold text-white">
                 {company.companyName}
               </p>
-              <p className="mt-3 max-w-md text-sm leading-7 text-[#515966]">
+              <p className="mt-3 max-w-md text-sm leading-7 text-[#ced5e1]">
                 {company.lead[0]}
               </p>
             </div>
           </StaggerReveal>
 
           <PhotoReveal delay={0.15} x={60} className="order-1 lg:order-2 lg:col-span-5">
-            <div className="relative mx-auto w-[78%] max-w-xs sm:w-3/5 lg:ml-auto lg:w-full lg:max-w-sm">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-electric/15 to-lime/15 lg:-inset-6" />
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl">
-                <Image
-                  src={company.photo}
-                  alt={company.photoAlt}
-                  fill
-                  priority
-                  className="object-cover"
-                  style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
-                />
-              </div>
-            </div>
+            <figure className="lab-page-hero-photo">
+              <Image
+                src={company.photo}
+                alt={company.photoAlt}
+                fill
+                priority
+                sizes="(max-width: 760px) 100vw, 42vw"
+                className="object-cover"
+                style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
+              />
+            </figure>
           </PhotoReveal>
         </div>
       </Container>

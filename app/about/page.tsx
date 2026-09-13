@@ -87,7 +87,7 @@ export default function AboutPage() {
         title={["大手だけが、", "正解じゃない。"]}
         description="関西の就活生と企業を、“想い”で繋ぐ架け橋に。"
         bgWord="VISION"
-        photo={{ src: STOCK_IMAGES.arashiyamaBamboo, alt: "京都・嵐山の竹林", caption: "KYOTO, JAPAN" }}
+        photo={{ src: STOCK_IMAGES.lakeBiwaTorii, alt: "琵琶湖の鳥居", caption: "SHIGA, JAPAN" }}
       />
 
       {/* なぜ・何を目指すのか */}

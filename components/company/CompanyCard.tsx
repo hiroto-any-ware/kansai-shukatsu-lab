@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { useRevealVisible } from "@/components/ui/Reveal";
 
@@ -44,6 +45,9 @@ export function CompanyCard({
             style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#080f1d]/80 via-[#080f1d]/5 to-transparent" />
+          <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:bg-lime group-hover:text-void">
+            <ArrowUpRight size={16} />
+          </span>
           <div className="absolute inset-x-0 bottom-0 p-5">
             <span className="font-label text-[10px] font-semibold tracking-widest text-white/70">
               {company.category} / {company.prefecture}
@@ -54,6 +58,7 @@ export function CompanyCard({
             <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-white/70">
               {company.title}
             </p>
+            <span className="mt-3 block h-[2px] w-8 origin-left scale-x-0 bg-lime transition-transform duration-300 group-hover:scale-x-100" />
           </div>
         </div>
       </Link>
