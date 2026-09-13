@@ -35,27 +35,27 @@ const values = [
 export default function ForCompaniesPage() {
   return (
     <div className="bg-white pt-16 md:pt-20">
-      <section className="relative overflow-hidden bg-navy-50 py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[#eef0f3] py-20 md:py-28">
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-accent-200/30 blur-3xl"
+          className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-electric/15 blur-3xl"
         />
         <Container className="relative">
           <Breadcrumb items={[{ label: "企業の方へ" }]} />
           <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
             <Reveal variant="left" className="lg:col-span-7">
               <Eyebrow>FOR COMPANIES</Eyebrow>
-              <h1 className="font-display mt-5 text-3xl font-bold leading-snug text-navy-900 md:text-5xl">
+              <h1 className="font-display mt-5 text-3xl font-bold leading-snug text-ink md:text-5xl">
                 自社の本当の魅力を、
                 <br />
                 次の世代へ。
               </h1>
-              <p className="font-display mt-6 max-w-lg text-lg leading-8 text-navy-700">
+              <p className="font-display mt-6 max-w-lg text-lg leading-8 text-ink">
                 自社の本当の魅力を、熱意ある若い世代に届けたい。
                 <br />
                 自社の社風や理念に、心から共感してくれる学生と出会いたい。
               </p>
-              <p className="mt-5 max-w-lg text-sm leading-7 text-navy-500">
+              <p className="mt-5 max-w-lg text-sm leading-7 text-[#515966]">
                 関西就活ラボでは、企業への取材を通して、御社が大切にされている想いや、職場の「本当の姿」を丁寧に紐解き、学生へ届けます。仕事内容や条件だけではなく、「なぜ、この事業をしているのか」「どんな人たちが働いているのか」「どんな未来を目指しているのか」というストーリーまで伝えることで、企業の価値観に共感する学生との新しい接点をつくっていきます。
               </p>
             </Reveal>
@@ -67,7 +67,7 @@ export default function ForCompaniesPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-transparent to-navy-950/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-void/50 via-transparent to-void/10" />
               </div>
             </Reveal>
           </div>
@@ -83,7 +83,7 @@ export default function ForCompaniesPage() {
         <Container className="relative">
           <Reveal className="max-w-xl">
             <Eyebrow>WHY KANSAI SHUKATSU LAB</Eyebrow>
-            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
+            <h2 className="font-display mt-4 text-2xl font-bold text-ink md:text-3xl">
               関西就活ラボでできること
             </h2>
           </Reveal>
@@ -93,23 +93,23 @@ export default function ForCompaniesPage() {
                 key={v}
                 variant={i % 2 === 0 ? "left" : "right"}
                 delay={(i % 2) * 0.06}
-                className="flex items-start gap-3 rounded-xl border border-navy-900/8 bg-white/70 p-5 backdrop-blur-sm"
+                className="flex items-start gap-3 rounded-xl border border-[#cdd1d8] bg-white/70 p-5 backdrop-blur-sm"
               >
-                <Check size={16} className="mt-0.5 shrink-0 text-accent-600" />
-                <p className="text-sm leading-6 text-navy-700">{v}</p>
+                <Check size={16} className="mt-0.5 shrink-0 text-electric" />
+                <p className="text-sm leading-6 text-ink">{v}</p>
               </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
+      <section className="relative overflow-hidden bg-void py-20 text-white md:py-28">
         <AmbientPhoto
           src={STOCK_IMAGES.fushimiInariTorii}
           className="opacity-[0.14]"
           imgClassName="grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/85 to-navy-900" />
+        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void" />
         <Container className="relative">
           <Reveal className="max-w-xl">
             <Eyebrow light>FLOW</Eyebrow>
@@ -144,10 +144,10 @@ export default function ForCompaniesPage() {
         <Container narrow>
           <Reveal className="text-center">
             <Eyebrow className="justify-center">CONTACT</Eyebrow>
-            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-3xl">
+            <h2 className="font-display mt-4 text-2xl font-bold text-ink md:text-3xl">
               まずはお気軽にご相談ください。
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-navy-500">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#515966]">
               営業目的のご案内ではなく、まずは企業様のお話をお伺いするところから始めます。取材について相談する、イベントについて相談するなど、以下のフォームからお気軽にご連絡ください。
             </p>
           </Reveal>
@@ -157,13 +157,13 @@ export default function ForCompaniesPage() {
           </Reveal>
 
           <Reveal delay={0.15} className="mt-6 text-center">
-            <p className="text-xs text-navy-400">
+            <p className="text-xs text-[#515966]">
               お急ぎの場合は、
               <Link
                 href={siteConfig.lineUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-navy-600 underline underline-offset-2 hover:text-accent-600"
+                className="font-semibold text-ink underline underline-offset-2 hover:text-electric"
               >
                 公式LINE
                 <ArrowUpRight size={11} className="inline-block" />

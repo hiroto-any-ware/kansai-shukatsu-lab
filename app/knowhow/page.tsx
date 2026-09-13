@@ -18,14 +18,14 @@ export const metadata: Metadata = {
 export default function KnowhowPage() {
   return (
     <div className="bg-white pt-16 md:pt-20">
-      <div className="bg-navy-50">
+      <div className="bg-[#eef0f3]">
         <Container className="py-14 md:py-20">
           <Breadcrumb items={[{ label: "就活ノウハウ" }]} />
           <Eyebrow className="mt-6">KNOW-HOW</Eyebrow>
-          <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold text-navy-900 md:text-5xl">
+          <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold text-ink md:text-5xl">
             就活ノウハウ
           </h1>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-navy-500">
+          <p className="mt-5 max-w-xl text-sm leading-7 text-[#515966]">
             ES対策、面接対策、ガクチカ、自己PR、企業研究など、関西の就活生に役立つ情報をInstagramと連動してお届けします。
           </p>
         </Container>
@@ -43,15 +43,15 @@ export default function KnowhowPage() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="font-label absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-navy-900">
+                  <span className="font-label absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-ink">
                     {a.category}
                   </span>
                 </div>
-                <p className="mt-3 text-xs text-navy-400">{a.publishedAt}</p>
-                <h2 className="font-display mt-1.5 inline text-base font-bold leading-snug text-navy-900 decoration-accent-600 underline-offset-4 transition-colors group-hover:text-accent-600 group-hover:underline">
+                <p className="mt-3 text-xs text-[#515966]">{a.publishedAt}</p>
+                <h2 className="font-display mt-1.5 inline text-base font-bold leading-snug text-ink decoration-electric underline-offset-4 transition-colors group-hover:text-electric group-hover:underline">
                   {a.title}
                 </h2>
-                <p className="mt-2 line-clamp-2 text-xs leading-6 text-navy-500">
+                <p className="mt-2 line-clamp-2 text-xs leading-6 text-[#515966]">
                   {a.description}
                 </p>
               </div>
@@ -59,12 +59,12 @@ export default function KnowhowPage() {
           ))}
         </div>
 
-        <Reveal delay={0.2} className="mt-16 flex flex-col items-center gap-4 rounded-2xl bg-navy-50 px-8 py-12 text-center">
-          <InstagramIcon size={28} className="text-navy-900" />
-          <p className="font-display text-lg font-bold text-navy-900">
+        <Reveal delay={0.2} className="mt-16 flex flex-col items-center gap-4 rounded-2xl bg-[#eef0f3] px-8 py-12 text-center">
+          <InstagramIcon size={28} className="text-ink" />
+          <p className="font-display text-lg font-bold text-ink">
             続きはInstagramでも発信しています。
           </p>
-          <p className="max-w-md text-sm leading-6 text-navy-500">
+          <p className="max-w-md text-sm leading-6 text-[#515966]">
             記事化していない最新の選考情報やちょっとしたコツは、Instagramで随時発信中です。
           </p>
           <Link

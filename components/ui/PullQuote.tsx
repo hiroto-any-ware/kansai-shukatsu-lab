@@ -20,7 +20,7 @@ export function PullQuote({
     <div
       className={cn(
         "relative overflow-hidden py-20 md:py-28",
-        dark ? "bg-navy-950 text-white" : "bg-sky-50 text-navy-900",
+        dark ? "bg-void text-white" : "bg-[#eef0f3] text-ink",
         className
       )}
     >
@@ -28,7 +28,7 @@ export function PullQuote({
         aria-hidden
         className={cn(
           "font-display pointer-events-none absolute -top-6 left-6 select-none text-[9rem] leading-none md:-top-10 md:left-16 md:text-[13rem]",
-          dark ? "text-white/[0.06]" : "text-navy-900/[0.05]"
+          dark ? "text-white/[0.06]" : "text-ink/[0.05]"
         )}
       >
         &ldquo;
@@ -42,7 +42,7 @@ export function PullQuote({
             <p
               className={cn(
                 "font-label mt-8 text-xs font-semibold tracking-[0.25em]",
-                dark ? "text-sky-200" : "text-accent-600"
+                dark ? "text-lime" : "text-electric"
               )}
             >
               {attribution}

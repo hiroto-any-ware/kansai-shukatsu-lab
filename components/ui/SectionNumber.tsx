@@ -20,7 +20,7 @@ export function SectionNumber({
       <span
         className={cn(
           "font-display text-2xl font-light",
-          light ? "text-white/40" : "text-navy-900/25"
+          light ? "text-white/40" : "text-ink/25"
         )}
       >
         {no}
@@ -28,13 +28,13 @@ export function SectionNumber({
       <span
         className={cn(
           "h-px w-8",
-          light ? "bg-white/30" : "bg-navy-900/20"
+          light ? "bg-white/30" : "bg-ink/20"
         )}
       />
       <span
         className={cn(
           "font-label text-xs font-semibold tracking-[0.3em]",
-          light ? "text-sky-200" : "text-accent-600"
+          light ? "text-lime" : "text-electric"
         )}
       >
         {label}

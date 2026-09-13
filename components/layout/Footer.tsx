@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   return (
-    <footer className="bg-navy-950 text-white">
+    <footer className="bg-void text-white">
       <Container className="grid grid-cols-1 gap-12 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:py-20">
         <div>
           <Link href="/" className="flex items-center gap-2.5">

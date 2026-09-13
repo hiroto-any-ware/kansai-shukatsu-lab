@@ -13,7 +13,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
     <header className="relative overflow-hidden bg-white pt-16 md:pt-20">
       <span
         aria-hidden
-        className="font-display pointer-events-none absolute -right-6 top-10 select-none text-[9rem] leading-none text-navy-900/[0.035] sm:text-[13rem] md:top-16 md:text-[18rem]"
+        className="font-display pointer-events-none absolute -right-6 top-10 select-none text-[9rem] leading-none text-ink/[0.035] sm:text-[13rem] md:top-16 md:text-[18rem]"
       >
         01
       </span>
@@ -22,7 +22,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
         className="pointer-events-none absolute inset-0 opacity-[0.4]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(10,23,48,0.08) 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, rgba(16,24,44,0.08) 1px, transparent 0)",
           backgroundSize: "28px 28px",
           maskImage: "linear-gradient(to bottom, black, transparent 70%)",
         }}
@@ -43,27 +43,27 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
             x={-36}
           >
             <SectionNumber no="01" label="COMPANY" />
-            <h1 className="font-display mt-6 text-balance text-[28px] font-bold leading-[1.3] text-navy-900 sm:text-4xl md:text-[44px]">
+            <h1 className="font-display mt-6 text-balance text-[28px] font-bold leading-[1.3] text-ink sm:text-4xl md:text-[44px]">
               <LineReveal lines={[company.title]} />
             </h1>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="font-label rounded-full bg-navy-900 px-3 py-1.5 text-[11px] font-semibold tracking-widest text-white">
+              <span className="font-label rounded-full bg-void px-3 py-1.5 text-[11px] font-semibold tracking-widest text-white">
                 {company.category}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-navy-500">
-                <MapPin size={13} className="text-accent-600" />
+              <span className="flex items-center gap-1.5 text-xs text-[#515966]">
+                <MapPin size={13} className="text-electric" />
                 {company.prefecture}
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-navy-500">
-                <Calendar size={13} className="text-accent-600" />
+              <span className="flex items-center gap-1.5 text-xs text-[#515966]">
+                <Calendar size={13} className="text-electric" />
                 {company.publishedAt}
               </span>
             </div>
             <div>
-              <p className="mt-6 max-w-md text-sm font-semibold text-navy-700">
+              <p className="mt-6 max-w-md text-sm font-semibold text-ink">
                 {company.companyName}
               </p>
-              <p className="mt-3 max-w-md text-sm leading-7 text-navy-500">
+              <p className="mt-3 max-w-md text-sm leading-7 text-[#515966]">
                 {company.lead[0]}
               </p>
             </div>
@@ -71,7 +71,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
 
           <PhotoReveal delay={0.15} x={60} className="order-1 lg:order-2 lg:col-span-5">
             <div className="relative mx-auto w-[78%] max-w-xs sm:w-3/5 lg:ml-auto lg:w-full lg:max-w-sm">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent-100 to-sky-100 lg:-inset-6" />
+              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-electric/15 to-lime/15 lg:-inset-6" />
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl">
                 <Image
                   src={company.photo}

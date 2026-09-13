@@ -23,13 +23,13 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
         <Reveal className="flex items-end justify-between">
           <div>
             <Eyebrow>NEXT STORIES</Eyebrow>
-            <h2 className="font-display mt-4 text-2xl font-bold text-navy-900 md:text-[32px]">
+            <h2 className="font-display mt-4 text-2xl font-bold text-ink md:text-[32px]">
               関連するインタビュー
             </h2>
           </div>
           <Link
             href="/companies"
-            className="hidden text-sm font-semibold text-navy-700 hover:text-accent-600 sm:inline"
+            className="hidden text-sm font-semibold text-[#515966] hover:text-electric sm:inline"
           >
             すべて見る
           </Link>
@@ -48,10 +48,10 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
                     style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
                   />
                 </div>
-                <span className="font-label mt-3 block text-[10px] font-semibold tracking-widest text-accent-600">
+                <span className="font-label mt-3 block text-[10px] font-semibold tracking-widest text-electric">
                   {c.category} / {c.prefecture}
                 </span>
-                <h3 className="font-display mt-1.5 line-clamp-2 text-base font-bold leading-snug text-navy-900">
+                <h3 className="font-display mt-1.5 line-clamp-2 text-base font-bold leading-snug text-ink">
                   {c.title}
                 </h3>
               </Link>

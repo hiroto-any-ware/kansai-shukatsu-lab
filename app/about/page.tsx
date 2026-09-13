@@ -197,7 +197,7 @@ export default function AboutPage() {
               <p className="!mt-1 text-sm font-semibold text-[#515966]">{v.lead}</p>
               <div>
                 <p>{v.text}</p>
-                <GrowLine className="mt-5 max-w-[64px] text-navy-900/15" />
+                <GrowLine className="mt-5 max-w-[64px] text-ink/15" />
               </div>
             </StaggerReveal>
           ))}

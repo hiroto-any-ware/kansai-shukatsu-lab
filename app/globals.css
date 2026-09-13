@@ -287,10 +287,22 @@
   }
   .lab-hero-people > a {
     color: #fff;
+    background: #080f1dc9;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid #ffffff26;
     display: flex;
     align-items: center;
     gap: 12px;
+    padding: 10px 16px;
+    border-radius: 999px;
     font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: border-color 0.2s;
+  }
+  .lab-hero-people > a:hover {
+    border-color: var(--color-lime);
   }
   .lab-hero-bottom {
     display: flex;
@@ -315,6 +327,14 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
+  }
+  .lab-hero-future .lab-hero-bottom a {
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .lab-hero-future .lab-hero-bottom a:hover {
+    color: var(--color-lime);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -1147,6 +1167,10 @@
     .lab-hero-faces > a {
       width: 49px;
       height: 58px;
+    }
+    .lab-hero-people > a {
+      padding: 8px 12px;
+      font-size: 0.75rem;
     }
     .lab-hero-future .lab-hero-bottom {
       gap: 10px;

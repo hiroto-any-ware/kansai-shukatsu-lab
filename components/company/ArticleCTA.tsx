@@ -37,7 +37,7 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
   ].filter((c): c is CTACard => c !== null);
 
   return (
-    <section className="bg-sky-50 py-16 md:py-20">
+    <section className="bg-[#eef0f3] py-16 md:py-20">
       <Container narrow>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {cards.map((c) => (
@@ -48,13 +48,13 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
                 rel={c.external ? "noopener noreferrer" : undefined}
                 className="group flex h-full flex-col justify-between rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(10,23,48,0.06)] transition-shadow hover:shadow-[0_16px_32px_-16px_rgba(10,23,48,0.25)]"
               >
-                <c.icon size={20} className="text-accent-600" />
-                <p className="font-display mt-6 text-[15px] font-bold leading-6 text-navy-900">
+                <c.icon size={20} className="text-electric" />
+                <p className="font-display mt-6 text-[15px] font-bold leading-6 text-ink">
                   {c.title}
                 </p>
                 <ArrowUpRight
                   size={16}
-                  className="mt-4 text-navy-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-600"
+                  className="mt-4 text-[#515966] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-electric"
                 />
               </Link>
             </Reveal>

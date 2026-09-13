@@ -53,7 +53,7 @@ export function Header() {
             <span
               className={cn(
                 "font-display text-[15px] font-medium tracking-wide transition-colors md:text-base",
-                onDarkHero ? "text-white" : "text-navy-900"
+                onDarkHero ? "text-white" : "text-ink"
               )}
             >
               関西就活ラボ
@@ -61,7 +61,7 @@ export function Header() {
             <span
               className={cn(
                 "font-label hidden text-[10px] tracking-[0.2em] transition-colors md:block",
-                onDarkHero ? "text-white/70" : "text-navy-500"
+                onDarkHero ? "text-white/70" : "text-[#515966]"
               )}
             >
               KANSAI SHUKATSU LAB
@@ -78,15 +78,15 @@ export function Header() {
                 "relative text-[13.5px] font-medium transition-colors",
                 onDarkHero
                   ? "text-white/85 hover:text-white"
-                  : "text-navy-800/80 hover:text-navy-900",
-                pathname === item.href && (onDarkHero ? "text-white" : "text-navy-900")
+                  : "text-ink/80 hover:text-ink",
+                pathname === item.href && (onDarkHero ? "text-white" : "text-ink")
               )}
             >
               {item.label}
               {pathname === item.href && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute -bottom-1.5 left-0 h-[2px] w-full bg-accent-500"
+                  className="absolute -bottom-1.5 left-0 h-[2px] w-full bg-electric"
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 />
               )}
@@ -108,7 +108,7 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             className={cn(
               "flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
-              onDarkHero ? "text-white" : "text-navy-900"
+              onDarkHero ? "text-white" : "text-ink"
             )}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -123,7 +123,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-navy-900/10 bg-white lg:hidden"
+            className="overflow-hidden border-t border-[#cdd1d8] bg-white lg:hidden"
           >
             <nav className="flex flex-col px-6 py-4">
               {mainNav.map((item, i) => (
@@ -135,7 +135,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="block border-b border-navy-900/5 py-4 text-[15px] font-medium text-navy-900"
+                    className="block border-b border-[#cdd1d8] py-4 text-[15px] font-medium text-ink"
                   >
                     {item.label}
                   </Link>

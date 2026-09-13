@@ -32,20 +32,20 @@ function groupBlocks(blocks: ArticleBlock[]): Group[] {
 
 function QAList({ items }: { items: QA[] }) {
   return (
-    <div className="space-y-8 border-l-2 border-navy-900/10 pl-6 sm:pl-8">
+    <div className="space-y-8 border-l-2 border-[#cdd1d8] pl-6 sm:pl-8">
       {items.map((qa, i) => (
         <StaggerReveal key={i} gap={0.18} y={10}>
           <div>
             {qa.speaker && (
-              <p className="font-label mb-1.5 text-[11px] font-semibold tracking-widest text-accent-600">
+              <p className="font-label mb-1.5 text-[11px] font-semibold tracking-widest text-electric">
                 {qa.speaker}
               </p>
             )}
-            <p className="font-display text-base leading-8 font-bold text-navy-900 md:text-lg">
+            <p className="font-display text-base leading-8 font-bold text-ink md:text-lg">
               Q. {qa.q}
             </p>
           </div>
-          <p className="mt-2.5 max-w-2xl text-[15px] leading-7 text-navy-600">
+          <p className="mt-2.5 max-w-2xl text-[15px] leading-7 text-[#515966]">
             A. {qa.a}
           </p>
         </StaggerReveal>
@@ -62,12 +62,12 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       return (
         <div className="space-y-4">
           {block.speaker && (
-            <p className="font-label text-[11px] font-semibold tracking-widest text-accent-600">
+            <p className="font-label text-[11px] font-semibold tracking-widest text-electric">
               {block.speaker}
             </p>
           )}
           {block.paragraphs.map((p, i) => (
-            <p key={i} className="max-w-2xl text-[15px] leading-8 text-navy-700">
+            <p key={i} className="max-w-2xl text-[15px] leading-8 text-ink">
               {p}
             </p>
           ))}
@@ -75,8 +75,8 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       );
     case "quote":
       return (
-        <blockquote className="max-w-2xl border-l-4 border-accent-500/40 pl-5 md:pl-6">
-          <p className="font-display text-lg leading-relaxed text-navy-900 md:text-xl">
+        <blockquote className="max-w-2xl border-l-4 border-electric/40 pl-5 md:pl-6">
+          <p className="font-display text-lg leading-relaxed text-ink md:text-xl">
             &ldquo;{block.text}&rdquo;
           </p>
         </blockquote>
@@ -85,8 +85,8 @@ function BlockRenderer({ block }: { block: ArticleBlock }) {
       return (
         <ul className="max-w-2xl space-y-3">
           {block.items.map((item, i) => (
-            <li key={i} className="flex gap-3 text-[15px] leading-7 text-navy-700">
-              <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" />
+            <li key={i} className="flex gap-3 text-[15px] leading-7 text-ink">
+              <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-lime" />
               <span>{item}</span>
             </li>
           ))}
@@ -108,21 +108,21 @@ export function ArticleBody({ company }: { company: CompanyInterview }) {
 
       <div className="mt-12 flex flex-col">
         {groups.map((group, gi) => {
-          const tint = gi % 2 === 1 ? "bg-sky-50/60" : "bg-white";
+          const tint = gi % 2 === 1 ? "bg-[#eef0f3]/60" : "bg-white";
           return (
-            <div key={gi} className={cn("border-t border-navy-900/8", tint)}>
+            <div key={gi} className={cn("border-t border-[#cdd1d8]", tint)}>
               <Container narrow className="py-10 md:py-14">
                 {group.heading && (
                   <Reveal>
                     <div className="flex items-baseline gap-4">
-                      <span className="font-display text-3xl font-light text-navy-900/15 md:text-4xl">
+                      <span className="font-display text-3xl font-light text-ink/15 md:text-4xl">
                         {String(gi + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="font-display text-xl font-bold leading-snug text-navy-900 md:text-2xl">
+                      <h3 className="font-display text-xl font-bold leading-snug text-ink md:text-2xl">
                         {group.heading}
                       </h3>
                     </div>
-                    <GrowLine className="mt-4 max-w-[120px] text-navy-900/15" delay={0.2} />
+                    <GrowLine className="mt-4 max-w-[120px] text-ink/15" delay={0.2} />
                   </Reveal>
                 )}
                 <div className={cn("space-y-6", group.heading && "mt-6")}>

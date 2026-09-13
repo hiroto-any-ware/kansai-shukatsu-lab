@@ -15,25 +15,25 @@ function rows(c: CompanyInterview) {
 export function CompanyProfile({ company }: { company: CompanyInterview }) {
   const infoRows = rows(company);
   return (
-    <section className="border-b border-navy-900/8 bg-white py-14 md:py-20">
+    <section className="border-b border-[#cdd1d8] bg-white py-14 md:py-20">
       <Container narrow>
-        <Reveal className="flex flex-col gap-8 rounded-2xl border border-navy-900/8 p-6 sm:gap-10 md:p-10">
-          <p className="font-display text-xl font-bold text-navy-900">
+        <Reveal className="flex flex-col gap-8 rounded-2xl border border-[#cdd1d8] p-6 sm:gap-10 md:p-10">
+          <p className="font-display text-xl font-bold text-ink">
             {company.companyName}
           </p>
 
           <dl className="grid flex-1 grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
             {infoRows.map((r) => (
               <div key={r.label}>
-                <dt className="font-label text-[10px] font-semibold tracking-widest text-navy-400">
+                <dt className="font-label text-[10px] font-semibold tracking-widest text-[#515966]">
                   {r.label.toUpperCase()}
                 </dt>
-                <dd className="mt-1.5 text-sm leading-6 text-navy-800">{r.value}</dd>
+                <dd className="mt-1.5 text-sm leading-6 text-ink">{r.value}</dd>
               </div>
             ))}
             {company.website && (
               <div>
-                <dt className="font-label text-[10px] font-semibold tracking-widest text-navy-400">
+                <dt className="font-label text-[10px] font-semibold tracking-widest text-[#515966]">
                   WEBSITE
                 </dt>
                 <dd className="mt-1.5">
@@ -41,7 +41,7 @@ export function CompanyProfile({ company }: { company: CompanyInterview }) {
                     href={company.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 hover:text-accent-700"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric hover:text-electric-deep"
                   >
                     <Globe size={13} />
                     企業HPを見る
@@ -52,7 +52,7 @@ export function CompanyProfile({ company }: { company: CompanyInterview }) {
           </dl>
         </Reveal>
         {company.employeeCount && (
-          <p className="mt-4 text-xs leading-6 text-navy-400">
+          <p className="mt-4 text-xs leading-6 text-[#515966]">
             ※ 従業員数は企業から提供された事実情報として掲載しており、企業の優劣や検索条件には使用していません。
           </p>
         )}

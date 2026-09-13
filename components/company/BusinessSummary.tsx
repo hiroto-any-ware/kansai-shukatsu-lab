@@ -6,7 +6,7 @@ import { GrowLine } from "@/components/ui/GrowLine";
 
 export function BusinessSummary({ company }: { company: CompanyInterview }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 py-20 text-white md:py-28">
+    <section className="relative overflow-hidden bg-void py-20 text-white md:py-28">
       <span
         aria-hidden
         className="font-display pointer-events-none absolute -left-10 -top-6 select-none text-[10rem] leading-none text-white/[0.05] md:text-[16rem]"
@@ -37,7 +37,7 @@ export function BusinessSummary({ company }: { company: CompanyInterview }) {
 
           <Reveal variant="right" delay={0.1} className="lg:col-span-7 lg:col-start-6">
             {company.businessType && (
-              <p className="font-display text-xl leading-relaxed text-sky-100 sm:text-2xl">
+              <p className="font-display text-xl leading-relaxed text-[#ced5e1] sm:text-2xl">
                 {company.businessType}
               </p>
             )}
