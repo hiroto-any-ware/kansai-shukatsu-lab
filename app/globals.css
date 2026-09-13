@@ -820,22 +820,8 @@
   /* Editorial "story" grid (used on list-style pages) */
   .lab-stories {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
-  }
-  .lab-story--normal {
-    grid-column: span 2;
-  }
-  .lab-story--large {
-    grid-column: span 4;
-    grid-row: span 2;
-  }
-  .lab-story--large .lab-story-photo {
-    aspect-ratio: 4 / 6;
-  }
-  .lab-story--large h3 {
-    font-size: 1.375rem;
   }
   .lab-story {
     display: block;
@@ -1341,12 +1327,6 @@
     .lab-stories article {
       scroll-snap-align: start;
       flex: 0 0 84%;
-    }
-    .lab-story--large .lab-story-photo {
-      aspect-ratio: 4 / 5;
-    }
-    .lab-story--large h3 {
-      font-size: 1.125rem;
     }
     .lab-filter-row {
       grid-template-columns: 1fr;

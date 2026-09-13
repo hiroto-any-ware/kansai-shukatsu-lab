@@ -6,16 +6,13 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { useRevealVisible } from "@/components/ui/Reveal";
-import { cn } from "@/lib/cn";
 
+// すべてのインタビューを同じ大きさの枠で並べる（優劣の印象を与えないため、
+// 企業によって枠の大きさや比率を変えない）。
 /**
  * インタビュー一覧の登場演出。写真はズーム＋左右スライドイン
  * （インタビュー詳細ヒーローの社長写真と同じ動きの言語）で現れ、
  * キャプションはそのあとに追いかけて浮かび上がる。
- *
- * 4件ごとに1件を大きく表示し、雑誌のような強弱をつける。
- * サイズの違いは掲載順の演出であり、企業の優劣を表すものではない
- * （どの企業が「大きい枠」になるかは常に位置だけで決まる）。
  */
 export function StoryCard({
   company,
@@ -27,10 +24,9 @@ export function StoryCard({
   const { ref, visible } = useRevealVisible<HTMLElement>();
   const delay = (index % 3) * 0.12;
   const x = index % 2 === 0 ? -48 : 48;
-  const large = index % 4 === 0;
 
   return (
-    <article ref={ref} className={cn("lab-story", large ? "lab-story--large" : "lab-story--normal")}>
+    <article ref={ref} className="lab-story">
       <Link href={`/companies/${company.slug}`} className="group block">
         <div className="lab-story-photo">
           <motion.div
