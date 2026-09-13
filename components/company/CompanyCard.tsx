@@ -8,8 +8,8 @@ import { useRevealVisible } from "@/components/ui/Reveal";
 
 // すべての企業を同じ形・同じ大きさの枠で並べる（優劣の印象を与えないため、
 // 企業によって枠の大きさや比率を変えない）。
-// 登場演出は「企業を探す」ページ専用のズーム＋ぼかし解除。インタビュー一覧の
-// 幕が上がる演出や、TOPページのフェード＋上昇とは異なる動きにしている。
+// 登場演出は、インタビュー詳細ヒーローの社長写真と同じズーム＋左右スライド
+// インに統一している。
 export function CompanyCard({
   company,
   index,
@@ -18,20 +18,21 @@ export function CompanyCard({
   index: number;
 }) {
   const { ref, visible } = useRevealVisible<HTMLDivElement>();
+  const x = index % 2 === 0 ? -48 : 48;
 
   return (
     <motion.div
       ref={ref}
       layout
-      initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+      initial={{ opacity: 0, scale: 1.04, x }}
       animate={
         visible
-          ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-          : { opacity: 0, scale: 0.9, filter: "blur(10px)" }
+          ? { opacity: 1, scale: 1, x: 0 }
+          : { opacity: 0, scale: 1.04, x }
       }
       exit={{ opacity: 0, scale: 0.92, transition: { duration: 0.25 } }}
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.6, delay: (index % 6) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, delay: (index % 6) * 0.08, ease: [0.16, 1, 0.3, 1] }}
     >
       <Link href={`/companies/${company.slug}`} className="group block h-full">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">

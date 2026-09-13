@@ -8,9 +8,9 @@ import { CompanyInterview } from "@/lib/types";
 import { useRevealVisible } from "@/components/ui/Reveal";
 
 /**
- * インタビュー一覧専用の登場演出。写真を下から幕が上がるようにclip-pathで
- * 開き、キャプションはそのあとに追いかけて浮かび上がる。TOPページの
- * フェード＋上昇（Reveal）や3Dオービットとは異なる、このページだけの動き。
+ * インタビュー一覧の登場演出。写真はズーム＋左右スライドイン
+ * （インタビュー詳細ヒーローの社長写真と同じ動きの言語）で現れ、
+ * キャプションはそのあとに追いかけて浮かび上がる。
  */
 export function StoryCard({
   company,
@@ -20,7 +20,8 @@ export function StoryCard({
   index: number;
 }) {
   const { ref, visible } = useRevealVisible<HTMLElement>();
-  const delay = (index % 4) * 0.1;
+  const delay = (index % 3) * 0.12;
+  const x = index % 2 === 0 ? -48 : 48;
 
   return (
     <article ref={ref} className="lab-story">
@@ -28,9 +29,13 @@ export function StoryCard({
         <div className="lab-story-photo">
           <motion.div
             className="absolute inset-0"
-            initial={{ clipPath: "inset(100% 0 0 0)" }}
-            animate={{ clipPath: visible ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)" }}
-            transition={{ duration: 0.9, delay, ease: [0.65, 0, 0.35, 1] }}
+            initial={{ opacity: 0, scale: 1.04, x }}
+            animate={
+              visible
+                ? { opacity: 1, scale: 1, x: 0 }
+                : { opacity: 0, scale: 1.04, x }
+            }
+            transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image
               src={company.photo}
@@ -48,7 +53,7 @@ export function StoryCard({
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 14 }}
-          transition={{ duration: 0.6, delay: delay + 0.35, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="lab-meta">
             {company.category} ／ {company.prefecture}
