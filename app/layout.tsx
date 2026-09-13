@@ -3,6 +3,7 @@ import { Noto_Sans_JP, Shippori_Mincho, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageTransition } from "@/components/layout/PageTransition";
 import { siteConfig } from "@/lib/site";
 
 const notoSansJP = Noto_Sans_JP({
@@ -73,7 +74,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col bg-paper text-ink">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

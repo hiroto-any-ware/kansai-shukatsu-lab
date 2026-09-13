@@ -4,7 +4,9 @@ import { CompanyInterview } from "@/lib/types";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
+import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { LineReveal } from "@/components/ui/LineReveal";
+import { PhotoReveal } from "@/components/ui/PhotoReveal";
 
 export function ArticleHero({ company }: { company: CompanyInterview }) {
   return (
@@ -35,10 +37,13 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
         />
 
         <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="order-2 lg:order-1 lg:col-span-7">
+          <StaggerReveal
+            className="order-2 lg:order-1 lg:col-span-7"
+            gap={0.13}
+          >
             <SectionNumber no="01" label="COMPANY" />
             <h1 className="font-display mt-6 text-balance text-[28px] font-bold leading-[1.3] text-navy-900 sm:text-4xl md:text-[44px]">
-              {company.title}
+              <LineReveal lines={[company.title]} />
             </h1>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <span className="font-label rounded-full bg-navy-900 px-3 py-1.5 text-[11px] font-semibold tracking-widest text-white">
@@ -53,15 +58,17 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
                 {company.publishedAt}
               </span>
             </div>
-            <p className="mt-6 max-w-md text-sm font-semibold text-navy-700">
-              {company.companyName}
-            </p>
-            <p className="mt-3 max-w-md text-sm leading-7 text-navy-500">
-              {company.lead[0]}
-            </p>
-          </Reveal>
+            <div>
+              <p className="mt-6 max-w-md text-sm font-semibold text-navy-700">
+                {company.companyName}
+              </p>
+              <p className="mt-3 max-w-md text-sm leading-7 text-navy-500">
+                {company.lead[0]}
+              </p>
+            </div>
+          </StaggerReveal>
 
-          <Reveal delay={0.1} className="order-1 lg:order-2 lg:col-span-5">
+          <PhotoReveal delay={0.15} className="order-1 lg:order-2 lg:col-span-5">
             <div className="relative mx-auto w-[78%] max-w-xs sm:w-3/5 lg:ml-auto lg:w-full lg:max-w-sm">
               <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent-100 to-sky-100 lg:-inset-6" />
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl">
@@ -75,7 +82,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
                 />
               </div>
             </div>
-          </Reveal>
+          </PhotoReveal>
         </div>
       </Container>
     </header>

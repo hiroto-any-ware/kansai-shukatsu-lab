@@ -22,12 +22,15 @@ export function CompanyCard({
   return (
     <motion.div
       ref={ref}
+      layout
       initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
       animate={
         visible
           ? { opacity: 1, scale: 1, filter: "blur(0px)" }
           : { opacity: 0, scale: 0.9, filter: "blur(10px)" }
       }
+      exit={{ opacity: 0, scale: 0.92, transition: { duration: 0.25 } }}
+      whileHover={{ y: -6 }}
       transition={{ duration: 0.6, delay: (index % 6) * 0.06, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link href={`/companies/${company.slug}`} className="group block h-full">

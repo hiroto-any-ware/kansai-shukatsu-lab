@@ -84,7 +84,11 @@ export function Header() {
             >
               {item.label}
               {pathname === item.href && (
-                <span className="absolute -bottom-1.5 left-0 h-[2px] w-full bg-accent-500" />
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute -bottom-1.5 left-0 h-[2px] w-full bg-accent-500"
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                />
               )}
             </Link>
           ))}

@@ -695,6 +695,7 @@
   }
   .lab-story {
     display: block;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .lab-story-photo {
     aspect-ratio: 4 / 5;
@@ -705,9 +706,6 @@
   .lab-story-photo img {
     transition: transform 0.5s;
   }
-  .lab-story:hover img {
-    transform: scale(1.035);
-  }
   .lab-story-arrow {
     color: var(--color-electric);
     background: #fff;
@@ -715,6 +713,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .lab-meta {
     color: #515966;
@@ -726,6 +725,21 @@
     font-size: 1.125rem;
     font-weight: 700;
     line-height: 1.7;
+    transition: color 0.25s;
+  }
+  @media (hover: hover) {
+    .lab-story:hover {
+      transform: translateY(-5px);
+    }
+    .lab-story:hover img {
+      transform: scale(1.035);
+    }
+    .lab-story:hover .lab-story-arrow {
+      transform: translate(3px, -3px);
+    }
+    .lab-story:hover h3 {
+      color: var(--color-electric);
+    }
   }
   .lab-company {
     color: #515966;

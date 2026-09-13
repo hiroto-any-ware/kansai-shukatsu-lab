@@ -34,7 +34,7 @@ export function PullQuote({
         &ldquo;
       </span>
       <div className="relative mx-auto max-w-3xl px-6 text-center md:px-10">
-        <Reveal>
+        <Reveal variant="scale">
           <p className="font-display text-balance text-2xl leading-snug font-bold sm:text-3xl md:text-[2.75rem]">
             {quote}
           </p>

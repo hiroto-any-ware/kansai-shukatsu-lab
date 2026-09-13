@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   CompanyInterview,
   PREFECTURES,
@@ -104,14 +105,19 @@ export function CompanyListClient({
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-20 text-center text-sm text-[#515966]">
+        <motion.p
+          layout
+          className="py-20 text-center text-sm text-[#515966]"
+        >
           条件に合う企業が見つかりませんでした。絞り込み条件を変えてお試しください。
-        </p>
+        </motion.p>
       ) : (
         <div className="lab-companies-grid">
-          {filtered.map((c, i) => (
-            <CompanyCard key={c.slug} company={c} index={i} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filtered.map((c, i) => (
+              <CompanyCard key={c.slug} company={c} index={i} />
+            ))}
+          </AnimatePresence>
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import { Globe } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 
 function rows(c: CompanyInterview) {
   return [
@@ -16,7 +17,7 @@ export function CompanyProfile({ company }: { company: CompanyInterview }) {
   return (
     <section className="border-b border-navy-900/8 bg-white py-14 md:py-20">
       <Container narrow>
-        <div className="flex flex-col gap-8 rounded-2xl border border-navy-900/8 p-6 sm:gap-10 md:p-10">
+        <Reveal className="flex flex-col gap-8 rounded-2xl border border-navy-900/8 p-6 sm:gap-10 md:p-10">
           <p className="font-display text-xl font-bold text-navy-900">
             {company.companyName}
           </p>
@@ -49,7 +50,7 @@ export function CompanyProfile({ company }: { company: CompanyInterview }) {
               </div>
             )}
           </dl>
-        </div>
+        </Reveal>
         {company.employeeCount && (
           <p className="mt-4 text-xs leading-6 text-navy-400">
             ※ 従業員数は企業から提供された事実情報として掲載しており、企業の優劣や検索条件には使用していません。

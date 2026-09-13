@@ -2,6 +2,8 @@ import { ArticleBlock, CompanyInterview, QA } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
 import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
+import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { GrowLine } from "@/components/ui/GrowLine";
 import { cn } from "@/lib/cn";
 
 interface Group {
@@ -32,19 +34,21 @@ function QAList({ items }: { items: QA[] }) {
   return (
     <div className="space-y-8 border-l-2 border-navy-900/10 pl-6 sm:pl-8">
       {items.map((qa, i) => (
-        <div key={i}>
-          {qa.speaker && (
-            <p className="font-label mb-1.5 text-[11px] font-semibold tracking-widest text-accent-600">
-              {qa.speaker}
+        <StaggerReveal key={i} gap={0.18} y={10}>
+          <div>
+            {qa.speaker && (
+              <p className="font-label mb-1.5 text-[11px] font-semibold tracking-widest text-accent-600">
+                {qa.speaker}
+              </p>
+            )}
+            <p className="font-display text-base leading-8 font-bold text-navy-900 md:text-lg">
+              Q. {qa.q}
             </p>
-          )}
-          <p className="font-display text-base leading-8 font-bold text-navy-900 md:text-lg">
-            Q. {qa.q}
-          </p>
+          </div>
           <p className="mt-2.5 max-w-2xl text-[15px] leading-7 text-navy-600">
             A. {qa.a}
           </p>
-        </div>
+        </StaggerReveal>
       ))}
     </div>
   );
@@ -109,18 +113,25 @@ export function ArticleBody({ company }: { company: CompanyInterview }) {
             <div key={gi} className={cn("border-t border-navy-900/8", tint)}>
               <Container narrow className="py-10 md:py-14">
                 {group.heading && (
-                  <Reveal className="flex items-baseline gap-4">
-                    <span className="font-display text-3xl font-light text-navy-900/15 md:text-4xl">
-                      {String(gi + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="font-display text-xl font-bold leading-snug text-navy-900 md:text-2xl">
-                      {group.heading}
-                    </h3>
+                  <Reveal>
+                    <div className="flex items-baseline gap-4">
+                      <span className="font-display text-3xl font-light text-navy-900/15 md:text-4xl">
+                        {String(gi + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="font-display text-xl font-bold leading-snug text-navy-900 md:text-2xl">
+                        {group.heading}
+                      </h3>
+                    </div>
+                    <GrowLine className="mt-4 max-w-[120px] text-navy-900/15" delay={0.2} />
                   </Reveal>
                 )}
                 <div className={cn("space-y-6", group.heading && "mt-6")}>
                   {group.blocks.map((block, bi) => (
-                    <Reveal key={bi} delay={0.05}>
+                    <Reveal
+                      key={bi}
+                      delay={0.05}
+                      variant={block.type === "quote" ? "scale" : "up"}
+                    >
                       <BlockRenderer block={block} />
                     </Reveal>
                   ))}

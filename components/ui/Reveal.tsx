@@ -4,12 +4,29 @@ import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { cn } from "@/lib/cn";
 
-const variants: Variants = {
+const upVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const fadeVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const scaleVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.92 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -65,13 +82,18 @@ export function Reveal({
   className,
   delay = 0,
   as = "div",
+  variant = "up",
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   as?: "div" | "li";
+  /** "up": フェード＋上昇（既定）。"fade": 位置移動のない単純フェード。"scale": 拡大しながら現れる（引用文向け）。 */
+  variant?: "up" | "fade" | "scale";
 }) {
   const { ref, visible } = useRevealVisible<HTMLLIElement | HTMLDivElement>();
+  const variants =
+    variant === "fade" ? fadeVariants : variant === "scale" ? scaleVariants : upVariants;
 
   if (as === "li") {
     return (

@@ -2,6 +2,7 @@ import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
 import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
+import { GrowLine } from "@/components/ui/GrowLine";
 
 export function BusinessSummary({ company }: { company: CompanyInterview }) {
   return (
@@ -40,7 +41,8 @@ export function BusinessSummary({ company }: { company: CompanyInterview }) {
                 {company.businessType}
               </p>
             )}
-            <div className="mt-8 space-y-5 border-t border-white/10 pt-8">
+            <GrowLine className="mt-8 text-white/20" delay={0.15} />
+            <div className="space-y-5 pt-8">
               {company.lead.map((p, i) => (
                 <p key={i} className="max-w-xl text-[15px] leading-8 text-white/70">
                   {p}
