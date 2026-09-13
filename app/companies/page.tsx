@@ -20,7 +20,7 @@ export default async function CompaniesPage({
   return (
     <div className="lab-home">
       <section className="lab-section" style={{ paddingTop: "clamp(120px, 14vw, 168px)" }}>
-        <Reveal>
+        <Reveal variant="left">
           <div className="mb-6">
             <Breadcrumb items={[{ label: "企業を探す" }]} />
           </div>

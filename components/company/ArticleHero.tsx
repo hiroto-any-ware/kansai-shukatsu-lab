@@ -40,6 +40,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
           <StaggerReveal
             className="order-2 lg:order-1 lg:col-span-7"
             gap={0.13}
+            x={-36}
           >
             <SectionNumber no="01" label="COMPANY" />
             <h1 className="font-display mt-6 text-balance text-[28px] font-bold leading-[1.3] text-navy-900 sm:text-4xl md:text-[44px]">

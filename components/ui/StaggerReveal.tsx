@@ -15,11 +15,14 @@ export function StaggerReveal({
   className,
   gap = 0.12,
   y = 16,
+  x = 0,
 }: {
   children: React.ReactNode;
   className?: string;
   gap?: number;
   y?: number;
+  /** 初期のx方向オフセット。負の値で左から、正の値で右から滑り込む。 */
+  x?: number;
 }) {
   const { ref, visible } = useRevealVisible<HTMLDivElement>();
   const items = Children.toArray(children);
@@ -29,9 +32,13 @@ export function StaggerReveal({
       {items.map((child, i) => (
         <motion.div
           key={isValidElement(child) && child.key ? child.key : i}
-          initial={{ opacity: 0, y }}
-          animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y }}
-          transition={{ duration: 0.6, delay: i * gap, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y, x }}
+          animate={visible ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y, x }}
+          transition={{
+            duration: x ? 0.7 : 0.6,
+            delay: i * gap,
+            ease: x ? [0.16, 1, 0.3, 1] : [0.22, 1, 0.36, 1],
+          }}
         >
           {child}
         </motion.div>

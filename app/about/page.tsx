@@ -84,7 +84,7 @@ export default function AboutPage() {
       {/* HERO */}
       <section className="lab-about-hero">
         <div className="lab-about-hero-grid">
-          <Reveal className="lab-about-hero-copy">
+          <Reveal variant="left" className="lab-about-hero-copy">
             <div className="mb-6">
               <Breadcrumb items={[{ label: "関西就活ラボについて" }]} />
             </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
             </h1>
             <p>関西の就活生と企業を、&ldquo;想い&rdquo;で繋ぐ架け橋に。</p>
           </Reveal>
-          <Reveal delay={0.1} as="div">
+          <Reveal variant="right" delay={0.1} as="div">
             <figure className="lab-about-hero-photo">
               <Image
                 src={STOCK_IMAGES.arashiyamaBamboo}
@@ -115,7 +115,7 @@ export default function AboutPage() {
 
       {/* なぜ・何を目指すのか */}
       <section className="lab-section lab-about-intro">
-        <Reveal>
+        <Reveal variant="left">
           <p className="lab-label">
             <span className="lab-label-rule" aria-hidden="true" /> WHY WE STARTED
           </p>
@@ -129,7 +129,7 @@ export default function AboutPage() {
             </p>
           </div>
         </Reveal>
-        <Reveal delay={0.1}>
+        <Reveal variant="right" delay={0.1}>
           <p className="lab-label">
             <span className="lab-label-rule" aria-hidden="true" /> WHAT WE AIM FOR
           </p>
@@ -188,8 +188,8 @@ export default function AboutPage() {
           <h2 className="mt-4 text-3xl font-bold md:text-4xl">私たちが大切にしていること</h2>
         </Reveal>
         <div className="lab-values relative">
-          {values.map((v) => (
-            <StaggerReveal key={v.no} gap={0.14}>
+          {values.map((v, i) => (
+            <StaggerReveal key={v.no} gap={0.14} x={i % 2 === 0 ? -40 : 40}>
               <p className="lab-label">{v.en}</p>
               <h3>
                 {v.no} {v.title}
@@ -215,7 +215,11 @@ export default function AboutPage() {
         </Reveal>
         <div className="lab-next-grid relative">
           {nextSteps.map((s, i) => (
-            <Reveal key={s.en} delay={i * 0.08}>
+            <Reveal
+              key={s.en}
+              delay={i * 0.08}
+              variant={i === 0 ? "left" : i === 2 ? "right" : "up"}
+            >
               <div>
                 <span>{s.en}</span>
                 <p>{s.text}</p>
@@ -272,7 +276,7 @@ export default function AboutPage() {
         </Reveal>
 
         <div className="lab-join-grid">
-          <Reveal className="lab-join-card">
+          <Reveal variant="left" className="lab-join-card">
             <p className="lab-label">FOR COMPANIES</p>
             <h3>企業の皆様へ</h3>
             <ul>
@@ -281,7 +285,7 @@ export default function AboutPage() {
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.1} className="lab-join-card">
+          <Reveal variant="right" delay={0.1} className="lab-join-card">
             <p className="lab-label">FOR STUDENTS</p>
             <h3>学生の皆様へ</h3>
             <ul>

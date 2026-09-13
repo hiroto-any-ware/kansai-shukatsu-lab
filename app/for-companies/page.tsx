@@ -43,7 +43,7 @@ export default function ForCompaniesPage() {
         <Container className="relative">
           <Breadcrumb items={[{ label: "企業の方へ" }]} />
           <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
-            <div className="lg:col-span-7">
+            <Reveal variant="left" className="lg:col-span-7">
               <Eyebrow>FOR COMPANIES</Eyebrow>
               <h1 className="font-display mt-5 text-3xl font-bold leading-snug text-navy-900 md:text-5xl">
                 自社の本当の魅力を、
@@ -58,8 +58,8 @@ export default function ForCompaniesPage() {
               <p className="mt-5 max-w-lg text-sm leading-7 text-navy-500">
                 関西就活ラボでは、企業への取材を通して、御社が大切にされている想いや、職場の「本当の姿」を丁寧に紐解き、学生へ届けます。仕事内容や条件だけではなく、「なぜ、この事業をしているのか」「どんな人たちが働いているのか」「どんな未来を目指しているのか」というストーリーまで伝えることで、企業の価値観に共感する学生との新しい接点をつくっていきます。
               </p>
-            </div>
-            <Reveal className="lg:col-span-5">
+            </Reveal>
+            <Reveal variant="right" className="lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
                 <Image
                   src={STOCK_IMAGES.naraParkDeer}
@@ -88,8 +88,13 @@ export default function ForCompaniesPage() {
             </h2>
           </Reveal>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {values.map((v) => (
-              <Reveal key={v} className="flex items-start gap-3 rounded-xl border border-navy-900/8 bg-white/70 p-5 backdrop-blur-sm">
+            {values.map((v, i) => (
+              <Reveal
+                key={v}
+                variant={i % 2 === 0 ? "left" : "right"}
+                delay={(i % 2) * 0.06}
+                className="flex items-start gap-3 rounded-xl border border-navy-900/8 bg-white/70 p-5 backdrop-blur-sm"
+              >
                 <Check size={16} className="mt-0.5 shrink-0 text-accent-600" />
                 <p className="text-sm leading-6 text-navy-700">{v}</p>
               </Reveal>

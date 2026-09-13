@@ -5,11 +5,29 @@ import { motion, type Variants } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 const upVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 36 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const leftVariants: Variants = {
+  hidden: { opacity: 0, x: -72 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const rightVariants: Variants = {
+  hidden: { opacity: 0, x: 72 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -88,12 +106,22 @@ export function Reveal({
   className?: string;
   delay?: number;
   as?: "div" | "li";
-  /** "up": フェード＋上昇（既定）。"fade": 位置移動のない単純フェード。"scale": 拡大しながら現れる（引用文向け）。 */
-  variant?: "up" | "fade" | "scale";
+  /**
+   * "up": フェード＋上昇（既定）。"fade": 位置移動のない単純フェード。
+   * "scale": 拡大しながら現れる（引用文向け）。
+   * "left"/"right": 左右から滑り込んでくる（2カラムレイアウトの左右対で使う）。
+   */
+  variant?: "up" | "fade" | "scale" | "left" | "right";
 }) {
   const { ref, visible } = useRevealVisible<HTMLLIElement | HTMLDivElement>();
-  const variants =
-    variant === "fade" ? fadeVariants : variant === "scale" ? scaleVariants : upVariants;
+  const variantMap: Record<typeof variant, Variants> = {
+    up: upVariants,
+    fade: fadeVariants,
+    scale: scaleVariants,
+    left: leftVariants,
+    right: rightVariants,
+  };
+  const variants = variantMap[variant];
 
   if (as === "li") {
     return (

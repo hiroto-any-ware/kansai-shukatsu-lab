@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { companies } from "@/data/companies";
+import { Reveal } from "@/components/ui/Reveal";
 
 const ORBIT_ORDER = [
   "yamagata-harness",
@@ -155,7 +156,7 @@ export function InterviewOrbit() {
 
   return (
     <section id="stories" className="lab-section lab-interview-orbit">
-      <div className="lab-section-head">
+      <Reveal variant="left" className="lab-section-head">
         <div>
           <p className="lab-label">INTERVIEWS</p>
           <h2>働く人から、知っていく。</h2>
@@ -163,7 +164,7 @@ export function InterviewOrbit() {
         <Link href="/interviews">
           すべての記事 <ArrowUpRight size={18} aria-hidden="true" />
         </Link>
-      </div>
+      </Reveal>
 
       <div ref={rootRef} className="lab-carousel" role="region" aria-label="企業インタビューの回転ギャラリー">
         <input type="checkbox" id={toggleId} className="lab-rotation-toggle" defaultChecked />

@@ -26,7 +26,7 @@ export function BusinessSummary({ company }: { company: CompanyInterview }) {
 
       <Container className="relative">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4">
+          <Reveal variant="left" className="lg:col-span-4">
             <SectionNumber no="02" label="VISION" light />
             <h2 className="font-display mt-6 text-2xl font-bold leading-snug sm:text-3xl md:text-[2.25rem]">
               そもそも
@@ -35,7 +35,7 @@ export function BusinessSummary({ company }: { company: CompanyInterview }) {
             </h2>
           </Reveal>
 
-          <Reveal delay={0.1} className="lg:col-span-7 lg:col-start-6">
+          <Reveal variant="right" delay={0.1} className="lg:col-span-7 lg:col-start-6">
             {company.businessType && (
               <p className="font-display text-xl leading-relaxed text-sky-100 sm:text-2xl">
                 {company.businessType}
