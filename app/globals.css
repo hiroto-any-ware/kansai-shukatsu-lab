@@ -690,7 +690,7 @@
   /* Editorial "story" grid (used on list-style pages) */
   .lab-stories {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
   .lab-story {
@@ -987,9 +987,66 @@
     color: var(--color-lime);
   }
 
+  /* 企業を探すページ — 絞り込みピル */
+  .lab-pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .lab-pill {
+    color: var(--color-ink);
+    background: #fff;
+    border: 1px solid #cdd1d8;
+    padding: 10px 18px;
+    font-size: 0.875rem;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .lab-pill:hover {
+    border-color: var(--color-void);
+  }
+  .lab-pill[data-active="true"] {
+    color: #fff;
+    background: var(--color-void);
+    border-color: var(--color-void);
+  }
+  .lab-pill--dashed {
+    border-style: dashed;
+  }
+  .lab-companies-count {
+    color: #515966;
+    font-size: 0.875rem;
+  }
+  .lab-companies-count strong {
+    color: var(--color-ink);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  .lab-companies-reset {
+    color: #515966;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: inline-flex;
+  }
+  .lab-companies-reset:hover {
+    color: var(--color-ink);
+  }
+  .lab-companies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
   @media (max-width: 1100px) {
     .lab-stories {
       gap: 18px;
+    }
+    .lab-companies-grid {
+      grid-template-columns: 1fr 1fr;
     }
     .lab-connect {
       gap: 32px;
@@ -1169,7 +1226,8 @@
       aspect-ratio: 16 / 11;
     }
     .lab-next-grid,
-    .lab-join-grid {
+    .lab-join-grid,
+    .lab-companies-grid {
       grid-template-columns: 1fr;
       gap: 24px;
     }

@@ -9,6 +9,7 @@ import {
   regionLabel,
 } from "@/lib/types";
 import { CompanyCard } from "@/components/company/CompanyCard";
+import { Reveal } from "@/components/ui/Reveal";
 import { X } from "lucide-react";
 
 const REGION_OPTIONS = [...PREFECTURES, OTHER_REGION_LABEL];
@@ -48,24 +49,19 @@ export function CompanyListClient({
 
   return (
     <div>
-      <div className="flex flex-col gap-8 border-b border-navy-900/8 pb-10">
+      <Reveal className="flex flex-col gap-8 border-b border-[#cdd1d8] pb-10">
         <div>
-          <p className="font-label mb-1 text-xs font-semibold tracking-[0.25em] text-navy-400">
-            KANSAI AREA
-          </p>
-          <p className="mb-3 text-sm text-navy-500">
+          <p className="lab-label mb-2">KANSAI AREA</p>
+          <p className="mb-3 text-sm text-[#515966]">
             関西の企業を探す。指定しない場合は、すべての地域の企業インタビューを表示します。
           </p>
-          <div className="flex flex-wrap gap-2.5">
+          <div className="lab-pill-group">
             {REGION_OPTIONS.map((p) => (
               <button
                 key={p}
                 onClick={() => toggle(prefs, setPrefs, p)}
-                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-                  prefs.has(p)
-                    ? "border-navy-900 bg-navy-900 text-white"
-                    : "border-navy-900/15 text-navy-700 hover:border-navy-900/40"
-                } ${p === OTHER_REGION_LABEL ? "border-dashed" : ""}`}
+                data-active={prefs.has(p)}
+                className={`lab-pill ${p === OTHER_REGION_LABEL ? "lab-pill--dashed" : ""}`}
               >
                 {p}
               </button>
@@ -73,33 +69,25 @@ export function CompanyListClient({
           </div>
         </div>
         <div>
-          <p className="font-label mb-3 text-xs font-semibold tracking-[0.25em] text-navy-400">
-            CATEGORY
-          </p>
-          <div className="flex flex-wrap gap-2.5">
+          <p className="lab-label mb-3">CATEGORY</p>
+          <div className="lab-pill-group">
             {CATEGORIES.map((c) => (
               <button
                 key={c}
                 onClick={() => toggle(cats, setCats, c)}
-                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-                  cats.has(c)
-                    ? "border-accent-600 bg-accent-600 text-white"
-                    : "border-navy-900/15 text-navy-700 hover:border-navy-900/40"
-                }`}
+                data-active={cats.has(c)}
+                className="lab-pill"
               >
                 {c}
               </button>
             ))}
           </div>
         </div>
-      </div>
+      </Reveal>
 
       <div className="flex items-center justify-between py-8">
-        <p className="text-sm text-navy-500">
-          <span className="font-display text-lg font-bold text-navy-900">
-            {filtered.length}
-          </span>{" "}
-          件の企業インタビュー
+        <p className="lab-companies-count">
+          <strong>{filtered.length}</strong> 件の企業インタビュー
         </p>
         {hasFilter && (
           <button
@@ -107,7 +95,7 @@ export function CompanyListClient({
               setPrefs(new Set());
               setCats(new Set());
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900"
+            className="lab-companies-reset"
           >
             <X size={13} />
             絞り込みをリセット
@@ -116,11 +104,11 @@ export function CompanyListClient({
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-20 text-center text-sm text-navy-400">
+        <p className="py-20 text-center text-sm text-[#515966]">
           条件に合う企業が見つかりませんでした。絞り込み条件を変えてお試しください。
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="lab-companies-grid">
           {filtered.map((c, i) => (
             <CompanyCard key={c.slug} company={c} index={i} />
           ))}

@@ -13,7 +13,7 @@ const variants: Variants = {
   },
 };
 
-function prefersReducedMotion() {
+export function prefersReducedMotion() {
   return (
     typeof window !== "undefined" &&
     !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
@@ -27,7 +27,7 @@ function prefersReducedMotion() {
  * コンテンツが永久に非表示のままにならないよう、
  * 一定時間後に強制的に表示するフォールバックを備えている。
  */
-function useRevealVisible<T extends HTMLElement>() {
+export function useRevealVisible<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const skipAnimation =
     prefersReducedMotion() || typeof IntersectionObserver === "undefined";
