@@ -11,7 +11,7 @@ import { Logo } from "@/components/ui/Logo";
 
 // これらのページは冒頭セクションがネイビーの暗い背景のため、
 // スクロール前のヘッダーは白文字にして視認性を確保する。
-const DARK_HERO_ROUTES = new Set(["/", "/about"]);
+const DARK_HERO_ROUTES = new Set(["/"]);
 
 export function Header() {
   const pathname = usePathname();

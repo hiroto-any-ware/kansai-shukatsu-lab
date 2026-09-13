@@ -96,6 +96,9 @@
     letter-spacing: 0.12em;
     font-size: 0.875rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   .lab-label-rule {
     background: var(--color-lime);
@@ -733,6 +736,21 @@
   /* About page */
   .lab-about-hero {
     background: #eef1f6;
+    padding: clamp(120px, 14vw, 168px) 5vw 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .lab-about-hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 6vw;
+  }
+  .lab-about-hero-copy .lab-label {
+    color: #4a5568;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   .lab-about-hero h1 {
     letter-spacing: -0.045em;
@@ -741,10 +759,69 @@
     font-weight: 900;
     line-height: 1.35;
   }
-  .lab-about-hero > p:not(.lab-label) {
+  .lab-about-hero-copy p:not(.lab-label) {
+    color: #40485a;
+    max-width: 30em;
     font-size: 1rem;
     line-height: 1.9;
   }
+  .lab-about-hero-photo {
+    aspect-ratio: 4 / 5;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+    background: #d7deea;
+    position: relative;
+    overflow: hidden;
+  }
+  .lab-about-hero-photo img {
+    filter: saturate(0.9);
+  }
+  .lab-about-hero-photo figcaption {
+    color: #fff;
+    letter-spacing: 0.14em;
+    background: linear-gradient(0deg, #080f1db3, transparent 60%);
+    padding: 40px 20px 18px;
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  /* Bold mid-page statement */
+  .lab-about-statement {
+    background: var(--color-void);
+    color: #fff;
+    padding: clamp(64px, 9vw, 120px) 5vw;
+    text-align: center;
+  }
+  .lab-about-statement p {
+    letter-spacing: -0.03em;
+    margin: 0 auto;
+    max-width: 16em;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1.4;
+  }
+
+  /* Narrow prose column (why / what-we-aim-for continuation) */
+  .lab-about-body {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .lab-about-body p {
+    color: #40485a;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 2;
+  }
+  .lab-about-body p:last-child {
+    color: var(--color-ink);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
   .lab-about-intro {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -776,6 +853,9 @@
     font-size: 1rem;
     line-height: 1.9;
   }
+  .lab-values .lab-label {
+    color: var(--color-electric);
+  }
   .lab-process {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -792,6 +872,142 @@
   .lab-contact {
     max-width: 850px;
     margin: 0 auto;
+  }
+
+  /* "What's next" — dark section reusing the process-list rhythm */
+  .lab-about-next {
+    background: var(--color-void);
+    color: #fff;
+    isolation: isolate;
+    position: relative;
+    overflow: hidden;
+  }
+  .lab-about-next .lab-label {
+    color: var(--color-lime);
+  }
+  .lab-next-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .lab-next-grid > div {
+    border-top: 1px solid #3a4358;
+    padding-top: 24px;
+  }
+  .lab-next-grid span {
+    color: #6d84c9;
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+  .lab-next-grid p {
+    color: #ced5e1;
+    margin-top: 14px;
+    font-size: 0.9375rem;
+    line-height: 1.9;
+  }
+  .lab-about-next-statement {
+    border-top: 1px solid #3a4358;
+    margin-top: 48px;
+    padding-top: 40px;
+  }
+  .lab-about-next-statement p {
+    letter-spacing: -0.02em;
+    max-width: 30em;
+    font-size: clamp(20px, 2.6vw, 30px);
+    font-weight: 700;
+    line-height: 1.7;
+  }
+  .lab-about-next-statement p span {
+    color: var(--color-lime);
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  /* Join us — two lists + closing note */
+  .lab-join-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .lab-join-card {
+    background: #fff;
+    border: 1px solid #d8dce3;
+    padding: 36px;
+  }
+  .lab-join-card .lab-label {
+    color: var(--color-electric);
+  }
+  .lab-join-card h3 {
+    margin-top: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .lab-join-card ul {
+    margin-top: 24px;
+  }
+  .lab-join-card li {
+    border-top: 1px solid #eceef1;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    font-size: 0.9375rem;
+    display: flex;
+  }
+  .lab-join-card li::before {
+    content: "";
+    background: var(--color-lime);
+    border-radius: 999px;
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Final CTA */
+  .lab-about-cta {
+    background: var(--color-void);
+    color: #fff;
+    text-align: center;
+    padding: clamp(72px, 10vw, 120px) 5vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .lab-about-cta h2 {
+    letter-spacing: -0.03em;
+    margin: 0 auto;
+    max-width: 18em;
+    font-size: clamp(26px, 3.4vw, 44px);
+    font-weight: 900;
+    line-height: 1.5;
+  }
+  .lab-about-cta-actions {
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .lab-about-cta .lab-button {
+    margin-top: 0;
+  }
+  .lab-about-cta-outline {
+    color: #fff;
+    border: 1px solid #4a5568;
+    align-items: center;
+    gap: 10px;
+    padding: 17px 24px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    display: inline-flex;
+    transition: border-color 0.2s;
+  }
+  .lab-about-cta-outline:hover {
+    border-color: var(--color-lime);
+    color: var(--color-lime);
   }
 
   @media (max-width: 1100px) {
@@ -812,6 +1028,12 @@
     }
     .lab-hero-future .lab-hero-image {
       margin-bottom: 110px;
+    }
+    .lab-about-hero-grid {
+      gap: 5vw;
+    }
+    .lab-next-grid {
+      gap: 24px;
     }
   }
 
@@ -958,6 +1180,25 @@
     .lab-process {
       grid-template-columns: 1fr 1fr;
       gap: 24px;
+    }
+    .lab-about-hero {
+      padding: 96px 6vw 56px;
+    }
+    .lab-about-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .lab-about-hero-photo {
+      aspect-ratio: 16 / 11;
+    }
+    .lab-next-grid,
+    .lab-join-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .lab-about-cta-actions {
+      flex-direction: column;
+      align-items: stretch;
     }
   }
 }
