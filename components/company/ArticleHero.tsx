@@ -69,7 +69,7 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
             </div>
           </StaggerReveal>
 
-          <PhotoReveal delay={0.15} className="order-1 lg:order-2 lg:col-span-5">
+          <PhotoReveal delay={0.15} x={60} className="order-1 lg:order-2 lg:col-span-5">
             <div className="relative mx-auto w-[78%] max-w-xs sm:w-3/5 lg:ml-auto lg:w-full lg:max-w-sm">
               <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent-100 to-sky-100 lg:-inset-6" />
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl">
