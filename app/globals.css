@@ -735,7 +735,7 @@
 
   /* About page */
   .lab-about-hero {
-    background: #eef1f6;
+    background: #fff;
     padding: clamp(120px, 14vw, 168px) 5vw 72px;
     position: relative;
     overflow: hidden;
@@ -746,12 +746,6 @@
     align-items: center;
     gap: 6vw;
   }
-  .lab-about-hero-copy .lab-label {
-    color: #4a5568;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
   .lab-about-hero h1 {
     letter-spacing: -0.045em;
     margin: 28px 0;
@@ -760,7 +754,7 @@
     line-height: 1.35;
   }
   .lab-about-hero-copy p:not(.lab-label) {
-    color: #40485a;
+    color: #515966;
     max-width: 30em;
     font-size: 1rem;
     line-height: 1.9;
@@ -768,7 +762,7 @@
   .lab-about-hero-photo {
     aspect-ratio: 4 / 5;
     clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
-    background: #d7deea;
+    background: #eef0f3;
     position: relative;
     overflow: hidden;
   }
@@ -811,7 +805,7 @@
     margin: 0 auto;
   }
   .lab-about-body p {
-    color: #40485a;
+    color: #515966;
     margin-bottom: 20px;
     font-size: 1rem;
     line-height: 2;
@@ -853,9 +847,6 @@
     font-size: 1rem;
     line-height: 1.9;
   }
-  .lab-values .lab-label {
-    color: var(--color-electric);
-  }
   .lab-process {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -892,11 +883,11 @@
     margin-top: 40px;
   }
   .lab-next-grid > div {
-    border-top: 1px solid #3a4358;
+    border-top: 1px solid #525761;
     padding-top: 24px;
   }
   .lab-next-grid span {
-    color: #6d84c9;
+    color: #c8d2e6;
     font-family: var(--font-label);
     font-size: 0.75rem;
     font-weight: 600;
@@ -909,7 +900,7 @@
     line-height: 1.9;
   }
   .lab-about-next-statement {
-    border-top: 1px solid #3a4358;
+    border-top: 1px solid #525761;
     margin-top: 48px;
     padding-top: 40px;
   }
@@ -935,11 +926,8 @@
   }
   .lab-join-card {
     background: #fff;
-    border: 1px solid #d8dce3;
+    border: 1px solid #cdd1d8;
     padding: 36px;
-  }
-  .lab-join-card .lab-label {
-    color: var(--color-electric);
   }
   .lab-join-card h3 {
     margin-top: 12px;
@@ -950,7 +938,7 @@
     margin-top: 24px;
   }
   .lab-join-card li {
-    border-top: 1px solid #eceef1;
+    border-top: 1px solid #cdd1d8;
     align-items: center;
     gap: 12px;
     padding: 14px 0;
@@ -986,27 +974,16 @@
   .lab-about-cta-actions {
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 36px;
     margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
   }
-  .lab-about-cta .lab-button {
+  .lab-about-cta .lab-button,
+  .lab-about-cta-actions .lab-social-links {
     margin-top: 0;
   }
-  .lab-about-cta-outline {
-    color: #fff;
-    border: 1px solid #4a5568;
-    align-items: center;
-    gap: 10px;
-    padding: 17px 24px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    display: inline-flex;
-    transition: border-color 0.2s;
-  }
-  .lab-about-cta-outline:hover {
-    border-color: var(--color-lime);
+  .lab-about-cta-actions .lab-social-links a:hover {
     color: var(--color-lime);
   }
 

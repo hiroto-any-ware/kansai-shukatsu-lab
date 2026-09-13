@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
-import { InstagramIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
@@ -191,7 +190,7 @@ export default function AboutPage() {
                 <h3>
                   {v.no} {v.title}
                 </h3>
-                <p className="!mt-1 text-sm font-semibold text-[#40485a]">{v.lead}</p>
+                <p className="!mt-1 text-sm font-semibold text-[#515966]">{v.lead}</p>
                 <p>{v.text}</p>
               </div>
             </Reveal>
@@ -237,7 +236,7 @@ export default function AboutPage() {
             <br className="sm:hidden" />
             次の世代へ。
           </h2>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-[#40485a]">
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-[#515966]">
             関西就活ラボでは、経営者・人事・社員への取材を通して、仕事内容だけでは伝わらない企業の考え方、事業への想い、働く人、職場の雰囲気を学生へ届けます。ご希望に応じて、学生との交流イベントやインターン企画についてもご相談いただけます。
           </p>
           <Link
@@ -251,7 +250,7 @@ export default function AboutPage() {
       </section>
 
       {/* JOIN US */}
-      <section className="lab-section" style={{ background: "#eef1f6" }}>
+      <section className="lab-section">
         <Reveal className="max-w-2xl">
           <p className="lab-label">
             <span className="lab-label-rule" aria-hidden="true" /> JOIN US
@@ -261,7 +260,7 @@ export default function AboutPage() {
             <br />
             もっと面白く。
           </h2>
-          <p className="mt-5 text-sm leading-7 text-[#40485a]">
+          <p className="mt-5 text-sm leading-7 text-[#515966]">
             関西就活ラボでは、関西の就活文化をより良くし、学生と企業の未来を一緒につくっていただける企業・学生の皆様を募集しています。
           </p>
         </Reveal>
@@ -293,7 +292,7 @@ export default function AboutPage() {
             <br />
             「この学生に出会えてよかった。」
           </p>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#40485a]">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#515966]">
             そんな出会いを、関西から少しずつ増やしていきたいと考えています。企業と学生が、お互いのことをきちんと知った上で出会える場所を、私たちと一緒につくりませんか？
           </p>
         </Reveal>
@@ -309,23 +308,14 @@ export default function AboutPage() {
               企業を探す
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
-            <Link
-              href={siteConfig.lineUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lab-about-cta-outline"
-            >
-              LINEで就活情報を受け取る
-            </Link>
-            <Link
-              href={siteConfig.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lab-about-cta-outline"
-            >
-              <InstagramIcon size={15} />
-              Instagramをフォローする
-            </Link>
+            <div className="lab-social-links">
+              <Link href={siteConfig.lineUrl} target="_blank" rel="noopener noreferrer">
+                LINE <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+              <Link href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">
+                Instagram <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </Reveal>
       </section>
