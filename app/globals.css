@@ -106,6 +106,18 @@
     height: 2px;
   }
 
+  /* ヒーロー→企業インタビュー空間への「入っていく」スクロール演出。
+   * PC/タブレットのみ有効（Hero.tsx側でpinEnabled=falseの時はこの
+   * クラス自体を付与しない）。 */
+  .lab-hero-scene {
+    position: relative;
+    height: 180vh;
+  }
+  .lab-hero-future.lab-hero-pin {
+    position: sticky;
+    top: 0;
+  }
+
   /* Hero (dark, diagonal-cut variant) */
   .lab-hero-future {
     isolation: isolate;
@@ -815,6 +827,61 @@
     align-items: center;
     gap: 24px;
     padding-bottom: 8px;
+  }
+
+  /* TOPページ最後の締めシーン（FUTURE） */
+  .lab-future-close {
+    color: #fff;
+    background: var(--color-void);
+    isolation: isolate;
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(96px, 12vw, 160px);
+    padding-bottom: clamp(96px, 12vw, 160px);
+  }
+  .lab-future-close-word {
+    z-index: 0;
+    pointer-events: none;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-stroke: 1px #dce7ff26;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(90px, 16vw, 280px);
+    font-weight: 900;
+    line-height: 0.9;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .lab-future-close-label {
+    color: #a9bdff;
+    justify-content: center;
+  }
+  .lab-future-close-title {
+    letter-spacing: -0.03em;
+    margin: 24px auto 0;
+    max-width: 18em;
+    font-size: clamp(28px, 4.2vw, 54px);
+    font-weight: 900;
+    line-height: 1.45;
+  }
+  .lab-future-close-actions {
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px 40px;
+    margin-top: 44px;
+    display: flex;
+    position: relative;
+  }
+  .lab-future-close-actions .lab-button {
+    margin-top: 0;
+  }
+  .lab-future-close-actions .lab-social-links {
+    margin-top: 0;
   }
 
   /* Editorial "story" grid (used on list-style pages) */
