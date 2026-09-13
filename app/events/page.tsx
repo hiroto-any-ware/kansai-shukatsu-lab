@@ -4,9 +4,8 @@ import { CalendarClock } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons";
 import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "就活イベント",
@@ -16,24 +15,14 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <div className="bg-white pt-16 md:pt-20">
-      <div className="bg-[#eef0f3]">
-        <Container className="py-14 md:py-20">
-          <Reveal>
-            <Breadcrumb items={[{ label: "就活イベント" }]} />
-            <Eyebrow className="mt-6">EVENT</Eyebrow>
-            <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold text-ink md:text-5xl">
-              関西就活ラボ EVENT
-            </h1>
-            <p className="font-display mt-5 max-w-lg text-lg text-ink">
-              学生と企業が、本音で話せる場所。
-            </p>
-            <p className="mt-3 max-w-xl text-sm leading-7 text-[#515966]">
-              大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。
-            </p>
-          </Reveal>
-        </Container>
-      </div>
+    <div className="lab-home">
+      <PageHero
+        breadcrumbLabel="就活イベント"
+        eyebrow="EVENT"
+        title={["学生と企業が、", "本音で話せる場所。"]}
+        description="大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。"
+        bgWord="CONNECT"
+      />
 
       <Container className="py-24 md:py-32">
         <Reveal className="mx-auto max-w-lg text-center">

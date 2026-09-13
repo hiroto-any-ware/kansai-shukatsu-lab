@@ -4,10 +4,10 @@ import Link from "next/link";
 import { InstagramIcon } from "@/components/ui/icons";
 import { articles } from "@/data/articles";
 import { siteConfig } from "@/lib/site";
+import { STOCK_IMAGES } from "@/lib/images";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "就活ノウハウ",
@@ -17,19 +17,15 @@ export const metadata: Metadata = {
 
 export default function KnowhowPage() {
   return (
-    <div className="bg-white pt-16 md:pt-20">
-      <div className="bg-[#eef0f3]">
-        <Container className="py-14 md:py-20">
-          <Breadcrumb items={[{ label: "就活ノウハウ" }]} />
-          <Eyebrow className="mt-6">KNOW-HOW</Eyebrow>
-          <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold text-ink md:text-5xl">
-            就活ノウハウ
-          </h1>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-[#515966]">
-            ES対策、面接対策、ガクチカ、自己PR、企業研究など、関西の就活生に役立つ情報をInstagramと連動してお届けします。
-          </p>
-        </Container>
-      </div>
+    <div className="lab-home">
+      <PageHero
+        breadcrumbLabel="就活ノウハウ"
+        eyebrow="KNOW-HOW"
+        title={["就活ノウハウ"]}
+        description="ES対策、面接対策、ガクチカ、自己PR、企業研究など、関西の就活生に役立つ情報をInstagramと連動してお届けします。"
+        bgWord="LEARN"
+        photo={{ src: STOCK_IMAGES.deskNotebookLaptop, alt: "ノートとノートパソコン" }}
+      />
 
       <Container className="py-14 md:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

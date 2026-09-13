@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { STOCK_IMAGES } from "@/lib/images";
@@ -7,8 +6,8 @@ import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
+import { PageHero } from "@/components/ui/PageHero";
 import { ConsultationForm } from "@/components/for-companies/ConsultationForm";
 
 export const metadata: Metadata = {
@@ -34,45 +33,15 @@ const values = [
 
 export default function ForCompaniesPage() {
   return (
-    <div className="bg-white pt-16 md:pt-20">
-      <section className="relative overflow-hidden bg-[#eef0f3] py-20 md:py-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-electric/15 blur-3xl"
-        />
-        <Container className="relative">
-          <Breadcrumb items={[{ label: "企業の方へ" }]} />
-          <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
-            <Reveal variant="left" className="lg:col-span-7">
-              <Eyebrow>FOR COMPANIES</Eyebrow>
-              <h1 className="font-display mt-5 text-3xl font-bold leading-snug text-ink md:text-5xl">
-                自社の本当の魅力を、
-                <br />
-                次の世代へ。
-              </h1>
-              <p className="font-display mt-6 max-w-lg text-lg leading-8 text-ink">
-                自社の本当の魅力を、熱意ある若い世代に届けたい。
-                <br />
-                自社の社風や理念に、心から共感してくれる学生と出会いたい。
-              </p>
-              <p className="mt-5 max-w-lg text-sm leading-7 text-[#515966]">
-                関西就活ラボでは、企業への取材を通して、御社が大切にされている想いや、職場の「本当の姿」を丁寧に紐解き、学生へ届けます。仕事内容や条件だけではなく、「なぜ、この事業をしているのか」「どんな人たちが働いているのか」「どんな未来を目指しているのか」というストーリーまで伝えることで、企業の価値観に共感する学生との新しい接点をつくっていきます。
-              </p>
-            </Reveal>
-            <Reveal variant="right" className="lg:col-span-5">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg">
-                <Image
-                  src={STOCK_IMAGES.naraParkDeer}
-                  alt="奈良公園の鹿"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-void/50 via-transparent to-void/10" />
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
+    <div className="lab-home">
+      <PageHero
+        breadcrumbLabel="企業の方へ"
+        eyebrow="FOR COMPANIES"
+        title={["自社の本当の魅力を、", "次の世代へ。"]}
+        description="自社の本当の魅力を、熱意ある若い世代に届けたい。自社の社風や理念に、心から共感してくれる学生と出会いたい。関西就活ラボでは、企業への取材を通して、御社が大切にされている想いや、職場の「本当の姿」を丁寧に紐解き、学生へ届けます。仕事内容や条件だけではなく、「なぜ、この事業をしているのか」「どんな人たちが働いているのか」「どんな未来を目指しているのか」というストーリーまで伝えることで、企業の価値観に共感する学生との新しい接点をつくっていきます。"
+        bgWord="PARTNER"
+        photo={{ src: STOCK_IMAGES.naraParkDeer, alt: "奈良公園の鹿" }}
+      />
 
       <section className="relative overflow-hidden py-20 md:py-28">
         <AmbientPhoto

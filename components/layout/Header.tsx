@@ -9,9 +9,21 @@ import { mainNav, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Logo } from "@/components/ui/Logo";
 
-// これらのページは冒頭セクションがネイビーの暗い背景のため、
+// これらのページは冒頭セクション（PageHero）がネイビーの暗い背景のため、
 // スクロール前のヘッダーは白文字にして視認性を確保する。
-const DARK_HERO_ROUTES = new Set(["/"]);
+// 白背景のまま残るページ（404など）だけが対象外。
+function hasDarkHero(pathname: string) {
+  return (
+    pathname === "/" ||
+    pathname === "/companies" ||
+    pathname.startsWith("/companies/") ||
+    pathname === "/interviews" ||
+    pathname === "/events" ||
+    pathname === "/knowhow" ||
+    pathname === "/about" ||
+    pathname === "/for-companies"
+  );
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -24,7 +36,7 @@ export function Header() {
     setOpen(false);
   }
 
-  const onDarkHero = DARK_HERO_ROUTES.has(pathname) && !scrolled && !open;
+  const onDarkHero = hasDarkHero(pathname) && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);

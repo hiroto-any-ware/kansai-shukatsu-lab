@@ -8,8 +8,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { LineReveal } from "@/components/ui/LineReveal";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import { GrowLine } from "@/components/ui/GrowLine";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
+import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "関西就活ラボについて",
@@ -81,37 +81,14 @@ const forStudentList = [
 export default function AboutPage() {
   return (
     <div className="lab-home">
-      {/* HERO */}
-      <section className="lab-about-hero">
-        <div className="lab-about-hero-grid">
-          <Reveal variant="left" className="lab-about-hero-copy">
-            <div className="mb-6">
-              <Breadcrumb items={[{ label: "関西就活ラボについて" }]} />
-            </div>
-            <p className="lab-label">
-              <span className="lab-label-rule" aria-hidden="true" /> ABOUT US
-            </p>
-            <h1>
-              大手だけが、
-              <br />
-              正解じゃない。
-            </h1>
-            <p>関西の就活生と企業を、&ldquo;想い&rdquo;で繋ぐ架け橋に。</p>
-          </Reveal>
-          <Reveal variant="right" delay={0.1} as="div">
-            <figure className="lab-about-hero-photo">
-              <Image
-                src={STOCK_IMAGES.arashiyamaBamboo}
-                alt="京都・嵐山の竹林"
-                fill
-                sizes="(max-width: 760px) 100vw, 42vw"
-                className="object-cover"
-              />
-              <figcaption>KYOTO, JAPAN</figcaption>
-            </figure>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbLabel="関西就活ラボについて"
+        eyebrow="ABOUT US"
+        title={["大手だけが、", "正解じゃない。"]}
+        description="関西の就活生と企業を、“想い”で繋ぐ架け橋に。"
+        bgWord="VISION"
+        photo={{ src: STOCK_IMAGES.arashiyamaBamboo, alt: "京都・嵐山の竹林", caption: "KYOTO, JAPAN" }}
+      />
 
       {/* なぜ・何を目指すのか */}
       <section className="lab-section lab-about-intro">
