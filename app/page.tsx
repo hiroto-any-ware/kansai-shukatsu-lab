@@ -1,21 +1,15 @@
 import { Hero } from "@/components/home/Hero";
-import { PickUp } from "@/components/home/PickUp";
+import { InterviewOrbit } from "@/components/home/InterviewOrbit";
 import { CompanyFinder } from "@/components/home/CompanyFinder";
-import { RecentInterviews } from "@/components/home/RecentInterviews";
-import { EventTeaser } from "@/components/home/EventTeaser";
-import { InstagramSection } from "@/components/home/InstagramSection";
-import { LineSection } from "@/components/home/LineSection";
+import { ConnectSection } from "@/components/home/ConnectSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="lab-home">
       <Hero />
-      <PickUp />
+      <InterviewOrbit />
       <CompanyFinder />
-      <RecentInterviews />
-      <EventTeaser />
-      <InstagramSection />
-      <LineSection />
-    </>
+      <ConnectSection />
+    </div>
   );
 }

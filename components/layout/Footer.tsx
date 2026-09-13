@@ -14,7 +14,7 @@ export function Footer() {
             <span className="font-display text-lg">関西就活ラボ</span>
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-white/60">
-            大手だけが、正解じゃない。関西の就活生と企業を「想い」で繋ぐ架け橋になる就活メディアです。
+            関西の就活生へ、まだ知らない企業との出会いを。
           </p>
           <div className="mt-6 flex items-center gap-3">
             <Link
