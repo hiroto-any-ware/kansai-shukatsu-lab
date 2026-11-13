@@ -15,24 +15,41 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <div className="lab-home">
+    <div style={{ background: "var(--color-tag-bg)" }}>
       <PageHero
         breadcrumbLabel="就活イベント"
         eyebrow="EVENT"
         title={["学生と企業が、", "本音で話せる場所。"]}
         description="大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。"
-        bgWord="CONNECT"
       />
 
       <Container className="py-24 md:py-32">
-        <Reveal className="mx-auto max-w-lg text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#eef0f3]">
-            <CalendarClock size={24} className="text-electric" />
+        <Reveal
+          className="tag-card tag-rotate--1 mx-auto max-w-lg p-8 text-center md:p-10"
+        >
+          <span
+            className="inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider"
+            style={{
+              fontFamily: "var(--font-tag-label)",
+              color: "var(--color-tag-muted)",
+              borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
+            }}
+          >
+            準備中
+          </span>
+          <div className="mt-5 flex justify-center">
+            <CalendarClock size={28} style={{ color: "var(--color-stamp)" }} />
           </div>
-          <h2 className="font-display mt-6 text-2xl font-bold text-ink md:text-3xl">
+          <h2
+            className="mt-5 text-2xl md:text-3xl"
+            style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+          >
             イベント情報は近日公開予定です
           </h2>
-          <p className="mt-4 text-sm leading-7 text-[#515966]">
+          <p
+            className="mt-4 text-sm leading-7"
+            style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+          >
             現在、企業様と内容を調整しながら準備を進めています。日程・詳細が決まり次第、公式LINEとInstagramでお知らせしますので、しばらくお待ちください。
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -40,7 +57,8 @@ export default function EventsPage() {
               href={siteConfig.lineUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#06C755] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
             >
               公式LINEで最新情報を受け取る
             </Link>
@@ -48,7 +66,8 @@ export default function EventsPage() {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-void hover:text-white"
+              className="tag-card inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold transition-opacity hover:opacity-80"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
             >
               <InstagramIcon size={15} />
               Instagramをフォローする

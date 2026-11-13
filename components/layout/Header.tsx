@@ -9,22 +9,6 @@ import { mainNav, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Logo } from "@/components/ui/Logo";
 
-// これらのページは冒頭セクション（PageHero）がネイビーの暗い背景のため、
-// スクロール前のヘッダーは白文字にして視認性を確保する。
-// 白背景のまま残るページ（404など）だけが対象外。
-function hasDarkHero(pathname: string) {
-  return (
-    pathname === "/" ||
-    pathname === "/companies" ||
-    pathname.startsWith("/companies/") ||
-    pathname === "/interviews" ||
-    pathname === "/events" ||
-    pathname === "/knowhow" ||
-    pathname === "/about" ||
-    pathname === "/for-companies"
-  );
-}
-
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -35,8 +19,6 @@ export function Header() {
     setPrevPathname(pathname);
     setOpen(false);
   }
-
-  const onDarkHero = hasDarkHero(pathname) && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -52,29 +34,27 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled || open
-          ? "bg-white/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(10,23,48,0.08)]"
-          : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 border-b transition-shadow duration-200",
+        scrolled || open ? "shadow-sm" : ""
       )}
+      style={{
+        background: "var(--color-tag-surface)",
+        borderColor: "color-mix(in srgb, var(--color-tag-ink) 12%, transparent)",
+      }}
     >
       <div className="mx-auto flex h-16 max-w-8xl items-center justify-between px-6 md:h-20 md:px-10 lg:px-16">
         <Link href="/" className="flex items-center gap-2.5">
-          <Logo size={40} className="h-9 w-9 ring-1 ring-white/40 md:h-10 md:w-10" />
+          <Logo size={40} className="h-9 w-9 md:h-10 md:w-10" />
           <span className="flex flex-col leading-tight">
             <span
-              className={cn(
-                "font-display text-[15px] font-medium tracking-wide transition-colors md:text-base",
-                onDarkHero ? "text-white" : "text-ink"
-              )}
+              className="text-[15px] font-medium tracking-wide md:text-base"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
             >
               関西就活ラボ
             </span>
             <span
-              className={cn(
-                "font-label hidden text-[10px] tracking-[0.2em] transition-colors md:block",
-                onDarkHero ? "text-white/70" : "text-[#515966]"
-              )}
+              className="hidden text-[10px] tracking-[0.2em] md:block"
+              style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
             >
               KANSAI SHUKATSU LAB
             </span>
@@ -86,19 +66,21 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={cn(
-                "relative text-[13.5px] font-medium transition-colors",
-                onDarkHero
-                  ? "text-white/85 hover:text-white"
-                  : "text-ink/80 hover:text-ink",
-                pathname === item.href && (onDarkHero ? "text-white" : "text-ink")
-              )}
+              className="relative text-[13.5px] font-medium transition-colors"
+              style={{
+                fontFamily: "var(--font-tag-ui)",
+                color:
+                  pathname === item.href
+                    ? "var(--color-tag-ink)"
+                    : "var(--color-tag-muted)",
+              }}
             >
               {item.label}
               {pathname === item.href && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute -bottom-1.5 left-0 h-[2px] w-full bg-electric"
+                  className="absolute -bottom-1.5 left-0 h-[2px] w-full"
+                  style={{ background: "var(--color-stamp)" }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 />
               )}
@@ -111,17 +93,16 @@ export function Header() {
             href={siteConfig.lineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-[#06C755] px-4 py-2.5 text-[13px] font-semibold text-white transition-transform hover:scale-[1.03] md:inline-flex"
+            className="hidden items-center gap-2 px-4 py-2.5 text-[13px] font-semibold text-white transition-opacity hover:opacity-90 md:inline-flex"
+            style={{ background: "#06C755", fontFamily: "var(--font-tag-ui)" }}
           >
             公式LINEで就活情報を受け取る
           </Link>
           <button
             aria-label={open ? "メニューを閉じる" : "メニューを開く"}
             onClick={() => setOpen((v) => !v)}
-            className={cn(
-              "flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
-              onDarkHero ? "text-white" : "text-ink"
-            )}
+            className="flex h-10 w-10 items-center justify-center lg:hidden"
+            style={{ color: "var(--color-tag-ink)" }}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -135,7 +116,11 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-[#cdd1d8] bg-white lg:hidden"
+            className="overflow-hidden border-t lg:hidden"
+            style={{
+              background: "var(--color-tag-surface)",
+              borderColor: "color-mix(in srgb, var(--color-tag-ink) 12%, transparent)",
+            }}
           >
             <nav className="flex flex-col px-6 py-4">
               {mainNav.map((item, i) => (
@@ -147,7 +132,12 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="block border-b border-[#cdd1d8] py-4 text-[15px] font-medium text-ink"
+                    className="block border-b py-4 text-[15px] font-medium"
+                    style={{
+                      borderColor: "color-mix(in srgb, var(--color-tag-ink) 12%, transparent)",
+                      fontFamily: "var(--font-tag-ui)",
+                      color: "var(--color-tag-ink)",
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -157,7 +147,8 @@ export function Header() {
                 href={siteConfig.lineUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-5 py-3.5 text-sm font-semibold text-white"
+                className="mt-5 inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-semibold text-white"
+                style={{ background: "#06C755", fontFamily: "var(--font-tag-ui)" }}
               >
                 公式LINEで就活情報を受け取る
               </Link>

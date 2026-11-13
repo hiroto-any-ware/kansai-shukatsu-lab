@@ -88,13 +88,23 @@ export function ConsultationForm({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-2xl border border-[#cdd1d8] bg-[#eef0f3]/60 p-8 text-center md:p-12"
+          className="tag-card p-8 text-center md:p-12"
         >
-          <CheckCircle2 className="mx-auto text-electric" size={32} />
-          <p className="font-display mt-4 text-lg font-bold text-ink">
+          <CheckCircle2
+            className="mx-auto"
+            size={32}
+            style={{ color: "var(--color-tag-success)" }}
+          />
+          <p
+            className="mt-4 text-lg"
+            style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+          >
             お問い合わせありがとうございます。
           </p>
-          <p className="mt-2 text-sm leading-7 text-[#515966]">
+          <p
+            className="mt-2 text-sm leading-7"
+            style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+          >
             内容を確認のうえ、担当より順次ご連絡いたします。今しばらくお待ちください。
           </p>
         </motion.div>
@@ -107,27 +117,37 @@ export function ConsultationForm({
           transition={{ duration: 0.25 }}
           onSubmit={handleSubmit}
           noValidate
-          className="rounded-2xl border border-[#cdd1d8] bg-white p-6 text-left shadow-[0_1px_2px_rgba(10,23,48,0.06)] md:p-10"
+          className="tag-card p-6 text-left md:p-10"
         >
           <div className="mb-6">
-            <span className="mb-2 block text-xs font-semibold text-ink">
+            <span
+              className="mb-2 block text-xs font-semibold"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
+            >
               ご相談の種類
             </span>
             <div className="flex flex-wrap gap-2">
-              {CONSULTATION_TYPES.map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => update("consultationType", t)}
-                  className={`rounded-full border px-4 py-2 text-sm transition-all duration-200 active:scale-95 ${
-                    form.consultationType === t
-                      ? "border-void bg-void text-white"
-                      : "border-[#cdd1d8] text-ink hover:border-ink/40"
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
+              {CONSULTATION_TYPES.map((t) => {
+                const active = form.consultationType === t;
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => update("consultationType", t)}
+                    className="border px-4 py-2 text-sm transition-all duration-200 active:scale-95"
+                    style={{
+                      fontFamily: "var(--font-tag-ui)",
+                      borderColor: active
+                        ? "var(--color-stamp)"
+                        : "color-mix(in srgb, var(--color-tag-ink) 20%, transparent)",
+                      background: active ? "var(--color-stamp)" : "transparent",
+                      color: active ? "#fff" : "var(--color-tag-ink)",
+                    }}
+                  >
+                    {t}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -172,9 +192,10 @@ export function ConsultationForm({
           <div className="mt-5">
             <label
               htmlFor={`${formId}-message`}
-              className="mb-1.5 block text-xs font-semibold text-ink"
+              className="mb-1.5 block text-xs font-semibold"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
             >
-              ご相談内容 <span className="text-electric">*</span>
+              ご相談内容 <span style={{ color: "var(--color-stamp)" }}>*</span>
             </label>
             <textarea
               id={`${formId}-message`}
@@ -182,17 +203,31 @@ export function ConsultationForm({
               value={form.message}
               onChange={(e) => update("message", e.target.value)}
               placeholder="取材のご希望内容、イベントのご相談内容などをご自由にご記入ください。"
-              className={`w-full rounded-lg border bg-white px-4 py-3 text-sm text-ink placeholder:text-[#515966] transition-colors duration-200 focus:border-electric focus:outline-none focus:ring-2 focus:ring-electric/40 ${
-                errors.message ? "border-red-400" : "border-[#cdd1d8]"
-              }`}
+              className="w-full border bg-transparent px-4 py-3 text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-stamp)]/40"
+              style={{
+                fontFamily: "var(--font-tag-ui)",
+                color: "var(--color-tag-ink)",
+                borderColor: errors.message
+                  ? "var(--color-stamp-deep)"
+                  : "color-mix(in srgb, var(--color-tag-ink) 20%, transparent)",
+              }}
             />
             {errors.message && (
-              <p className="mt-1.5 text-xs text-red-600">{errors.message}</p>
+              <p className="mt-1.5 text-xs" style={{ color: "var(--color-stamp-deep)" }}>
+                {errors.message}
+              </p>
             )}
           </div>
 
           {status === "error" && (
-            <p className="mt-5 rounded-lg bg-red-50 px-4 py-3 text-xs leading-6 text-red-700">
+            <p
+              className="mt-5 px-4 py-3 text-xs leading-6"
+              style={{
+                fontFamily: "var(--font-tag-ui)",
+                background: "color-mix(in srgb, var(--color-stamp) 10%, transparent)",
+                color: "var(--color-stamp-deep)",
+              }}
+            >
               送信に失敗しました。お手数ですが時間を置いて再度お試しいただくか、
               <a
                 href={siteConfig.lineUrl}
@@ -209,7 +244,8 @@ export function ConsultationForm({
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-void px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 sm:w-auto"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+            style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
           >
             {status === "submitting" && <Loader2 size={16} className="animate-spin" />}
             {status === "submitting" ? "送信中..." : "この内容で相談する"}
@@ -241,8 +277,12 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-xs font-semibold text-ink">
-        {label} {required && <span className="text-electric">*</span>}
+      <label
+        htmlFor={id}
+        className="mb-1.5 block text-xs font-semibold"
+        style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
+      >
+        {label} {required && <span style={{ color: "var(--color-stamp)" }}>*</span>}
       </label>
       <input
         id={id}
@@ -250,11 +290,20 @@ function Field({
         value={value}
         autoComplete={autoComplete}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full rounded-lg border bg-white px-4 py-3 text-sm text-ink placeholder:text-[#515966] transition-colors duration-200 focus:border-electric focus:outline-none focus:ring-2 focus:ring-electric/40 ${
-          error ? "border-red-400" : "border-[#cdd1d8]"
-        }`}
+        className="w-full border bg-transparent px-4 py-3 text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-stamp)]/40"
+        style={{
+          fontFamily: "var(--font-tag-ui)",
+          color: "var(--color-tag-ink)",
+          borderColor: error
+            ? "var(--color-stamp-deep)"
+            : "color-mix(in srgb, var(--color-tag-ink) 20%, transparent)",
+        }}
       />
-      {error && <p className="mt-1.5 text-xs text-red-600">{error}</p>}
+      {error && (
+        <p className="mt-1.5 text-xs" style={{ color: "var(--color-stamp-deep)" }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }

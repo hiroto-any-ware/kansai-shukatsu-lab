@@ -15,6 +15,39 @@ import { X } from "lucide-react";
 
 const REGION_OPTIONS = [...PREFECTURES, OTHER_REGION_LABEL];
 
+function FilterTag({
+  active,
+  dashed,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  dashed?: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      data-active={active}
+      className={`px-3 py-1.5 text-[13px] transition-colors ${
+        dashed ? "border-dashed" : "border-solid"
+      }`}
+      style={{
+        fontFamily: "var(--font-tag-ui)",
+        border: "1px solid",
+        borderColor: active
+          ? "var(--color-stamp)"
+          : "color-mix(in srgb, var(--color-tag-ink) 28%, transparent)",
+        background: active ? "var(--color-stamp)" : "transparent",
+        color: active ? "#fff" : "var(--color-tag-ink)",
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 export function CompanyListClient({
   companies,
   initialPref,
@@ -50,45 +83,67 @@ export function CompanyListClient({
 
   return (
     <div>
-      <Reveal className="flex flex-col gap-8 border-b border-[#cdd1d8] pb-10">
-        <div>
-          <p className="lab-label mb-2">KANSAI AREA</p>
-          <p className="mb-3 text-sm text-[#515966]">
-            関西の企業を探す。指定しない場合は、すべての地域の企業インタビューを表示します。
-          </p>
-          <div className="lab-pill-group">
-            {REGION_OPTIONS.map((p) => (
-              <button
-                key={p}
-                onClick={() => toggle(prefs, setPrefs, p)}
-                data-active={prefs.has(p)}
-                className={`lab-pill ${p === OTHER_REGION_LABEL ? "lab-pill--dashed" : ""}`}
-              >
-                {p}
-              </button>
-            ))}
+      <Reveal>
+        <div
+          className="flex flex-col gap-8 border-b pb-10"
+          style={{ borderColor: "color-mix(in srgb, var(--color-tag-ink) 18%, transparent)" }}
+        >
+          <div>
+            <p
+              className="mb-2 text-[11px] tracking-widest"
+              style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+            >
+              KANSAI AREA
+            </p>
+            <p
+              className="mb-3 text-sm"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              関西の企業を探す。指定しない場合は、すべての地域の企業インタビューを表示します。
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {REGION_OPTIONS.map((p) => (
+                <FilterTag
+                  key={p}
+                  active={prefs.has(p)}
+                  dashed={p === OTHER_REGION_LABEL}
+                  onClick={() => toggle(prefs, setPrefs, p)}
+                >
+                  {p}
+                </FilterTag>
+              ))}
+            </div>
           </div>
-        </div>
-        <div>
-          <p className="lab-label mb-3">CATEGORY</p>
-          <div className="lab-pill-group">
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                onClick={() => toggle(cats, setCats, c)}
-                data-active={cats.has(c)}
-                className="lab-pill"
-              >
-                {c}
-              </button>
-            ))}
+          <div>
+            <p
+              className="mb-3 text-[11px] tracking-widest"
+              style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+            >
+              CATEGORY
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map((c) => (
+                <FilterTag key={c} active={cats.has(c)} onClick={() => toggle(cats, setCats, c)}>
+                  {c}
+                </FilterTag>
+              ))}
+            </div>
           </div>
         </div>
       </Reveal>
 
       <div className="flex items-center justify-between py-8">
-        <p className="lab-companies-count">
-          <strong>{filtered.length}</strong> 件の企業インタビュー
+        <p
+          className="text-sm"
+          style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+        >
+          <strong
+            className="text-lg font-bold"
+            style={{ fontFamily: "var(--font-tag-data)", color: "var(--color-tag-ink)" }}
+          >
+            {filtered.length}
+          </strong>{" "}
+          件の企業インタビュー
         </p>
         {hasFilter && (
           <button
@@ -96,7 +151,8 @@ export function CompanyListClient({
               setPrefs(new Set());
               setCats(new Set());
             }}
-            className="lab-companies-reset"
+            className="inline-flex items-center gap-1.5 text-[13px] font-semibold"
+            style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
           >
             <X size={13} />
             絞り込みをリセット
@@ -107,12 +163,13 @@ export function CompanyListClient({
       {filtered.length === 0 ? (
         <motion.p
           layout
-          className="py-20 text-center text-sm text-[#515966]"
+          className="py-20 text-center text-sm"
+          style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
         >
           条件に合う企業が見つかりませんでした。絞り込み条件を変えてお試しください。
         </motion.p>
       ) : (
-        <div className="lab-companies-grid">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           <AnimatePresence mode="popLayout">
             {filtered.map((c, i) => (
               <CompanyCard key={c.slug} company={c} index={i} />

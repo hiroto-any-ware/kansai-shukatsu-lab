@@ -6,7 +6,7 @@ import { FutureSection } from "@/components/home/FutureSection";
 
 export default function Home() {
   return (
-    <div className="lab-home">
+    <div style={{ background: "var(--color-tag-bg)" }}>
       <Hero />
       <InterviewOrbit />
       <CompanyFinder />

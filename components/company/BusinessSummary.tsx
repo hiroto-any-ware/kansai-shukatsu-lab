@@ -1,50 +1,54 @@
 import { CompanyInterview } from "@/lib/types";
 import { Container } from "@/components/ui/Container";
-import { SectionNumber } from "@/components/ui/SectionNumber";
 import { Reveal } from "@/components/ui/Reveal";
 import { GrowLine } from "@/components/ui/GrowLine";
 
 export function BusinessSummary({ company }: { company: CompanyInterview }) {
   return (
-    <section className="relative overflow-hidden bg-void py-20 text-white md:py-28">
-      <span
-        aria-hidden
-        className="font-display pointer-events-none absolute -left-10 -top-6 select-none text-[10rem] leading-none text-white/[0.05] md:text-[16rem]"
-      >
-        02
-      </span>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-0 h-full w-1/2 opacity-[0.5]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          maskImage: "linear-gradient(to left, black, transparent 80%)",
-        }}
-      />
-
-      <Container className="relative">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+    <section
+      className="py-16 md:py-24"
+      style={{ background: "var(--color-tag-surface)" }}
+    >
+      <Container narrow>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <Reveal variant="left" className="lg:col-span-4">
-            <SectionNumber no="02" label="VISION" light />
-            <h2 className="font-display mt-6 text-2xl font-bold leading-snug sm:text-3xl md:text-[2.25rem]">
-              そもそも
-              <br />
-              何をしている会社？
-            </h2>
+            <span
+              className="text-[11px] tracking-widest"
+              style={{
+                fontFamily: "var(--font-tag-label)",
+                color: "var(--color-tag-muted)",
+              }}
+            >
+              そもそも何をしている会社？
+            </span>
+            {company.businessType && (
+              <h2
+                className="mt-4 text-2xl leading-snug sm:text-3xl"
+                style={{
+                  fontFamily: "var(--font-stamp)",
+                  color: "var(--color-tag-ink)",
+                }}
+              >
+                {company.businessType}
+              </h2>
+            )}
           </Reveal>
 
           <Reveal variant="right" delay={0.1} className="lg:col-span-7 lg:col-start-6">
-            {company.businessType && (
-              <p className="font-display text-xl leading-relaxed text-[#ced5e1] sm:text-2xl">
-                {company.businessType}
-              </p>
-            )}
-            <GrowLine className="mt-8 text-white/20" delay={0.15} />
-            <div className="space-y-5 pt-8">
+            <GrowLine
+              className="mb-8 max-w-[160px] text-[var(--color-stamp)]"
+              delay={0.15}
+            />
+            <div className="space-y-5">
               {company.lead.map((p, i) => (
-                <p key={i} className="max-w-xl text-[15px] leading-8 text-white/70">
+                <p
+                  key={i}
+                  className="max-w-xl text-[15px] leading-9"
+                  style={{
+                    fontFamily: "var(--font-read)",
+                    color: "var(--color-tag-ink)",
+                  }}
+                >
                   {p}
                 </p>
               ))}

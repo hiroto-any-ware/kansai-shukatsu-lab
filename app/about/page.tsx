@@ -4,11 +4,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { STOCK_IMAGES } from "@/lib/images";
 import { siteConfig } from "@/lib/site";
+import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { LineReveal } from "@/components/ui/LineReveal";
 import { StaggerReveal } from "@/components/ui/StaggerReveal";
 import { GrowLine } from "@/components/ui/GrowLine";
-import { AmbientPhoto } from "@/components/ui/AmbientPhoto";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
@@ -78,69 +78,120 @@ const forStudentList = [
   "SNSでの情報共有",
 ];
 
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider"
+      style={{
+        fontFamily: "var(--font-tag-label)",
+        color: "var(--color-tag-muted)",
+        borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
 export default function AboutPage() {
   return (
-    <div className="lab-home">
+    <div style={{ background: "var(--color-tag-bg)" }}>
       <PageHero
         breadcrumbLabel="関西就活ラボについて"
         eyebrow="ABOUT US"
         title={["大手だけが、", "正解じゃない。"]}
         description="関西の就活生と企業を、“想い”で繋ぐ架け橋に。"
-        bgWord="VISION"
         photo={{ src: STOCK_IMAGES.lakeBiwaTorii, alt: "琵琶湖の鳥居", caption: "SHIGA, JAPAN" }}
       />
 
       {/* なぜ・何を目指すのか */}
-      <section className="lab-section lab-about-intro">
-        <Reveal variant="left">
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> WHY WE STARTED
-          </p>
-          <h2 className="mt-4 text-2xl font-bold md:text-3xl">なぜ、始めたのか。</h2>
-          <div className="mt-8">
-            <p>
-              関西就活ラボは、大手企業での選考・人事経験を持つメンバーが、「関西の就活生に、本当に役立つリアルな情報を届けたい」という想いから立ち上げたプロジェクトです。
-            </p>
-            <p>
-              私たち自身が就職活動を経験する中で感じたのは、世の中にある就活情報の偏りと、「本当に魅力的な企業の姿が、学生に十分届いていない」という現実でした。
-            </p>
-          </div>
-        </Reveal>
-        <Reveal variant="right" delay={0.1}>
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> WHAT WE AIM FOR
-          </p>
-          <h2 className="mt-4 text-2xl font-bold md:text-3xl">何を、目指しているのか。</h2>
-          <div className="mt-8">
-            <p>学生が知っている企業は、世の中にある企業のほんの一部です。</p>
-            <p>
-              有名企業だけではなく、地域に根ざした会社、独自の技術を持つ会社、新しいことに挑戦している会社、強い想いを持つ経営者がいる会社など、世の中にはまだ多くの選択肢があります。
-            </p>
-          </div>
-        </Reveal>
+      <section className="py-16 md:py-24">
+        <Container className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+          <Reveal variant="left">
+            <Tag>WHY WE STARTED</Tag>
+            <h2
+              className="mt-4 text-2xl md:text-3xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              なぜ、始めたのか。
+            </h2>
+            <div className="mt-6 space-y-4">
+              <p
+                className="text-[15px] leading-8"
+                style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+              >
+                関西就活ラボは、大手企業での選考・人事経験を持つメンバーが、「関西の就活生に、本当に役立つリアルな情報を届けたい」という想いから立ち上げたプロジェクトです。
+              </p>
+              <p
+                className="text-[15px] leading-8"
+                style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+              >
+                私たち自身が就職活動を経験する中で感じたのは、世の中にある就活情報の偏りと、「本当に魅力的な企業の姿が、学生に十分届いていない」という現実でした。
+              </p>
+            </div>
+          </Reveal>
+          <Reveal variant="right" delay={0.1}>
+            <Tag>WHAT WE AIM FOR</Tag>
+            <h2
+              className="mt-4 text-2xl md:text-3xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              何を、目指しているのか。
+            </h2>
+            <div className="mt-6 space-y-4">
+              <p
+                className="text-[15px] leading-8"
+                style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+              >
+                学生が知っている企業は、世の中にある企業のほんの一部です。
+              </p>
+              <p
+                className="text-[15px] leading-8"
+                style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+              >
+                有名企業だけではなく、地域に根ざした会社、独自の技術を持つ会社、新しいことに挑戦している会社、強い想いを持つ経営者がいる会社など、世の中にはまだ多くの選択肢があります。
+              </p>
+            </div>
+          </Reveal>
+        </Container>
       </section>
 
       {/* 中間ステートメント */}
-      <div className="lab-about-statement">
+      <div
+        className="py-20 text-center md:py-28"
+        style={{ background: "var(--color-tag-ink)" }}
+      >
         <LineReveal
           lines={["大手だけが、正解じゃない。"]}
           triggerOn="scroll"
-          className="lab-about-statement-text"
+          className="mx-auto max-w-[16em] text-balance text-[28px] leading-[1.5] text-white sm:text-4xl md:text-[3.25rem]"
+          lineClassName=""
         />
       </div>
 
-      <section className="lab-section">
-        <Reveal className="lab-about-body">
-          <p>
-            関西を拠点に、学生がこれまで知らなかった企業や仕事と出会えるきっかけをつくり、企業名や知名度だけでは分からない「本当の魅力」を届けていきます。
-          </p>
-          <p>
-            関西企業を中心にしながらも、地域に関係なく、学生に知ってほしい企業や、実際に私たちが取材した企業のストーリーも発信していきます。
-          </p>
-          <p>
-            目指しているのは、学生が、「こんな会社があったんだ」「こんな仕事があるんだ」「この人たちと働いてみたい」と思える企業と出会える世界です。
-          </p>
-        </Reveal>
+      <section className="py-16 md:py-24">
+        <Container narrow>
+          <Reveal className="mx-auto max-w-2xl">
+            <p
+              className="text-[15px] leading-9"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              関西を拠点に、学生がこれまで知らなかった企業や仕事と出会えるきっかけをつくり、企業名や知名度だけでは分からない「本当の魅力」を届けていきます。
+            </p>
+            <p
+              className="mt-5 text-[15px] leading-9"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              関西企業を中心にしながらも、地域に関係なく、学生に知ってほしい企業や、実際に私たちが取材した企業のストーリーも発信していきます。
+            </p>
+            <p
+              className="mt-5 text-[1.05rem] leading-9 font-bold"
+              style={{ color: "var(--color-tag-ink)" }}
+            >
+              目指しているのは、学生が、「こんな会社があったんだ」「こんな仕事があるんだ」「この人たちと働いてみたい」と思える企業と出会える世界です。
+            </p>
+          </Reveal>
+        </Container>
       </section>
 
       <section className="relative">
@@ -151,160 +202,320 @@ export default function AboutPage() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080f1d]/55 via-[#080f1d]/0 to-[#080f1d]/10" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, color-mix(in srgb, var(--color-tag-ink) 45%, transparent), transparent 55%)",
+            }}
+          />
         </div>
       </section>
 
       {/* OUR VALUES */}
-      <section className="lab-section relative overflow-hidden">
-        <AmbientPhoto src={STOCK_IMAGES.dotonboriStreet} className="opacity-[0.06]" imgClassName="grayscale" />
-        <Reveal className="relative max-w-xl">
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> OUR VALUES
-          </p>
-          <h2 className="mt-4 text-3xl font-bold md:text-4xl">私たちが大切にしていること</h2>
-        </Reveal>
-        <div className="lab-values relative">
-          {values.map((v, i) => (
-            <StaggerReveal key={v.no} gap={0.14} x={i % 2 === 0 ? -40 : 40}>
-              <p className="lab-label">{v.en}</p>
-              <h3>
-                {v.no} {v.title}
-              </h3>
-              <p className="!mt-1 text-sm font-semibold text-[#515966]">{v.lead}</p>
-              <div>
-                <p>{v.text}</p>
-                <GrowLine className="mt-5 max-w-[64px] text-ink/15" />
-              </div>
-            </StaggerReveal>
-          ))}
-        </div>
+      <section className="py-16 md:py-24">
+        <Container>
+          <Reveal className="max-w-xl">
+            <Tag>OUR VALUES</Tag>
+            <h2
+              className="mt-4 text-3xl md:text-4xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              私たちが大切にしていること
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-x-12 md:gap-y-14">
+            {values.map((v, i) => (
+              <StaggerReveal key={v.no} gap={0.14} x={i % 2 === 0 ? -32 : 32}>
+                <span
+                  className="text-[11px] tracking-widest"
+                  style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-link)" }}
+                >
+                  {v.en}
+                </span>
+                <h3 className="mt-2 flex items-baseline gap-3">
+                  <span
+                    className="text-base"
+                    style={{ fontFamily: "var(--font-tag-data)", color: "var(--color-tag-muted)" }}
+                  >
+                    {v.no}
+                  </span>
+                  <span
+                    className="text-xl md:text-2xl"
+                    style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+                  >
+                    {v.title}
+                  </span>
+                </h3>
+                <p
+                  className="mt-1 text-sm font-semibold"
+                  style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+                >
+                  {v.lead}
+                </p>
+                <div>
+                  <p
+                    className="mt-3 text-[15px] leading-8"
+                    style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+                  >
+                    {v.text}
+                  </p>
+                  <GrowLine className="mt-5 max-w-[64px] text-[var(--color-stamp)]" />
+                </div>
+              </StaggerReveal>
+            ))}
+          </div>
+        </Container>
       </section>
 
       {/* これからの関西就活ラボ */}
-      <section className="lab-section lab-about-next">
-        <AmbientPhoto src={STOCK_IMAGES.naraParkDeer} className="opacity-[0.12]" imgClassName="grayscale" />
-        <Reveal className="relative max-w-2xl">
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> WHAT&apos;S NEXT
-          </p>
-          <h2 className="mt-4 text-2xl font-bold md:text-3xl">これからの関西就活ラボ</h2>
-        </Reveal>
-        <div className="lab-next-grid relative">
-          {nextSteps.map((s, i) => (
-            <Reveal
-              key={s.en}
-              delay={i * 0.08}
-              variant={i === 0 ? "left" : i === 2 ? "right" : "up"}
+      <section className="py-16 md:py-24" style={{ background: "var(--color-tag-surface)" }}>
+        <Container>
+          <Reveal className="max-w-2xl">
+            <Tag>WHAT&apos;S NEXT</Tag>
+            <h2
+              className="mt-4 text-2xl md:text-3xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
             >
-              <div>
-                <span>{s.en}</span>
-                <p>{s.text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal delay={0.2} className="lab-about-next-statement relative">
-          <p>
-            目指しているのは、「関西の就活生と企業にとって、
-            <span>最も信頼される架け橋</span>」であり続けることです。
-          </p>
-        </Reveal>
+              これからの関西就活ラボ
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+            {nextSteps.map((s, i) => (
+              <Reveal
+                key={s.en}
+                delay={i * 0.08}
+                variant={i === 0 ? "left" : i === 2 ? "right" : "up"}
+              >
+                <div
+                  className="border-t pt-5"
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--color-tag-ink) 18%, transparent)",
+                  }}
+                >
+                  <span
+                    className="text-[11px] tracking-widest"
+                    style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-link)" }}
+                  >
+                    {s.en}
+                  </span>
+                  <p
+                    className="mt-3 text-[15px] leading-8"
+                    style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+                  >
+                    {s.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.2} className="mt-12">
+            <div
+              className="border-t pt-8"
+              style={{ borderColor: "color-mix(in srgb, var(--color-tag-ink) 18%, transparent)" }}
+            >
+              <p
+                className="max-w-2xl text-[1.15rem] leading-[1.9] font-bold"
+                style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+              >
+                目指しているのは、「関西の就活生と企業にとって、
+                <span style={{ color: "var(--color-stamp)" }}>最も信頼される架け橋</span>」であり続けることです。
+              </p>
+            </div>
+          </Reveal>
+        </Container>
       </section>
 
       {/* 企業の皆様へ */}
-      <section className="lab-section">
-        <Reveal className="lab-join-card mx-auto max-w-3xl">
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> FOR COMPANIES
-          </p>
-          <h2 className="mt-4 text-2xl font-bold md:text-3xl">
-            自社の本当の魅力を、
-            <br className="sm:hidden" />
-            次の世代へ。
-          </h2>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-[#515966]">
-            関西就活ラボでは、経営者・人事・社員への取材を通して、仕事内容だけでは伝わらない企業の考え方、事業への想い、働く人、職場の雰囲気を学生へ届けます。ご希望に応じて、学生との交流イベントやインターン企画についてもご相談いただけます。
-          </p>
-          <Link
-            href="/for-companies"
-            className="lab-text-link mt-6 inline-flex items-center gap-2"
-          >
-            企業の方へ 詳しく見る
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-        </Reveal>
+      <section className="py-16 md:py-24">
+        <Container narrow>
+          <Reveal className="tag-card mx-auto max-w-3xl p-8 md:p-10">
+            <Tag>FOR COMPANIES</Tag>
+            <h2
+              className="mt-4 text-2xl md:text-3xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              自社の本当の魅力を、
+              <br className="sm:hidden" />
+              次の世代へ。
+            </h2>
+            <p
+              className="mt-5 max-w-2xl text-sm leading-7"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              関西就活ラボでは、経営者・人事・社員への取材を通して、仕事内容だけでは伝わらない企業の考え方、事業への想い、働く人、職場の雰囲気を学生へ届けます。ご希望に応じて、学生との交流イベントやインターン企画についてもご相談いただけます。
+            </p>
+            <Link
+              href="/for-companies"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-link)" }}
+            >
+              企業の方へ 詳しく見る
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </Reveal>
+        </Container>
       </section>
 
       {/* JOIN US */}
-      <section className="lab-section">
-        <Reveal className="max-w-2xl">
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> JOIN US
-          </p>
-          <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-            一緒に、関西の就活を
-            <br />
-            もっと面白く。
-          </h2>
-          <p className="mt-5 text-sm leading-7 text-[#515966]">
-            関西就活ラボでは、関西の就活文化をより良くし、学生と企業の未来を一緒につくっていただける企業・学生の皆様を募集しています。
-          </p>
-        </Reveal>
-
-        <div className="lab-join-grid">
-          <Reveal variant="left" className="lab-join-card">
-            <p className="lab-label">FOR COMPANIES</p>
-            <h3>企業の皆様へ</h3>
-            <ul>
-              {forCompanyList.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+      <section className="py-16 md:py-24">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <Tag>JOIN US</Tag>
+            <h2
+              className="mt-4 text-3xl md:text-4xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              一緒に、関西の就活を
+              <br />
+              もっと面白く。
+            </h2>
+            <p
+              className="mt-5 text-sm leading-7"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              関西就活ラボでは、関西の就活文化をより良くし、学生と企業の未来を一緒につくっていただける企業・学生の皆様を募集しています。
+            </p>
           </Reveal>
-          <Reveal variant="right" delay={0.1} className="lab-join-card">
-            <p className="lab-label">FOR STUDENTS</p>
-            <h3>学生の皆様へ</h3>
-            <ul>
-              {forStudentList.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
 
-        <Reveal delay={0.15} className="mt-16 text-center">
-          <p className="text-xl leading-relaxed font-bold md:text-2xl">
-            「この企業に出会えてよかった。」
-            <br />
-            「この学生に出会えてよかった。」
-          </p>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#515966]">
-            そんな出会いを、関西から少しずつ増やしていきたいと考えています。企業と学生が、お互いのことをきちんと知った上で出会える場所を、私たちと一緒につくりませんか？
-          </p>
-        </Reveal>
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            <Reveal variant="left" className="tag-card tag-rotate--1 p-7">
+              <span
+                className="text-[11px] tracking-widest"
+                style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+              >
+                FOR COMPANIES
+              </span>
+              <h3
+                className="mt-2 text-lg"
+                style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+              >
+                企業の皆様へ
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {forCompanyList.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 border-t pt-3 text-[15px]"
+                    style={{
+                      borderColor: "color-mix(in srgb, var(--color-tag-ink) 15%, transparent)",
+                      fontFamily: "var(--font-tag-ui)",
+                      color: "var(--color-tag-ink)",
+                    }}
+                  >
+                    <span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full"
+                      style={{ background: "var(--color-stamp)" }}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal variant="right" delay={0.1} className="tag-card tag-rotate-1 p-7">
+              <span
+                className="text-[11px] tracking-widest"
+                style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+              >
+                FOR STUDENTS
+              </span>
+              <h3
+                className="mt-2 text-lg"
+                style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+              >
+                学生の皆様へ
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {forStudentList.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 border-t pt-3 text-[15px]"
+                    style={{
+                      borderColor: "color-mix(in srgb, var(--color-tag-ink) 15%, transparent)",
+                      fontFamily: "var(--font-tag-ui)",
+                      color: "var(--color-tag-ink)",
+                    }}
+                  >
+                    <span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full"
+                      style={{ background: "var(--color-stamp)" }}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.15} className="mt-16 text-center">
+            <p
+              className="text-xl leading-relaxed md:text-2xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              「この企業に出会えてよかった。」
+              <br />
+              「この学生に出会えてよかった。」
+            </p>
+            <p
+              className="mx-auto mt-5 max-w-xl text-sm leading-7"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              そんな出会いを、関西から少しずつ増やしていきたいと考えています。企業と学生が、お互いのことをきちんと知った上で出会える場所を、私たちと一緒につくりませんか？
+            </p>
+          </Reveal>
+        </Container>
       </section>
 
       {/* 最終CTA */}
-      <section className="lab-about-cta">
-        <AmbientPhoto src={STOCK_IMAGES.osakaStreetDay} className="opacity-[0.1]" imgClassName="grayscale" />
-        <Reveal className="relative">
-          <h2>関西就活ラボを、はじめてみませんか。</h2>
-          <div className="lab-about-cta-actions">
-            <Link href="/companies" className="lab-button">
-              企業を探す
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-            <div className="lab-social-links">
-              <Link href={siteConfig.lineUrl} target="_blank" rel="noopener noreferrer">
-                LINE <ArrowUpRight size={18} aria-hidden="true" />
+      <section className="py-20 md:py-28" style={{ background: "var(--color-tag-surface)" }}>
+        <Container narrow>
+          <Reveal className="text-center">
+            <h2
+              className="mx-auto max-w-[18em] text-balance text-2xl leading-[1.5] md:text-4xl"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              関西就活ラボを、はじめてみませんか。
+            </h2>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
+              <Link
+                href="/companies"
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+              >
+                企業を探す
+                <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
-              <Link href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">
-                Instagram <ArrowUpRight size={18} aria-hidden="true" />
-              </Link>
+              <div className="flex items-center gap-6">
+                <Link
+                  href={siteConfig.lineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border-b pb-0.5 text-sm font-semibold hover:opacity-80"
+                  style={{
+                    fontFamily: "var(--font-tag-ui)",
+                    color: "var(--color-tag-ink)",
+                    borderColor: "var(--color-tag-ink)",
+                  }}
+                >
+                  LINE <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+                <Link
+                  href={siteConfig.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border-b pb-0.5 text-sm font-semibold hover:opacity-80"
+                  style={{
+                    fontFamily: "var(--font-tag-ui)",
+                    color: "var(--color-tag-ink)",
+                    borderColor: "var(--color-tag-ink)",
+                  }}
+                >
+                  Instagram <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+              </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </Container>
       </section>
     </div>
   );

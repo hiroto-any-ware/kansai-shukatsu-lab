@@ -6,12 +6,17 @@ import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   return (
-    <footer className="bg-void text-white">
+    <footer
+      className="text-white"
+      style={{ background: "var(--color-tag-ink)" }}
+    >
       <Container className="grid grid-cols-1 gap-12 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:py-20">
         <div>
           <Link href="/" className="flex items-center gap-2.5">
             <Logo className="bg-white" />
-            <span className="font-display text-lg">関西就活ラボ</span>
+            <span style={{ fontFamily: "var(--font-stamp)" }} className="text-lg">
+              関西就活ラボ
+            </span>
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-white/60">
             関西の就活生へ、まだ知らない企業との出会いを。
@@ -30,7 +35,8 @@ export function Footer() {
               href={siteConfig.lineUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#06C755] px-4 py-2.5 text-[13px] font-semibold text-white"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-[13px] font-semibold text-white"
+              style={{ background: "#06C755", fontFamily: "var(--font-tag-ui)" }}
             >
               公式LINEを追加
             </Link>
@@ -38,7 +44,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="font-label text-xs tracking-[0.2em] text-white/40">
+          <p
+            className="text-xs tracking-[0.2em] text-white/40"
+            style={{ fontFamily: "var(--font-tag-label)" }}
+          >
             SITEMAP
           </p>
           <ul className="mt-4 space-y-3">
@@ -47,6 +56,7 @@ export function Footer() {
                 <Link
                   href={item.href}
                   className="text-sm text-white/70 transition-colors hover:text-white"
+                  style={{ fontFamily: "var(--font-tag-ui)" }}
                 >
                   {item.label}
                 </Link>
@@ -56,7 +66,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="font-label text-xs tracking-[0.2em] text-white/40">
+          <p
+            className="text-xs tracking-[0.2em] text-white/40"
+            style={{ fontFamily: "var(--font-tag-label)" }}
+          >
             OTHERS
           </p>
           <ul className="mt-4 space-y-3">
@@ -64,6 +77,7 @@ export function Footer() {
               <Link
                 href="/knowhow"
                 className="text-sm text-white/70 transition-colors hover:text-white"
+                style={{ fontFamily: "var(--font-tag-ui)" }}
               >
                 就活ノウハウ
               </Link>
@@ -72,6 +86,7 @@ export function Footer() {
               <Link
                 href="/for-companies"
                 className="text-sm text-white/70 transition-colors hover:text-white"
+                style={{ fontFamily: "var(--font-tag-ui)" }}
               >
                 取材・イベントのご相談
               </Link>
@@ -82,6 +97,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-white/70 transition-colors hover:text-white"
+                style={{ fontFamily: "var(--font-tag-ui)" }}
               >
                 Instagram
               </Link>
@@ -92,7 +108,9 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <Container className="py-6 text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} 関西就活ラボ</p>
+          <p style={{ fontFamily: "var(--font-tag-data)" }}>
+            &copy; {new Date().getFullYear()} 関西就活ラボ
+          </p>
         </Container>
       </div>
     </footer>
