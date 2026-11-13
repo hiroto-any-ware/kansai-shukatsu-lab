@@ -81,7 +81,7 @@ export default async function CompanyDetailPage({
   };
 
   return (
-    <div className="bg-white">
+    <div style={{ background: "var(--color-tag-bg)" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

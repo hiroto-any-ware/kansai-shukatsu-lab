@@ -7,12 +7,12 @@ import { ArrowUpRight } from "lucide-react";
 import { CompanyInterview } from "@/lib/types";
 import { useRevealVisible } from "@/components/ui/Reveal";
 
-// すべてのインタビューを同じ大きさの枠で並べる（優劣の印象を与えないため、
-// 企業によって枠の大きさや比率を変えない）。
+const ROTATIONS = ["tag-rotate--1", "tag-rotate-2", "tag-rotate--2", "tag-rotate-1"];
+
 /**
- * インタビュー一覧の登場演出。写真はズーム＋左右スライドイン
- * （インタビュー詳細ヒーローの社長写真と同じ動きの言語）で現れ、
- * キャプションはそのあとに追いかけて浮かび上がる。
+ * インタビュー一覧を「作業台に散らばったタグ」として見せるカード。
+ * CompanyCardと同じ視覚言語（tag-card + 回転）を、記事一覧向けの
+ * 縦に長いレイアウトで表現する。
  */
 export function StoryCard({
   company,
@@ -24,11 +24,12 @@ export function StoryCard({
   const { ref, visible } = useRevealVisible<HTMLElement>();
   const delay = (index % 3) * 0.12;
   const x = index % 2 === 0 ? -48 : 48;
+  const rotate = ROTATIONS[index % ROTATIONS.length];
 
   return (
-    <article ref={ref} className="lab-story">
-      <Link href={`/companies/${company.slug}`} className="group block">
-        <div className="lab-story-photo">
+    <article ref={ref}>
+      <Link href={`/companies/${company.slug}`} className={`tag-card ${rotate} group block p-2`}>
+        <div className="relative aspect-[4/5] w-full overflow-hidden">
           <motion.div
             className="absolute inset-0"
             initial={{ opacity: 0, scale: 1.04, x }}
@@ -48,20 +49,37 @@ export function StoryCard({
               style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
             />
           </motion.div>
-          <span className="lab-story-arrow">
+          <span
+            className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center text-white transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            style={{ background: "var(--color-stamp)" }}
+          >
             <ArrowUpRight size={16} aria-hidden="true" />
           </span>
         </div>
         <motion.div
+          className="p-3"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 14 }}
           transition={{ duration: 0.6, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="lab-meta">
+          <p
+            className="text-[10px] tracking-widest"
+            style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+          >
             {company.category} ／ {company.prefecture}
           </p>
-          <h3>{company.title}</h3>
-          <p className="lab-company">{company.companyName}</p>
+          <h3
+            className="mt-1.5 text-[17px] leading-snug"
+            style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+          >
+            {company.title}
+          </h3>
+          <p
+            className="mt-1.5 text-xs"
+            style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+          >
+            {company.companyName}
+          </p>
         </motion.div>
       </Link>
     </article>

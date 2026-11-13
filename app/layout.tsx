@@ -1,31 +1,16 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Shippori_Mincho, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { siteConfig } from "@/lib/site";
 
-const notoSansJP = Noto_Sans_JP({
-  variable: "--font-noto-sans-jp",
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  display: "swap",
-});
-
-const shipporiMincho = Shippori_Mincho({
-  variable: "--font-shippori-mincho",
-  subsets: ["latin"],
-  weight: ["500", "700", "800"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
+// 「現場台帳」デザインシステム用フォント（DESIGN.md参照）。
+// いずれも日本語グリフを含むが、next/font/google がセルフホスト用に
+// 公開している subset には "latin" 系しかなく（CJKレンジが選べない）、
+// それだと和文が全てフォールバック書体になってしまう。
+// そのため Google Fonts の CSS2 を直接 <link> で読み込み、
+// ブラウザ側で必要な unicode-range だけ取得させる（下の <head> 参照）。
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -68,11 +53,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="ja"
-      className={`${notoSansJP.variable} ${shipporiMincho.variable} ${inter.variable}`}
-    >
-      <body className="flex min-h-screen flex-col bg-paper text-ink">
+    <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Old+Mincho:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=DotGothic16&family=Martian+Mono:wght@400;500;700&display=swap"
+        />
+      </head>
+      <body
+        className="flex min-h-screen flex-col"
+        style={{ background: "var(--color-tag-bg)", color: "var(--color-tag-ink)" }}
+      >
         <Header />
         <main className="flex-1">
           <PageTransition>{children}</PageTransition>

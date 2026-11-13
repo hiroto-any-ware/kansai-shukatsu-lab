@@ -1,133 +1,147 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { companies } from "@/data/companies";
 import { STOCK_IMAGES } from "@/lib/images";
+import { Container } from "@/components/ui/Container";
+import { StaggerReveal } from "@/components/ui/StaggerReveal";
+import { LineReveal } from "@/components/ui/LineReveal";
+import { PhotoReveal } from "@/components/ui/PhotoReveal";
 
 const FACE_SLUGS = ["yamagata-harness", "shoei-seiki", "nagata-reiki"];
 
-/**
- * PC・タブレット幅でのみ、ヒーローを画面に固定しながらズーム＋
- * フェードアウトさせ、次のセクション（企業インタビューの3D空間）へ
- * 「入っていく」感覚を作る。スマートフォンや prefers-reduced-motion
- * では通常の静止セクションとして表示する（軽量・分かりやすさ優先）。
- */
-function usePinEnabled() {
-  const reduced = useReducedMotion();
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const update = () => setIsDesktop(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  return isDesktop && !reduced;
-}
-
 export function Hero() {
   const faces = FACE_SLUGS.map((slug) => companies.find((c) => c.slug === slug)!);
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const pinEnabled = usePinEnabled();
-
-  const { scrollYProgress } = useScroll({
-    target: wrapRef,
-    offset: ["start start", "end start"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const opacity = useTransform(scrollYProgress, [0.45, 1], [1, 0]);
-  const gridY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const wordY = useTransform(scrollYProgress, [0, 1], [0, 160]);
 
   return (
-    <div ref={wrapRef} className={pinEnabled ? "lab-hero-scene" : undefined}>
-      <motion.section
-        className={pinEnabled ? "lab-hero lab-hero-future lab-hero-pin" : "lab-hero lab-hero-future"}
-        style={pinEnabled ? { scale, opacity } : undefined}
-      >
-        <motion.div
-          className="lab-hero-grid"
-          style={pinEnabled ? { y: gridY } : undefined}
-          aria-hidden="true"
-        />
-        <div className="lab-orbit lab-orbit-one" aria-hidden="true" />
-        <div className="lab-orbit lab-orbit-two" aria-hidden="true" />
-        <motion.span
-          className="lab-future-word"
-          style={pinEnabled ? { y: wordY } : undefined}
-          aria-hidden="true"
-        >
-          FUTURE
-        </motion.span>
+    <section
+      className="pt-28 pb-16 md:pt-40 md:pb-24"
+      style={{ background: "var(--color-tag-bg)" }}
+    >
+      <Container>
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+          <StaggerReveal className="order-2 lg:order-1 lg:col-span-7" gap={0.13}>
+            <span
+              className="font-tag-label inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider"
+              style={{
+                fontFamily: "var(--font-tag-label)",
+                color: "var(--color-tag-muted)",
+                borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
+              }}
+            >
+              KANSAI SHUKATSU LAB
+            </span>
 
-        <div className="lab-hero-copy">
-          <p className="lab-label">
-            <span className="lab-label-rule" aria-hidden="true" /> KANSAI SHUKATSU LAB
-          </p>
-          <h1>
-            まだ知らない、
-            <br />
-            自分の<span>未来へ。</span>
-          </h1>
-          <p className="lab-intro">
-            企業の名前より、そこで働く人の話を。
-            <br />
-            関西の就活生へ届ける、仕事との出会い。
-          </p>
-          <a className="lab-button" href="#stories">
-            企業の話を読む <ArrowUpRight size={20} aria-hidden="true" />
-          </a>
-        </div>
+            <h1
+              className="mt-6 text-balance text-[36px] leading-[1.3] font-normal sm:text-5xl md:text-[58px]"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              <LineReveal
+                lines={["まだ知らない、", "自分の未来へ。"]}
+                lineClassName=""
+              />
+            </h1>
 
-        <figure className="lab-hero-image">
-          <Image
-            src={STOCK_IMAGES.osakaStreetDay}
-            alt="大阪の街並み"
-            fill
-            priority
-            sizes="(max-width: 760px) 100vw, 48vw"
-            className="object-cover"
-          />
-          <figcaption>
-            <span>KANSAI, JAPAN</span>
-            <span>YOUR NEXT STARTS HERE</span>
-          </figcaption>
-        </figure>
+            <p
+              className="mt-6 max-w-md text-[15px] leading-8"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              企業の名前より、そこで働く人の話を。
+              <br />
+              関西の就活生へ届ける、仕事との出会い。
+            </p>
 
-        <div className="lab-hero-people" aria-label="企業インタビュー">
-          <div className="lab-hero-faces">
-            {faces.map((c) => (
-              <Link key={c.slug} aria-label={`${c.companyName}のインタビューを読む`} href={`/companies/${c.slug}`}>
-                <Image
-                  src={c.photo}
-                  alt={c.photoAlt}
-                  fill
-                  sizes="72px"
-                  className="object-cover"
-                  style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
-                />
+            <a
+              href="#stories"
+              className="mt-8 inline-flex items-center gap-3 px-6 py-3.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
+              style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+            >
+              企業の話を読む
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+
+            <div className="mt-10 flex items-center gap-4">
+              <div className="flex">
+                {faces.map((c, i) => (
+                  <Link
+                    key={c.slug}
+                    aria-label={`${c.companyName}のインタビューを読む`}
+                    href={`/companies/${c.slug}`}
+                    className="relative -ml-2.5 block h-14 w-12 overflow-hidden first:ml-0"
+                    style={{
+                      border: "2px solid var(--color-tag-bg)",
+                      transform: `rotate(${i % 2 === 0 ? -6 : 5}deg)`,
+                    }}
+                  >
+                    <Image
+                      src={c.photo}
+                      alt={c.photoAlt}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                      style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
+                    />
+                  </Link>
+                ))}
+              </div>
+              <Link
+                href="/interviews"
+                className="inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+                style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
+              >
+                働く人の、本音へ。
+                <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
-            ))}
-          </div>
-          <Link href="/interviews">
-            働く人の、本音へ。 <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
+            </div>
+          </StaggerReveal>
+
+          <PhotoReveal x={24} delay={0.15} className="order-1 lg:order-2 lg:col-span-5">
+            <figure className="tag-card tag-rotate--1 relative aspect-[4/5] overflow-hidden p-2">
+              <div className="relative h-full w-full overflow-hidden">
+                <Image
+                  src={STOCK_IMAGES.osakaStreetDay}
+                  alt="大阪の街並み"
+                  fill
+                  priority
+                  sizes="(max-width: 760px) 100vw, 42vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption
+                className="absolute bottom-4 left-4 px-2 py-1 text-[10px] tracking-wider"
+                style={{
+                  fontFamily: "var(--font-tag-label)",
+                  background: "var(--color-tag-surface)",
+                  color: "var(--color-tag-muted)",
+                }}
+              >
+                KANSAI, JAPAN
+              </figcaption>
+            </figure>
+          </PhotoReveal>
         </div>
 
-        <div className="lab-hero-bottom">
-          <span>大手だけが、正解じゃない。</span>
-          <Link href="/about">
-            関西就活ラボについて <ArrowUpRight size={16} aria-hidden="true" />
+        <div
+          className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-dashed pt-6 text-sm sm:flex-row sm:items-center"
+          style={{
+            borderColor: "color-mix(in srgb, var(--color-tag-ink) 20%, transparent)",
+            fontFamily: "var(--font-tag-ui)",
+            color: "var(--color-tag-muted)",
+          }}
+        >
+          <span style={{ color: "var(--color-tag-ink)", fontWeight: 700 }}>
+            大手だけが、正解じゃない。
+          </span>
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 font-semibold hover:underline"
+            style={{ color: "var(--color-tag-ink)" }}
+          >
+            関西就活ラボについて
+            <ArrowUpRight size={14} aria-hidden="true" />
           </Link>
         </div>
-      </motion.section>
-    </div>
+      </Container>
+    </section>
   );
 }
