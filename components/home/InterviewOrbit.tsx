@@ -37,11 +37,15 @@ export function InterviewOrbit() {
           </div>
           <Link
             href="/interviews"
-            className="hidden shrink-0 items-center gap-2 text-sm font-semibold hover:underline sm:inline-flex"
+            className="group hidden shrink-0 items-center gap-2 text-sm font-semibold hover:underline sm:inline-flex"
             style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
           >
             すべての記事
-            <ArrowUpRight size={16} aria-hidden="true" />
+            <ArrowUpRight
+              size={16}
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </Link>
         </Reveal>
       </Container>
@@ -57,11 +61,15 @@ export function InterviewOrbit() {
       <Container className="mt-8 sm:hidden">
         <Link
           href="/interviews"
-          className="inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+          className="group inline-flex items-center gap-2 text-sm font-semibold hover:underline"
           style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
         >
           すべての記事
-          <ArrowUpRight size={16} aria-hidden="true" />
+          <ArrowUpRight
+            size={16}
+            aria-hidden="true"
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </Link>
       </Container>
     </section>

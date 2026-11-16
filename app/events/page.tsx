@@ -59,8 +59,8 @@ export default function EventsPage() {
               href={siteConfig.lineUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+              className="inline-flex items-center gap-2 bg-[var(--color-stamp)] px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+              style={{ fontFamily: "var(--font-tag-ui)" }}
             >
               公式LINEで最新情報を受け取る
             </Link>

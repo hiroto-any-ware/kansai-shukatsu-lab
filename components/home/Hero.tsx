@@ -1,5 +1,9 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { companies } from "@/data/companies";
 import { STOCK_IMAGES } from "@/lib/images";
@@ -12,28 +16,37 @@ const FACE_SLUGS = ["yamagata-harness", "shoei-seiki", "nagata-reiki"];
 
 export function Hero() {
   const faces = FACE_SLUGS.map((slug) => companies.find((c) => c.slug === slug)!);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
 
   return (
     <>
-      <section className="relative flex min-h-[100svh] items-end overflow-hidden">
-        <PhotoReveal className="absolute inset-0">
-          <Image
-            src={STOCK_IMAGES.kobePortTower}
-            alt="神戸ポートタワー"
-            fill
-            priority
-            sizes="100vw"
-            className="cine-photo ken-burns object-cover"
-          />
-        </PhotoReveal>
+      <section ref={sectionRef} className="relative flex min-h-[100svh] items-end overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: photoY }}>
+          <PhotoReveal className="absolute inset-0">
+            <Image
+              src={STOCK_IMAGES.kobePortTower}
+              alt="神戸ポートタワー"
+              fill
+              priority
+              sizes="100vw"
+              className="cine-photo ken-burns object-cover"
+            />
+          </PhotoReveal>
+        </motion.div>
+        <div className="photo-wash" />
         <div className="photo-scrim" />
 
         <span
-          className="absolute left-6 top-24 z-10 inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider md:left-10 md:top-28 lg:left-16"
+          className="photo-text absolute left-6 top-24 z-10 inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider md:left-10 md:top-28 lg:left-16"
           style={{
             fontFamily: "var(--font-tag-label)",
-            color: "var(--color-tag-muted)",
-            borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
+            color: "color-mix(in srgb, var(--color-tag-ink) 75%, transparent)",
+            borderColor: "color-mix(in srgb, var(--color-tag-ink) 45%, transparent)",
           }}
         >
           [01] KANSAI SHUKATSU LAB
@@ -49,7 +62,7 @@ export function Hero() {
 
           <StaggerReveal gap={0.13} className="mt-6">
             <p
-              className="max-w-md text-[15px] leading-8"
+              className="photo-text max-w-md text-[15px] leading-8"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
             >
               企業の名前より、そこで働く人の話を。
@@ -60,11 +73,15 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <a
                 href="#stories"
-                className="inline-flex items-center gap-3 px-6 py-3.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
-                style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+                className="group inline-flex items-center gap-3 bg-[var(--color-stamp)] px-6 py-3.5 text-[15px] font-bold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+                style={{ fontFamily: "var(--font-tag-ui)" }}
               >
                 企業の話を読む
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <ArrowUpRight
+                  size={18}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </a>
 
               <div className="flex items-center gap-4">
@@ -93,11 +110,15 @@ export function Hero() {
                 </div>
                 <Link
                   href="/interviews"
-                  className="inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+                  className="group inline-flex items-center gap-2 text-sm font-semibold hover:underline"
                   style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
                 >
                   働く人の、本音へ。
-                  <ArrowUpRight size={16} aria-hidden="true" />
+                  <ArrowUpRight
+                    size={16}
+                    aria-hidden="true"
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
                 </Link>
               </div>
             </div>
@@ -122,11 +143,15 @@ export function Hero() {
             </span>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 font-semibold hover:underline"
+              className="group inline-flex items-center gap-2 font-semibold hover:underline"
               style={{ color: "var(--color-tag-ink)" }}
             >
               関西就活ラボについて
-              <ArrowUpRight size={14} aria-hidden="true" />
+              <ArrowUpRight
+                size={14}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Link>
           </div>
         </Container>

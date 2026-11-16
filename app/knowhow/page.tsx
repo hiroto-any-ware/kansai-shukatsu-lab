@@ -40,20 +40,20 @@ export default function KnowhowPage() {
                     fill
                     className="cine-photo object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="photo-wash" />
                   <div className="photo-scrim" />
                   <span
-                    className="absolute left-2 top-2 z-10 border border-dashed px-2 py-1 text-[10px] tracking-wide"
+                    className="photo-text photo-label absolute left-2 top-2 z-10 border border-dashed px-2 py-1 text-[10px] tracking-wide"
                     style={{
-                      fontFamily: "var(--font-tag-label)",
-                      color: "var(--color-tag-muted)",
-                      borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
+                      fontFamily: "var(--font-tag-ui)",
+                      borderColor: "color-mix(in srgb, var(--color-tag-ink) 45%, transparent)",
                     }}
                   >
                     {a.category}
                   </span>
                   <div className="absolute inset-x-0 bottom-0 z-10 p-3">
                     <p
-                      className="text-xs"
+                      className="photo-text text-xs"
                       style={{ fontFamily: "var(--font-tag-data)", color: "var(--color-tag-muted)" }}
                     >
                       {a.publishedAt.replace(/-/g, ".")}
@@ -65,7 +65,7 @@ export default function KnowhowPage() {
                       {a.title}
                     </h2>
                     <p
-                      className="mt-2 line-clamp-2 text-xs leading-6"
+                      className="photo-text mt-2 line-clamp-2 text-xs leading-6"
                       style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
                     >
                       {a.description}
@@ -98,8 +98,8 @@ export default function KnowhowPage() {
             href={siteConfig.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+            className="mt-2 inline-flex items-center gap-2 bg-[var(--color-stamp)] px-6 py-3 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+            style={{ fontFamily: "var(--font-tag-ui)" }}
           >
             <InstagramIcon size={15} />
             Instagramをフォローする

@@ -49,6 +49,7 @@ export function StoryCard({
               style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
             />
           </motion.div>
+          <div className="photo-wash" />
           <div className="photo-scrim" />
           <span
             className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
@@ -63,8 +64,8 @@ export function StoryCard({
             transition={{ duration: 0.6, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <p
-              className="text-[10px] tracking-widest"
-              style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+              className="photo-text photo-label text-[10px] tracking-widest"
+              style={{ fontFamily: "var(--font-tag-ui)" }}
             >
               {company.category} ／ {company.prefecture}
             </p>
@@ -75,7 +76,7 @@ export function StoryCard({
               {company.title}
             </h3>
             <p
-              className="mt-1.5 text-xs"
+              className="photo-text mt-1.5 text-xs"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
             >
               {company.companyName}

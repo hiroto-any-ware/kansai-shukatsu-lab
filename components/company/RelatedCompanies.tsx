@@ -63,11 +63,12 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
                   className="cine-photo object-cover transition-transform duration-700 group-hover:scale-105"
                   style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
                 />
+                <div className="photo-wash" />
                 <div className="photo-scrim" />
                 <div className="absolute inset-x-0 bottom-0 p-4">
                   <span
-                    className="block text-[10px] tracking-widest"
-                    style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+                    className="photo-text photo-label block text-[10px] tracking-widest"
+                    style={{ fontFamily: "var(--font-tag-ui)" }}
                   >
                     {c.category} / {c.prefecture}
                   </span>

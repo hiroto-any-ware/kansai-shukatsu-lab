@@ -29,11 +29,14 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-          style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+          className="group mt-8 inline-flex items-center gap-2 bg-[var(--color-stamp)] px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+          style={{ fontFamily: "var(--font-tag-ui)" }}
         >
           トップページへ戻る
-          <ArrowUpRight size={16} />
+          <ArrowUpRight
+            size={16}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </Link>
       </Container>
     </div>

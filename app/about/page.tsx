@@ -479,11 +479,15 @@ export default function AboutPage() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
               <Link
                 href="/companies"
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+                className="group inline-flex items-center gap-2 bg-[var(--color-stamp)] px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+                style={{ fontFamily: "var(--font-tag-ui)" }}
               >
                 企業を探す
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <ArrowUpRight
+                  size={18}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Link>
               <div className="flex items-center gap-6">
                 <Link

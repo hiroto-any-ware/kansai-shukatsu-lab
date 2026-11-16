@@ -51,11 +51,12 @@ export function CompanyCard({
             className="cine-photo object-cover transition-transform duration-700 group-hover:scale-105"
             style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
           />
+          <div className="photo-wash" />
           <div className="photo-scrim" />
           <div className="absolute inset-x-0 bottom-0 p-3.5">
             <span
-              className="block text-[10px] tracking-widest"
-              style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+              className="photo-text photo-label block text-[10px] tracking-widest"
+              style={{ fontFamily: "var(--font-tag-ui)" }}
             >
               {company.category} / {company.prefecture}
             </span>
@@ -66,13 +67,13 @@ export function CompanyCard({
               {company.companyName}
             </h3>
             <p
-              className="mt-1.5 line-clamp-2 text-xs leading-5"
+              className="photo-text mt-1.5 line-clamp-2 text-xs leading-5"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
             >
               {company.title}
             </p>
             <span
-              className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="photo-text mt-3 inline-flex items-center gap-1 text-[11px] font-semibold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-stamp)" }}
             >
               記事を読む

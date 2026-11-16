@@ -10,8 +10,8 @@ import { StampMark } from "@/components/ui/StampMark";
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="font-tag-label inline-flex items-center gap-1.5 border border-dashed border-[var(--color-tag-ink)]/30 px-2.5 py-1 text-[11px] tracking-wider text-[var(--color-tag-muted)]"
-      style={{ fontFamily: "var(--font-tag-label)" }}
+      className="photo-text photo-label inline-flex items-center gap-1.5 border border-dashed border-[var(--color-tag-ink)]/45 px-2.5 py-1 text-[11px] tracking-wider"
+      style={{ fontFamily: "var(--font-tag-ui)" }}
     >
       {children}
     </span>
@@ -32,16 +32,19 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
           style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
         />
       </PhotoReveal>
+      <div className="photo-wash" />
       <div className="photo-scrim" />
 
       <Container className="relative z-10 pt-28 pb-14 md:pb-20">
         <StaggerReveal gap={0.13} className="max-w-3xl">
-          <Breadcrumb
-            items={[
-              { label: "企業を探す", href: "/companies" },
-              { label: company.companyName },
-            ]}
-          />
+          <div className="photo-text">
+            <Breadcrumb
+              items={[
+                { label: "企業を探す", href: "/companies" },
+                { label: company.companyName },
+              ]}
+            />
+          </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <Tag>{company.category}</Tag>
@@ -72,11 +75,11 @@ export function ArticleHero({ company }: { company: CompanyInterview }) {
             <LineReveal lines={[company.title]} />
           </h1>
 
-          <p className="mt-4 text-sm font-bold" style={{ color: "var(--color-tag-ink)" }}>
+          <p className="photo-text mt-4 text-sm font-bold" style={{ color: "var(--color-tag-ink)" }}>
             {company.interviewee.name} / {company.interviewee.role}・{company.companyName}
           </p>
           <p
-            className="mt-3 max-w-md text-[15px] leading-8"
+            className="photo-text mt-3 max-w-md text-[15px] leading-8"
             style={{
               fontFamily: "var(--font-tag-ui)",
               color: "var(--color-tag-muted)",

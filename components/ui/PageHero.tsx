@@ -86,18 +86,20 @@ export function PageHero({
           className="cine-photo ken-burns object-cover"
         />
       </PhotoReveal>
+      <div className="photo-wash" />
       <div className="photo-scrim" />
 
       <div className="relative z-10 mx-auto w-full max-w-8xl px-6 pt-28 pb-14 md:px-10 md:pb-20 lg:px-16">
         <StaggerReveal gap={0.12} className="max-w-2xl">
-          <Breadcrumb items={[{ label: breadcrumbLabel }]} />
+          <div className="photo-text">
+            <Breadcrumb items={[{ label: breadcrumbLabel }]} />
+          </div>
           <div className="mt-6">
             <span
-              className="font-tag-label inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider"
+              className="photo-text photo-label font-tag-label inline-flex items-center gap-1.5 border border-dashed px-2.5 py-1 text-[11px] tracking-wider"
               style={{
                 fontFamily: "var(--font-tag-label)",
-                color: "var(--color-tag-muted)",
-                borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
+                borderColor: "color-mix(in srgb, var(--color-tag-ink) 45%, transparent)",
               }}
             >
               {eyebrow}
@@ -111,7 +113,7 @@ export function PageHero({
           </h1>
           {description && (
             <p
-              className="mt-5 max-w-xl text-[15px] leading-8"
+              className="photo-text mt-5 max-w-xl text-[15px] leading-8"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
             >
               {description}
@@ -119,8 +121,8 @@ export function PageHero({
           )}
           {photo.caption && (
             <p
-              className="mt-6 text-[10px] tracking-wider"
-              style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
+              className="photo-text photo-label mt-6 text-[10px] tracking-wider"
+              style={{ fontFamily: "var(--font-tag-label)" }}
             >
               {photo.caption}
             </p>

@@ -68,15 +68,24 @@
     }
   }
 
-  /* 実写真に敷く、可読性のための暗→透明スクリム。装飾ではなく実用。 */
+  /* 実写真全体にかける均一な暗転。写真の明るい部分でも文字が読めるようにする下地。装飾ではなく実用。 */
+  .photo-wash {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--color-tag-bg) 28%, transparent);
+    pointer-events: none;
+  }
+
+  /* 実写真に敷く、可読性のための暗→透明スクリム。photo-washの上から、文字が集中する側をさらに暗くする。 */
   .photo-scrim {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
       var(--color-tag-bg) 0%,
-      color-mix(in srgb, var(--color-tag-bg) 65%, transparent) 42%,
-      color-mix(in srgb, var(--color-tag-bg) 15%, transparent) 70%,
+      color-mix(in srgb, var(--color-tag-bg) 88%, transparent) 32%,
+      color-mix(in srgb, var(--color-tag-bg) 50%, transparent) 58%,
+      color-mix(in srgb, var(--color-tag-bg) 18%, transparent) 80%,
       transparent 100%
     );
     pointer-events: none;
@@ -128,12 +137,26 @@
 
   /* 写真に重ねる見出し用。グローではなく、可読性のための軽いドロップシャドウ。 */
   .photo-heading {
-    text-shadow: 0 4px 24px color-mix(in srgb, var(--color-tag-deep) 55%, transparent);
+    text-shadow:
+      0 1px 3px color-mix(in srgb, var(--color-tag-deep) 90%, transparent),
+      0 8px 28px color-mix(in srgb, var(--color-tag-deep) 60%, transparent);
+  }
+
+  /* 写真に重ねる小さめの文字(タグ・本文・キャプション)用。photo-headingより輪郭を強く、ぼかしを狭く。 */
+  .photo-text {
+    text-shadow:
+      0 1px 2px color-mix(in srgb, var(--color-tag-deep) 95%, transparent),
+      0 2px 10px color-mix(in srgb, var(--color-tag-deep) 65%, transparent);
+  }
+
+  /* 写真上の控えめなラベル色。通常のmutedより明るくして、写真の上でも沈まないようにする。 */
+  .photo-label {
+    color: color-mix(in srgb, var(--color-tag-ink) 82%, transparent);
   }
 
   /* 実写真の色調グレーディング。暗く落としつつ、彩度・コントラストは残す。 */
   .cine-photo {
-    filter: brightness(0.55) contrast(1.1) saturate(1.05);
+    filter: brightness(0.5) contrast(1.1) saturate(1.05);
   }
 
   /* hero-sceneの写真にかける、ゆっくり続くズーム。動画のような持続感を出す。 */
