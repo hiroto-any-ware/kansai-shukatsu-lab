@@ -128,59 +128,6 @@
       animation: none;
     }
   }
-
-  /* 連続ループするテキスト帯。中身を2回複製し、-50%移動でシームレスに繋げる。 */
-  .marquee-track {
-    overflow: hidden;
-  }
-  .marquee-track__inner {
-    display: flex;
-    width: max-content;
-    animation: marquee-slide 38s linear infinite;
-  }
-  .marquee-track:hover .marquee-track__inner {
-    animation-play-state: paused;
-  }
-  @keyframes marquee-slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track__inner {
-      animation: none;
-    }
-  }
-
-  /* heroのスクロール誘導。短い光点が縦線を流れ落ちる動きを繰り返す。 */
-  .scroll-cue-line {
-    position: relative;
-    overflow: hidden;
-  }
-  .scroll-cue-line::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: currentColor;
-    animation: scroll-cue-fall 1.8s ease-in-out infinite;
-  }
-  @keyframes scroll-cue-fall {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(100%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-cue-line::after {
-      animation: none;
-      transform: translateY(0);
-    }
-  }
 }
 
 @layer utilities {

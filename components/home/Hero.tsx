@@ -52,19 +52,6 @@ export function Hero() {
           [01] KANSAI SHUKATSU LAB
         </span>
 
-        <div
-          className="absolute bottom-10 right-6 z-10 hidden flex-col items-center gap-3 sm:flex md:right-10 lg:right-16"
-          style={{ color: "var(--color-tag-ink)" }}
-        >
-          <span
-            className="photo-text text-[11px] tracking-[0.2em]"
-            style={{ fontFamily: "var(--font-tag-label)" }}
-          >
-            SCROLL
-          </span>
-          <span className="scroll-cue-line h-10 w-px opacity-70" aria-hidden="true" />
-        </div>
-
         <Container className="relative z-10 pb-16 pt-32 md:pb-24">
           <h1
             className="photo-heading max-w-3xl text-balance text-[40px] leading-[1.25] font-normal sm:text-6xl md:text-[72px]"
