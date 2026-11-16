@@ -32,47 +32,45 @@ export default function KnowhowPage() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {articles.map((a, i) => (
             <Reveal key={a.slug} delay={(i % 4) * 0.06}>
-              <div
-                className={`tag-card ${ROTATIONS[i % ROTATIONS.length]} group block h-full p-2`}
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className={`tag-card ${ROTATIONS[i % ROTATIONS.length]} group relative block aspect-[3/4] overflow-hidden p-2`}>
+                <div className="relative h-full w-full overflow-hidden">
                   <Image
                     src={a.thumbnail}
                     alt={a.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="cine-photo object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="photo-scrim" />
                   <span
-                    className="absolute left-2 top-2 border border-dashed px-2 py-1 text-[10px] tracking-wide"
+                    className="absolute left-2 top-2 z-10 border border-dashed px-2 py-1 text-[10px] tracking-wide"
                     style={{
                       fontFamily: "var(--font-tag-label)",
-                      background: "var(--color-tag-surface)",
                       color: "var(--color-tag-muted)",
                       borderColor: "color-mix(in srgb, var(--color-tag-ink) 30%, transparent)",
                     }}
                   >
                     {a.category}
                   </span>
-                </div>
-                <div className="p-2 pt-3">
-                  <p
-                    className="text-xs"
-                    style={{ fontFamily: "var(--font-tag-data)", color: "var(--color-tag-muted)" }}
-                  >
-                    {a.publishedAt.replace(/-/g, ".")}
-                  </p>
-                  <h2
-                    className="mt-1.5 text-base leading-snug"
-                    style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
-                  >
-                    {a.title}
-                  </h2>
-                  <p
-                    className="mt-2 line-clamp-2 text-xs leading-6"
-                    style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
-                  >
-                    {a.description}
-                  </p>
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-3">
+                    <p
+                      className="text-xs"
+                      style={{ fontFamily: "var(--font-tag-data)", color: "var(--color-tag-muted)" }}
+                    >
+                      {a.publishedAt.replace(/-/g, ".")}
+                    </p>
+                    <h2
+                      className="photo-heading mt-1.5 text-base leading-snug"
+                      style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+                    >
+                      {a.title}
+                    </h2>
+                    <p
+                      className="mt-2 line-clamp-2 text-xs leading-6"
+                      style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+                    >
+                      {a.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>

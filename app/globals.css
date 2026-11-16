@@ -4,15 +4,16 @@
  * 関西就活ラボ「現場台帳」デザインシステム（DESIGN.md参照）。
  * ------------------------------------------------------------------ */
 @theme {
-  --color-tag-bg: #d9d3c1; /* コンクリートの床 */
-  --color-tag-surface: #f2ede0; /* タグ紙 */
-  --color-tag-ink: #1f2a44; /* 藍色の墨 */
-  --color-tag-muted: #6b6456; /* 古びた鉛筆色 */
-  --color-stamp: #be3d2b; /* 朱色の印。1画面1箇所だけ */
-  --color-stamp-deep: #9b2c20;
-  --color-tag-link: #3a5a78;
-  --color-tag-success: #4b6b4f;
-  --color-tag-warning: #b8863b;
+  --color-tag-bg: #16120f; /* 夜の工場の床 */
+  --color-tag-surface: #221c17; /* 写真のない面の地色 */
+  --color-tag-deep: #0d0b09; /* 最も暗い閉じ面（フッターなど） */
+  --color-tag-ink: #f2ede0; /* タグ紙色を継承したクリームの文字色 */
+  --color-tag-muted: #a89c8a; /* 古びた鉛筆色を暗所向けに明るくした色 */
+  --color-stamp: #e2492b; /* 検品灯の朱色。1画面1箇所だけ */
+  --color-stamp-deep: #e2735b; /* 暗所でも読めるエラー文字色 */
+  --color-tag-link: #8fb4d6;
+  --color-tag-success: #6fa178;
+  --color-tag-warning: #d1a24d;
 
   /* next/font/google は和文グリフのsubsetをセルフホストできないため、
    * この5書体はlayout.tsxの<head>でGoogle FontsのCSS2を直接読み込む。 */
@@ -67,6 +68,20 @@
     }
   }
 
+  /* 実写真に敷く、可読性のための暗→透明スクリム。装飾ではなく実用。 */
+  .photo-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--color-tag-bg) 0%,
+      color-mix(in srgb, var(--color-tag-bg) 65%, transparent) 42%,
+      color-mix(in srgb, var(--color-tag-bg) 15%, transparent) 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
   /* 引用に重ねる朱色の検品マーク（下線）。画面に入ったら一拍で描かれる。 */
   .stamp-underline {
     position: relative;
@@ -109,6 +124,34 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* 写真に重ねる見出し用。グローではなく、可読性のための軽いドロップシャドウ。 */
+  .photo-heading {
+    text-shadow: 0 4px 24px color-mix(in srgb, var(--color-tag-deep) 55%, transparent);
+  }
+
+  /* 実写真の色調グレーディング。暗く落としつつ、彩度・コントラストは残す。 */
+  .cine-photo {
+    filter: brightness(0.55) contrast(1.1) saturate(1.05);
+  }
+
+  /* hero-sceneの写真にかける、ゆっくり続くズーム。動画のような持続感を出す。 */
+  @keyframes ken-burns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.09);
+    }
+  }
+  .ken-burns {
+    animation: ken-burns 20s ease-out forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ken-burns {
+      animation: none;
+    }
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;

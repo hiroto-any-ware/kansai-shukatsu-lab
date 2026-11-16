@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/ui/PageHero";
+import { STOCK_IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "就活イベント",
@@ -21,6 +22,7 @@ export default function EventsPage() {
         eyebrow="EVENT"
         title={["学生と企業が、", "本音で話せる場所。"]}
         description="大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。"
+        photo={{ src: STOCK_IMAGES.osakaCastleFerris, alt: "大阪城と観覧車" }}
       />
 
       <Container className="py-24 md:py-32">

@@ -159,7 +159,7 @@ export default function AboutPage() {
       {/* 中間ステートメント */}
       <div
         className="py-20 text-center md:py-28"
-        style={{ background: "var(--color-tag-ink)" }}
+        style={{ background: "var(--color-tag-deep)" }}
       >
         <LineReveal
           lines={["大手だけが、正解じゃない。"]}
@@ -200,7 +200,7 @@ export default function AboutPage() {
             src={STOCK_IMAGES.kobePortTower}
             alt="神戸ポートタワー"
             fill
-            className="object-cover"
+            className="cine-photo object-cover"
           />
           <div
             className="absolute inset-0"
