@@ -57,7 +57,7 @@ function QAList({ items }: { items: QA[] }) {
           </div>
           <p
             className="mt-2.5 max-w-2xl text-[15px] leading-8"
-            style={{ fontFamily: "var(--font-read)", color: "var(--color-tag-muted)" }}
+            style={{ fontFamily: "var(--font-read)", color: "var(--color-tag-ink)" }}
           >
             A. {qa.a}
           </p>
