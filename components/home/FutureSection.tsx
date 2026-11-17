@@ -42,29 +42,41 @@ export function FutureSection() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             <Link
               href="/companies"
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
-              style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+              className="group inline-flex items-center gap-2 bg-[var(--color-stamp)] px-6 py-3.5 text-[15px] font-bold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+              style={{ fontFamily: "var(--font-tag-ui)" }}
             >
               企業を探す
-              <ArrowUpRight size={18} aria-hidden="true" />
+              <ArrowUpRight
+                size={18}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Link>
             <Link
               href="/interviews"
-              className="inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+              className="group inline-flex items-center gap-2 text-sm font-semibold hover:underline"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
             >
               インタビューを見る
-              <ArrowUpRight size={18} aria-hidden="true" />
+              <ArrowUpRight
+                size={18}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Link>
             <Link
               href={siteConfig.lineUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+              className="group inline-flex items-center gap-2 text-sm font-semibold hover:underline"
               style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-ink)" }}
             >
               公式LINEを追加する
-              <ArrowUpRight size={18} aria-hidden="true" />
+              <ArrowUpRight
+                size={18}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Link>
           </div>
         </Reveal>

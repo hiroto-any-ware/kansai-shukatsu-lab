@@ -75,8 +75,7 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
             href={siteConfig.lineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between px-6 py-6 text-white transition-opacity hover:opacity-90 sm:px-8"
-            style={{ background: "var(--color-stamp)" }}
+            className="group flex items-center justify-between bg-[var(--color-stamp)] px-6 py-6 text-white transition-[transform,background-color] duration-300 hover:scale-[1.015] hover:bg-[#F05B3B] active:scale-[0.99] sm:px-8"
           >
             <span
               className="text-base font-bold sm:text-lg"
@@ -84,7 +83,10 @@ export function ArticleCTA({ company }: { company: CompanyInterview }) {
             >
               関西の就活情報をLINEで受け取る
             </span>
-            <ArrowUpRight size={18} />
+            <ArrowUpRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </Link>
         </Reveal>
       </Container>

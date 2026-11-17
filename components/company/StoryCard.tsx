@@ -29,7 +29,7 @@ export function StoryCard({
   return (
     <article ref={ref}>
       <Link href={`/companies/${company.slug}`} className={`tag-card ${rotate} group block p-2`}>
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
+        <div className="relative aspect-[3/4] w-full overflow-hidden">
           <motion.div
             className="absolute inset-0"
             initial={{ opacity: 0, scale: 1.04, x }}
@@ -45,42 +45,44 @@ export function StoryCard({
               alt={company.photoAlt}
               fill
               sizes="(max-width: 760px) 84vw, (max-width: 1100px) 45vw, 31vw"
-              className="object-cover"
+              className="cine-photo object-cover transition-transform duration-700 group-hover:scale-105"
               style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
             />
           </motion.div>
+          <div className="photo-wash" />
+          <div className="photo-scrim" />
           <span
-            className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center text-white transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             style={{ background: "var(--color-stamp)" }}
           >
             <ArrowUpRight size={16} aria-hidden="true" />
           </span>
+          <motion.div
+            className="absolute inset-x-0 bottom-0 p-3.5"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 14 }}
+            transition={{ duration: 0.6, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p
+              className="photo-text photo-label text-[10px] tracking-widest"
+              style={{ fontFamily: "var(--font-tag-ui)" }}
+            >
+              {company.category} ／ {company.prefecture}
+            </p>
+            <h3
+              className="photo-heading mt-1.5 line-clamp-2 text-[17px] leading-snug"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+            >
+              {company.title}
+            </h3>
+            <p
+              className="photo-text mt-1.5 text-xs"
+              style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
+            >
+              {company.companyName}
+            </p>
+          </motion.div>
         </div>
-        <motion.div
-          className="p-3"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 14 }}
-          transition={{ duration: 0.6, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p
-            className="text-[10px] tracking-widest"
-            style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-muted)" }}
-          >
-            {company.category} ／ {company.prefecture}
-          </p>
-          <h3
-            className="mt-1.5 text-[17px] leading-snug"
-            style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
-          >
-            {company.title}
-          </h3>
-          <p
-            className="mt-1.5 text-xs"
-            style={{ fontFamily: "var(--font-tag-ui)", color: "var(--color-tag-muted)" }}
-          >
-            {company.companyName}
-          </p>
-        </motion.div>
       </Link>
     </article>
   );

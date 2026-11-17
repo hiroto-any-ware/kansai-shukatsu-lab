@@ -244,8 +244,8 @@ export function ConsultationForm({
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-            style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-[var(--color-stamp)] px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:scale-[1.02] hover:bg-[#F05B3B] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 sm:w-auto"
+            style={{ fontFamily: "var(--font-tag-ui)" }}
           >
             {status === "submitting" && <Loader2 size={16} className="animate-spin" />}
             {status === "submitting" ? "送信中..." : "この内容で相談する"}

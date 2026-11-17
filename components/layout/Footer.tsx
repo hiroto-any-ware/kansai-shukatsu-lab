@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer
       className="text-white"
-      style={{ background: "var(--color-tag-ink)" }}
+      style={{ background: "var(--color-tag-deep)" }}
     >
       <Container className="grid grid-cols-1 gap-12 py-16 md:grid-cols-[1.3fr_1fr_1fr] md:py-20">
         <div>

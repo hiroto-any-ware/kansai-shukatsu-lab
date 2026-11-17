@@ -53,29 +53,32 @@ export function RelatedCompanies({ current }: { current: CompanyInterview }) {
             <Reveal key={c.slug} delay={i * 0.08}>
               <Link
                 href={`/companies/${c.slug}`}
-                className={`tag-card ${ROTATIONS[i % ROTATIONS.length]} group block p-2`}
+                className={`tag-card ${ROTATIONS[i % ROTATIONS.length]} group relative block aspect-[4/5] w-full overflow-hidden`}
               >
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src={c.photo}
-                    alt={c.photoAlt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
-                  />
+                <Image
+                  src={c.photo}
+                  alt={c.photoAlt}
+                  fill
+                  sizes="(max-width: 760px) 92vw, 31vw"
+                  className="cine-photo object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ objectPosition: `50% ${c.photoFocusY ?? 30}%` }}
+                />
+                <div className="photo-wash" />
+                <div className="photo-scrim" />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <span
+                    className="photo-text photo-label block text-[10px] tracking-widest"
+                    style={{ fontFamily: "var(--font-tag-ui)" }}
+                  >
+                    {c.category} / {c.prefecture}
+                  </span>
+                  <h3
+                    className="photo-heading mt-1.5 line-clamp-2 text-base leading-snug"
+                    style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
+                  >
+                    {c.title}
+                  </h3>
                 </div>
-                <span
-                  className="mt-3 block text-[10px] tracking-widest"
-                  style={{ fontFamily: "var(--font-tag-label)", color: "var(--color-tag-link)" }}
-                >
-                  {c.category} / {c.prefecture}
-                </span>
-                <h3
-                  className="mt-1.5 line-clamp-2 px-0.5 pb-2 text-base leading-snug"
-                  style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
-                >
-                  {c.title}
-                </h3>
               </Link>
             </Reveal>
           ))}

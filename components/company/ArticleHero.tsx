@@ -10,8 +10,8 @@ import { StampMark } from "@/components/ui/StampMark";
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="font-tag-label inline-flex items-center gap-1.5 border border-dashed border-[var(--color-tag-ink)]/30 px-2.5 py-1 text-[11px] tracking-wider text-[var(--color-tag-muted)]"
-      style={{ fontFamily: "var(--font-tag-label)" }}
+      className="photo-text photo-label inline-flex items-center gap-1.5 border border-dashed border-[var(--color-tag-ink)]/45 px-2.5 py-1 text-[11px] tracking-wider"
+      style={{ fontFamily: "var(--font-tag-ui)" }}
     >
       {children}
     </span>
@@ -20,106 +20,74 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 export function ArticleHero({ company }: { company: CompanyInterview }) {
   return (
-    <header
-      className="pt-28 pb-16 md:pt-36 md:pb-20"
-      style={{ background: "var(--color-tag-bg)" }}
-    >
-      <Container>
-        <Breadcrumb
-          items={[
-            { label: "企業を探す", href: "/companies" },
-            { label: company.companyName },
-          ]}
+    <header className="relative flex min-h-[88vh] items-end overflow-hidden md:min-h-[94vh]">
+      <PhotoReveal className="absolute inset-0">
+        <Image
+          src={company.photo}
+          alt={company.photoAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="cine-photo ken-burns object-cover"
+          style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
         />
+      </PhotoReveal>
+      <div className="photo-wash" />
+      <div className="photo-scrim" />
 
-        <div className="mt-8 grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-          <StaggerReveal
-            className="order-2 lg:order-1 lg:col-span-7"
-            gap={0.13}
-            x={-24}
-          >
-            <div className="flex flex-wrap items-center gap-2">
-              <Tag>{company.category}</Tag>
-              <Tag>{company.prefecture}</Tag>
-              <Tag>
-                <span style={{ fontFamily: "var(--font-tag-data)" }}>
-                  {company.publishedAt.replace(/-/g, ".")}
-                </span>
-              </Tag>
-            </div>
+      <Container className="relative z-10 pt-28 pb-14 md:pb-20">
+        <StaggerReveal gap={0.13} className="max-w-3xl">
+          <div className="photo-text">
+            <Breadcrumb
+              items={[
+                { label: "企業を探す", href: "/companies" },
+                { label: company.companyName },
+              ]}
+            />
+          </div>
 
-            <h1
-              className="mt-6 text-balance text-[28px] leading-[1.35] font-normal sm:text-4xl md:text-[42px]"
-              style={{
-                fontFamily: "var(--font-stamp)",
-                color: "var(--color-tag-ink)",
-              }}
-            >
-              <LineReveal lines={[company.title]} />
-            </h1>
+          <div className="mt-6 flex flex-wrap items-center gap-2">
+            <Tag>{company.category}</Tag>
+            <Tag>{company.prefecture}</Tag>
+            <Tag>
+              <span style={{ fontFamily: "var(--font-tag-data)" }}>
+                {company.publishedAt.replace(/-/g, ".")}
+              </span>
+            </Tag>
+          </div>
 
+          {company.featuredQuote && (
             <p
-              className="mt-6 text-sm font-bold"
-              style={{ color: "var(--color-tag-ink)" }}
+              className="photo-heading mt-6 text-balance text-[30px] leading-[1.4] font-normal sm:text-[40px] md:text-[50px]"
+              style={{ fontFamily: "var(--font-stamp)", color: "var(--color-tag-ink)" }}
             >
-              {company.companyName}
+              <StampMark>{company.featuredQuote}</StampMark>
             </p>
-            <p
-              className="mt-3 max-w-md text-[15px] leading-8"
-              style={{
-                fontFamily: "var(--font-tag-ui)",
-                color: "var(--color-tag-muted)",
-              }}
-            >
-              {company.lead[0]}
-            </p>
-          </StaggerReveal>
+          )}
 
-          <PhotoReveal
-            delay={0.15}
-            x={24}
-            className="order-1 lg:order-2 lg:col-span-5"
+          <h1
+            className="photo-heading mt-6 text-balance text-[20px] leading-[1.5] font-normal sm:text-2xl md:text-[26px]"
+            style={{
+              fontFamily: "var(--font-stamp)",
+              color: company.featuredQuote ? "var(--color-tag-muted)" : "var(--color-tag-ink)",
+            }}
           >
-            <figure
-              className="tag-card tag-rotate-1 relative aspect-[4/5] overflow-hidden p-2"
-            >
-              <div className="relative h-full w-full overflow-hidden">
-                <Image
-                  src={company.photo}
-                  alt={company.photoAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 760px) 100vw, 42vw"
-                  className="object-cover"
-                  style={{ objectPosition: `50% ${company.photoFocusY ?? 30}%` }}
-                />
-              </div>
-            </figure>
+            <LineReveal lines={[company.title]} />
+          </h1>
 
-            {company.featuredQuote && (
-              <div className="tag-card tag-rotate--1 -mt-6 ml-6 max-w-[88%] p-4 sm:ml-10">
-                <p
-                  className="text-[13px] leading-7"
-                  style={{
-                    fontFamily: "var(--font-stamp)",
-                    color: "var(--color-tag-ink)",
-                  }}
-                >
-                  <StampMark>{company.featuredQuote}</StampMark>
-                </p>
-                <p
-                  className="mt-2 font-tag-label text-[10px] tracking-wider"
-                  style={{
-                    fontFamily: "var(--font-tag-label)",
-                    color: "var(--color-tag-muted)",
-                  }}
-                >
-                  {company.interviewee.name} / {company.interviewee.role}
-                </p>
-              </div>
-            )}
-          </PhotoReveal>
-        </div>
+          <p className="photo-text mt-4 text-sm font-bold" style={{ color: "var(--color-tag-ink)" }}>
+            {company.interviewee.name} / {company.interviewee.role}・{company.companyName}
+          </p>
+          <p
+            className="photo-text mt-3 max-w-md text-[15px] leading-8"
+            style={{
+              fontFamily: "var(--font-tag-ui)",
+              color: "var(--color-tag-muted)",
+            }}
+          >
+            {company.lead[0]}
+          </p>
+        </StaggerReveal>
       </Container>
     </header>
   );

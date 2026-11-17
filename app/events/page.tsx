@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/ui/PageHero";
+import { STOCK_IMAGES } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "就活イベント",
@@ -21,6 +22,7 @@ export default function EventsPage() {
         eyebrow="EVENT"
         title={["学生と企業が、", "本音で話せる場所。"]}
         description="大規模な合同企業説明会ではなく、企業と学生がお互いの考え方や想いを知ることのできる、少人数のイベントを企画しています。"
+        photo={{ src: STOCK_IMAGES.osakaCastleFerris, alt: "大阪城と観覧車" }}
       />
 
       <Container className="py-24 md:py-32">
@@ -57,8 +59,8 @@ export default function EventsPage() {
               href={siteConfig.lineUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ background: "var(--color-stamp)", fontFamily: "var(--font-tag-ui)" }}
+              className="inline-flex items-center gap-2 bg-[var(--color-stamp)] px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-300 hover:scale-[1.03] hover:bg-[#F05B3B] active:scale-[0.98]"
+              style={{ fontFamily: "var(--font-tag-ui)" }}
             >
               公式LINEで最新情報を受け取る
             </Link>
